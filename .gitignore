@@ -1,0 +1,75 @@
+# Created by .gitignore support plugin (hsz.mobi)
+### JetBrains template
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
+
+*.iml
+
+## Directory-based project format:
+.idea/
+# if you remove the above rule, at least ignore the following:
+
+# User-specific stuff:
+# ./Angular/idea/workspace.xml
+# ./Angular/idea/tasks.xml
+# ./Angular/idea/dictionaries
+
+# Sensitive or high-churn files:
+# ./Angular/idea/dataSources.ids
+# ./Angular/idea/dataSources.xml
+# ./Angular/idea/sqlDataSources.xml
+# ./Angular/idea/dynamic.xml
+# ./Angular/idea/uiDesigner.xml
+
+# Gradle:
+# ./Angular/idea/gradle.xml
+# ./Angular/idea/libraries
+
+# Mongo Explorer plugin:
+# ./Angular/idea/mongoSettings.xml
+
+## File-based project format:
+*.ipr
+*.iws
+
+## Plugin-specific files:
+
+# IntelliJ
+out/
+
+# mpeltonen/sbt-idea plugin
+./Angular/idea_modules/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+
+
+### Windows template
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+./Angular/sass-cache/
+./Angular/bower_components/
+
+
+./React/bower_components/
