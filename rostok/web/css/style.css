@@ -863,10 +863,14 @@ fieldset[disabled] .btn {
     }
 }
 
-.section.section-6-1 .thumbnail{border:none;}
-.section.section-6-1 .thumbnail img{border:3px solid #000;}
-.section.section-6-1 .thumbnail p b{font-size:20px;}
-.section.section-6-1 .thumbnail p{margin:20px 0 0 0!important;}
+.section.section-6-1 .thumbnail,
+.section.section-6-2 .thumbnail{border:none;}
+.section.section-6-1 .thumbnail img,
+.section.section-6-2 .thumbnail img{border:3px solid #000;}
+.section.section-6-1 .thumbnail p b,
+.section.section-6-2 .thumbnail p b{font-size:20px;}
+.section.section-6-1 .thumbnail p,
+.section.section-6-2 .thumbnail p{margin:20px 0 0 0!important;}
 
 .section-6 blockquote {padding:0px;}
 
@@ -979,7 +983,7 @@ blockquote:before {
     background-position: top center;
     background-repeat: repeat-y;
     display: block;
-    height: 6699px;
+    height: 100%;
     width: 65px;
     margin: 0 auto;
 }
