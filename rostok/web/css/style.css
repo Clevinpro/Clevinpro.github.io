@@ -1,3 +1,4 @@
+
 body {
     color: #000000;
     font-family: 'Arsenal', sans-serif;
@@ -124,10 +125,10 @@ body.modal-open {
 
 .phone {
     display: inline-block;
-    font-family: 'Avenir';
     font-size: 20px;
     text-align: right;
     vertical-align: middle;
+    font-weight: bold;
 }
 
 .phone small {
@@ -862,7 +863,7 @@ fieldset[disabled] .btn {
         width: auto;
     }
 }
-
+.section.section-6-1{margin-bottom: 30px;}
 .section.section-6-1 .thumbnail,
 .section.section-6-2 .thumbnail{border:none;}
 .section.section-6-1 .thumbnail img,
