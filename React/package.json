@@ -1,27 +1,43 @@
 {
-  "name": "react-master",
+  "name": "redux-ru-tutorial",
   "version": "1.0.0",
-  "description": "",
+  "description": "Redux RU tutorial",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server --content-base src --inline --hot"
+    "start": "webpack-dev-server"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Maxim Patsianskiy",
+  "license": "MIT",
   "dependencies": {
-    "babel-core": "^6.10.4",
-    "babel-loader": "^6.2.4",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-react": "^6.11.1",
-    "css-loader": "^0.23.1",
-    "node-sass": "^3.8.0",
-    "react": "^15.2.1",
-    "react-dom": "^15.2.1",
+    "babel-polyfill": "^6.13.0",
+    "babel-runtime": "^6.11.6",
+    "material-ui": "^0.15.4",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
-    "redux": "^3.5.2",
-    "sass-loader": "^4.0.0",
+    "react-tap-event-plugin": "^1.0.0",
+    "redux": "^3.5.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.4.0",
+    "babel-core": "^6.13.2",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-transform-runtime": "^6.12.0",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "css-loader": "^0.23.1",
+    "eslint": "^3.3.1",
+    "eslint-loader": "^1.5.0",
+    "eslint-plugin-react": "^6.1.2",
+    "postcss-loader": "^0.10.1",
+    "precss": "^1.4.0",
+    "react-hot-loader": "^1.3.0",
     "style-loader": "^0.13.1",
-    "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1"
+    "webpack": "^1.13.2",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-dev-server": "^1.15.0",
+    "webpack-hot-middleware": "^2.12.2"
   }
 }
