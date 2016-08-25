@@ -1,4 +1,4 @@
-# redux-ru-tutorial
-Код для [Точка входа](https://maxfarseer.gitbooks.io/redux-course-ru/content/tochka_vhoda.html)
+# React material-ui
 
-Добавлен ```<Provider />```
+
+Добавлен ```<Layout />```
