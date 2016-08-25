@@ -13,49 +13,43 @@ import ImageCropFree from 'material-ui/svg-icons/image/crop-free';
 
 export default class Layout extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {open: false};
-  }
-
-   handleToggle = () => this.setState({open: !this.state.open});
-
-  handleClose = () => this.setState({open: false});
+ 
 
   render() {
+    const { open } = this.props
     return (
       <div>
         <AppBar
           title="TestoRator"
           iconClassNameRight="muidocs-icon-navigation-expand-more"
-          onLeftIconButtonTouchTap={this.handleToggle}
+          onLeftIconButtonTouchTap={this.props.toggleSidebar}
         />
        
         <Drawer
           ref="LeftNav"
           docked={false}
           width={256}
-          open={this.state.open}
-          onRequestChange={(open) => this.setState({open})}
+          open={open}
+          onRequestChange={this.props.toggleSidebar}
           
         >
-          <MenuItem onTouchTap={this.handleClose} leftIcon={<SocialPerson />}>View Profile</MenuItem>
-          <MenuItem onTouchTap={this.handleClose} leftIcon={<NotificationNetworkLocked />}>Privacy Settings</MenuItem>
-          <MenuItem onTouchTap={this.handleClose} leftIcon={<ActionSettings />}>Settungs</MenuItem>
-          <MenuItem onTouchTap={this.handleClose} leftIcon={<ActionExitToApp />}>Logout</MenuItem>
+          <MenuItem onTouchTap={ this.props.toggleSidebar} primaryText="View Profile" leftIcon={<SocialPerson />} />
+          <MenuItem onTouchTap={ this.props.toggleSidebar} leftIcon={<NotificationNetworkLocked />}>Privacy Settings</MenuItem>
+          <MenuItem onTouchTap={ this.props.toggleSidebar} leftIcon={<ActionSettings />}>Settungs</MenuItem>
+          <MenuItem onTouchTap={ this.props.toggleSidebar} leftIcon={<ActionExitToApp />}>Logout</MenuItem>
           <Divider />
-          <MenuItem onTouchTap={this.handleClose} leftIcon={<ImageCropFree />}>My Courses</MenuItem>
-          <MenuItem onTouchTap={this.handleClose} leftIcon={<ImageCropFree />}>My messages</MenuItem>
-          <MenuItem onTouchTap={this.handleClose} leftIcon={<ImageCropFree />}>HTML&CSS</MenuItem>
-          <MenuItem onTouchTap={this.handleClose} leftIcon={<ImageCropFree />}>Javascript ES6</MenuItem>
-          <MenuItem onTouchTap={this.handleClose} leftIcon={<ImageCropFree />}>SVG</MenuItem>
-          <MenuItem onTouchTap={this.handleClose} leftIcon={<ImageCropFree />}>React*</MenuItem>
-          <MenuItem onTouchTap={this.handleClose} leftIcon={<ImageCropFree />}>Angular</MenuItem>
-          <MenuItem onTouchTap={this.handleClose} leftIcon={<ImageCropFree />}>Webpack</MenuItem>
+          <MenuItem onTouchTap={ this.props.toggleSidebar} leftIcon={<ImageCropFree />}>My Courses</MenuItem>
+          <MenuItem onTouchTap={ this.props.toggleSidebar} leftIcon={<ImageCropFree />}>My messages</MenuItem>
+          <MenuItem onTouchTap={ this.props.toggleSidebar} leftIcon={<ImageCropFree />}>HTML&CSS</MenuItem>
+          <MenuItem onTouchTap={ this.props.toggleSidebar} leftIcon={<ImageCropFree />}>Javascript ES6</MenuItem>
+          <MenuItem onTouchTap={ this.props.toggleSidebar} leftIcon={<ImageCropFree />}>SVG</MenuItem>
+          <MenuItem onTouchTap={ this.props.toggleSidebar} leftIcon={<ImageCropFree />}>React*</MenuItem>
+          <MenuItem onTouchTap={ this.props.toggleSidebar} leftIcon={<ImageCropFree />}>Angular</MenuItem>
+          <MenuItem onTouchTap={ this.props.toggleSidebar} leftIcon={<ImageCropFree />}>Webpack</MenuItem>
           <Divider />
-          <MenuItem onTouchTap={this.handleClose} leftIcon={<ImageCropFree />}>Reference</MenuItem>
-          <MenuItem onTouchTap={this.handleClose} leftIcon={<ImageCropFree />}>FAQ</MenuItem>
-          <MenuItem onTouchTap={this.handleClose} leftIcon={<ImageCropFree />}>Feedback</MenuItem>
+          <MenuItem onTouchTap={ this.props.toggleSidebar} leftIcon={<ImageCropFree />}>Reference</MenuItem>
+          <MenuItem onTouchTap={ this.props.toggleSidebar} leftIcon={<ImageCropFree />}>FAQ</MenuItem>
+          <MenuItem onTouchTap={ this.props.toggleSidebar} leftIcon={<ImageCropFree />}>Feedback</MenuItem>
         </Drawer>
       </div>
     );
