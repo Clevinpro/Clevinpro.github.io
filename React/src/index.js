@@ -6,7 +6,9 @@ import App from './containers/App';
 import configureStore from './store/configureStore'
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
- 
+
+
+
 injectTapEventPlugin();
 const store = configureStore();
 const Body = () => (
