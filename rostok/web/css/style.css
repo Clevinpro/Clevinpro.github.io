@@ -118,7 +118,9 @@ body.modal-open {
 .nav > li > a:hover .fa-stack-1x {
     color: #ffffff;
 }
-
+.phone {
+  color: white;
+}
 .navbar-nav > li.phone a {
     padding-bottom: 0;
 }
