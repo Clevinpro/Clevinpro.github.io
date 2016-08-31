@@ -3,6 +3,7 @@ $('document').ready(function() {
     var options = {
         videoId: '180727422',
         zIndex: -1,
+        height: 796,
         parameters: {
             autopause: 1,
             autoplay: 1,
