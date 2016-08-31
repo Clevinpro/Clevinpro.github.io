@@ -97,7 +97,7 @@ body.modal-open {
 }
 
 .navbar .container {
-    background-color: #ffffff;
+    background-color: transparent;
 }
 
 .navbar-toggle .icon-bar {
