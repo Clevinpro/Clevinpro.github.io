@@ -16,4 +16,5 @@ $('document').ready(function() {
         }
     };
     $('#video').vimelar(options);
+    
 });
