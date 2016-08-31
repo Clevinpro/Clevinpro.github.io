@@ -17,5 +17,5 @@ $('document').ready(function() {
         }
     };
     $('#video').vimelar(options);
-    $('iframe').css("top" "0");
+    $('iframe').css("top", "0");
 });
