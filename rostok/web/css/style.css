@@ -217,6 +217,7 @@ body.modal-open {
 }
 .fa-instagram:before {
   content: "\f16d";
+  position: absolute;
   top: 21px;
   left: 23px;
 }
