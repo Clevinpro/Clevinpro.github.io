@@ -321,6 +321,10 @@ br.visible-xs {
     padding-top: 100px;
     position: relative;
     text-align: center;
+    z-index: 1;
+}
+.center-block {
+    z-index: 1;
 }
 
 @media (min-width: 768px)and (max-width: 991px) {
