@@ -311,6 +311,17 @@ br.visible-xs {
     text-align: center;
     z-index: 1;
 }
+.about {
+  font-family: Arsenal;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 25px;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  width: 552px;
+}
 .center-block {
     z-index: 1;
 }
