@@ -39,7 +39,17 @@ body.modal-open {
 
 .slick-prev:before,
 .slick-next:before {
-    color: black;
+    color: #fff;
+}
+.slick-prev:before {
+  position: absolute;
+  left: -15px;
+  top: 1px;
+}
+.slick-next:before {
+  position: absolute;
+  right: -15px;
+  top: 1px;
 }
 .close {
     font-size: 44px;
