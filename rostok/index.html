@@ -39,17 +39,17 @@
 			<ul class="nav navbar-nav navbar-center">
 				<li>
 					<a href="https://www.instagram.com/rostok.catering/" target="_blank">
-						<i class="fa fa-instagram" aria-hidden="true"></i>
+						<img src="web/img/inst.png" alt="instagram" class="img-responsive">
 					</a>
 				</li>
 				<li>
 					<a href="https://new.vk.com/rostok.catering" target="_blank">
-						<i class="fa fa-vk" aria-hidden="true"></i>
+						<img src="web/img/vk.png" alt="vk" class="img-responsive">
 					</a>
 				</li>
 				<li>
 					<a href="https://www.facebook.com/RostokCatering-270560549978403/" target="_blank">
-						<i class="fa fa-facebook" aria-hidden="true"></i>
+						<img src="web/img/fb.png" alt="facebook" class="img-responsive">
 					</a>
 				</li>
 			</ul>
@@ -757,12 +757,22 @@
 			<script src="web/js/video.js" ></script>
 			<script src="web/js/slick.js" type="text/javascript"></script>
 			<script type="text/javascript">
-			$(".center").slick({
+		    if (window.matchMedia('(max-width: 768px)').matches) {
+		    	$(".center").slick({
 		        infinite: true,
 		        centerMode: true,
-		        slidesToShow: 5,
+		        slidesToShow: 2,
 		        slidesToScroll: 3
-		    });	
+		    	});
+		    } 	
+			 if (window.matchMedia('(max-width: 1500px)').matches) {
+				$(".center").slick({
+			        infinite: true,
+			        centerMode: true,
+			        slidesToShow: 5,
+			        slidesToScroll: 3
+			    });
+			}
 			</script>
 			<script src="web/js/scrolling.js"></script>
 			<script src="web/js/bootstrap.min.js"></script>

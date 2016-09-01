@@ -158,12 +158,13 @@ body.modal-open {
 .navbar-nav > li.phone a {
     padding-bottom: 0;
 }
-.affix {
+.scroll {
     box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
     background: #fff;
 }
-.affix .phone {
+.scroll .phone {
     color: #000;
+    margin-top: 18px;
 }
 .phone {
     display: inline-block;
@@ -203,7 +204,7 @@ body.modal-open {
     }
 
     .navbar-nav > li {
-        margin-top: 9px;
+        margin-top: 12px;
     }
 }
 
@@ -230,37 +231,6 @@ body.modal-open {
 .navbar .navbar-nav a {
     color: #000000;
     padding: 12px;
-}
-.affix .fa {
-  color: #000;
-  border-color: #000;
-}
-.fa {
-  width: 40px;
-  height: 40px;
-  border: 3px solid #fff;
-  border-radius: 20px;
-  font-size: 21px;
-  color: #fff;
-}
-.fa-facebook:before {
-  content: "\f09a";
-  position: absolute;
-  top: 23px;
-  left: 26px;
-}
-.fa-vk:before {
-  content: "\f189";
-  position: absolute;
-  top: 22px;
-  left: 22px;
-  font-size: 18px;
-}
-.fa-instagram:before {
-  content: "\f16d";
-  position: absolute;
-  top: 23px;
-  left: 23px;
 }
 
 .fa-stack {
