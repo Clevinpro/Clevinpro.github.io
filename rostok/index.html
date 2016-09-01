@@ -80,7 +80,7 @@
 				<a data-target="#myModal" data-toggle="modal" href="#" class="btn btn-theme">
 					ПРОСЧИТАТЬ МЕНЮ <br class="visible-xs">НА МЕРОПРИЯТИЕ
 				</a>
-				 <section class="variable slider">
+				 <section class="center slider">
 				    <div>
 				      <img src="web/uploads/one-ch.png">
 				    </div>
@@ -757,13 +757,12 @@
 			<script src="web/js/video.js" ></script>
 			<script src="web/js/slick.js" type="text/javascript"></script>
 			<script type="text/javascript">
-			$(document).on('ready', function() {
-				$(".variable").slick({
-					dots: true,
-					infinite: true,
-					variableWidth: true
-				});
-			});	
+			$(".center").slick({
+		        infinite: true,
+		        centerMode: true,
+		        slidesToShow: 5,
+		        slidesToScroll: 3
+		    });	
 			</script>
 			<script src="web/js/scrolling.js"></script>
 			<script src="web/js/bootstrap.min.js"></script>
