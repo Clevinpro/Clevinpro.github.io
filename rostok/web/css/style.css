@@ -126,8 +126,11 @@ body.modal-open {
 }
 .affix {
     box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+    background: #fff;
 }
-
+.affix .phone {
+    color: #000;
+}
 .phone {
     display: inline-block;
     font-size: 20px;
@@ -193,6 +196,10 @@ body.modal-open {
 .navbar .navbar-nav a {
     color: #000000;
     padding: 12px;
+}
+.affix .fa {
+  color: #000;
+  border-color: #000;
 }
 .fa {
   width: 40px;
