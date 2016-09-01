@@ -28,11 +28,12 @@ body.modal-open {
 }
 
 .slick-slide {
-  margin: 0px 20px;
+  line-height: 44px;
 }
 
 .slick-slide img {
   width: 100%;
+  display: inline-block;
 }
 
 .slick-prev:before,
