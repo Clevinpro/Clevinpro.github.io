@@ -172,13 +172,13 @@ body.modal-open {
     text-align: right;
     vertical-align: middle;
     font-weight: bold;
+    padding-top: 7px;
 }
-
+""
 .phone small {
     display: block;
     cursor: pointer;
     font-size: 16px;
-    padding-right: 15px;
     padding-bottom: 15px;
 }
 
@@ -1068,7 +1068,6 @@ blockquote:before {
 }
 
 .maps-block {
-    border: 3px solid #000000;
     margin-left: 15px;
     margin-right: 15px;
     position: relative;
@@ -1124,7 +1123,7 @@ blockquote:before {
 
 /*Responsive*/
 
-@media screen and (min-width: 992px) and (max-width: 1199px)  {
+@media screen and (min-width: 992px) and (max-width: 1365px)  {
     .slider.slick-slider {
         margin: 40px auto;
     }
