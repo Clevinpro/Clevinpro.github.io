@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 }
 	function onBodyClick() {
-		e.preventDefault();
+		(document.querySelector('nav').classList.contains('affix')) ? logo.setAttribute("src", "web/img/logo-b.png") : ''
     	
 	}
 
