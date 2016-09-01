@@ -42,9 +42,9 @@ body.modal-open {
     font: normal normal normal 14px/1 FontAwesome;
     color: #fff;
     position: absolute;
-    left: -15px;
-    font-size: 25px;
-    top: 14px;
+    left: -50px;
+    font-size: 38px;
+    top: 0px;
 }
 
 .slick-next:before {
@@ -52,9 +52,9 @@ body.modal-open {
     content: "\f105";
     font: normal normal normal 14px/1 FontAwesome;
     position: absolute;
-    right: -15px;
-    font-size: 25px;
-    top: 14px;
+    right: -50px;
+    font-size: 38px;
+    top: 0px;
 }
 
 .close {
