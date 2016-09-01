@@ -38,7 +38,7 @@ body.modal-open {
 }
 
 .slick-prev:before{
-    content: "\f105";
+    content: "\f104";
     font: normal normal normal 14px/1 FontAwesome;
     color: #fff;
     position: absolute;
@@ -49,7 +49,7 @@ body.modal-open {
 
 .slick-next:before {
     color: #fff;
-    content: "\f104";
+    content: "\f105";
     font: normal normal normal 14px/1 FontAwesome;
     position: absolute;
     right: -15px;
