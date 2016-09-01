@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	
 
 	window.onscroll = onChangePos;
-	window.click = onBodyClick;
+	window.addEventListener("click", onBodyClick);
 	function onChangePos() {
     var logo = document.querySelector('.navbar-brand img');
     if (window.pageYOffset > 0) {
