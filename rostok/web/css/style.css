@@ -38,27 +38,24 @@ body.modal-open {
 }
 
 .slick-prev:before{
-    content: "\f054";
+    content: "\f105";
     font: normal normal normal 14px/1 FontAwesome;
     color: #fff;
+    position: absolute;
+    left: -15px;
+    font-size: 25px;
+    top: 14px;
+}
 }
 .slick-next:before {
     color: #fff;
-    content: "\f054";
+    content: "\f104";
     font: normal normal normal 14px/1 FontAwesome;
+    position: absolute;
+    right: -15px;
+    font-size: 25px;
+    top: 14px;
 }
-.slick-prev:before {
-  position: absolute;
-  left: -15px;
-  top: 1px;
-}
-.slick-next:before {
-  position: absolute;
-  right: -15px;
-  top: 1px;
-}
-.slick-track:before {
-    content: '\f054';
 }
 .close {
     font-size: 44px;
