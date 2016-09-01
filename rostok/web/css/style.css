@@ -22,7 +22,23 @@ body.modal-open {
     /*overflow: hidden;*/
     overflow: auto;
 }
+.slider {
+    width: 80%;
+    margin: 20px auto;
+}
 
+.slick-slide {
+  margin: 0px 20px;
+}
+
+.slick-slide img {
+  width: 100%;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    color: black;
+}
 .close {
     font-size: 44px;
     opacity: 0.7;
