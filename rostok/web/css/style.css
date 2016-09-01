@@ -28,7 +28,8 @@ body.modal-open {
 }
 
 .slick-slide {
-  line-height: 44px;
+  line-height: 53px;
+  padding: 0 10px;
 }
 
 .slick-slide img {
