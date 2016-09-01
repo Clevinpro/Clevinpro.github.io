@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	
 
 	window.onscroll = onChangePos;
-	window.addEventListener("click", onBodyClick);
     var logo = document.querySelector('.navbar-brand img');
 	function onChangePos() {
     if (window.pageYOffset > 0) {
@@ -12,9 +11,5 @@ document.addEventListener("DOMContentLoaded", function() {
         logo.setAttribute("src", "web/img/logo.png");
     }
 }
-	function onBodyClick() {
-		(document.querySelector('nav').classList.contains('affix')) ? logo.setAttribute("src", "web/img/logo-b.png") : ''
-    	
-	}
 
 });
