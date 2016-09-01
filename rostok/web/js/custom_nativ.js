@@ -5,8 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	window.onscroll = onChangePos;
 
 	function onChangePos() {
-    var header = document.getElementById("navbar");
-    var logo = document.querySelector('.affix .navbar-brand img');
+    var logo = document.querySelector('.navbar-brand img');
     if (window.pageYOffset > 0) {
 		logo.setAttribute("src", "web/img/logo-b.png");
     }else if (document.querySelector('nav').classList.contains('affix')) {
