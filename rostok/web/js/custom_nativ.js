@@ -1,9 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
 
     var navbar = document.querySelector('.navbar-fixed-top');
-	if (window.pageYOffset > 0) {
-		navbar.setAttribute("data-spy", "affix");
-	}
+	(function () {
+		if (window.pageYOffset > 0) {
+			navbar.setAttribute("data-spy", "affix");
+		}
+	})();
+	
 	
 
 	window.onscroll = onChangePos;
