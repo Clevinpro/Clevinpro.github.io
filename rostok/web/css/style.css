@@ -26,11 +26,7 @@ body.modal-open {
     width: 80%;
     margin: 150px auto;
 }
-@media screen and (min-width:992px) and (max-width:1200px)  {
-    .slider.slick-slider {
-        margin: 40px auto;
-    }
-}
+
 .slick-slide {
   line-height: 53px;
   padding: 0 10px;
@@ -739,10 +735,6 @@ fieldset[disabled] .btn {
     margin-right: -15px;
 }
 
-.section-5 .owl-carousel {
-    border: 3px solid #000000;
-}
-
 .owl-carousel .owl-item img {
     min-width: 100%;
 }
@@ -1129,4 +1121,15 @@ blockquote:before {
 }
 
 
+
+/*Responsive*/
+
+@media screen and (min-width:992px) and (max-width:1200px)  {
+    .slider.slick-slider {
+        margin: 40px auto;
+    }
+    .section-1 {
+        height: 545px;
+    }
+}
 
