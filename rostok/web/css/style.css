@@ -1122,7 +1122,7 @@ blockquote:before {
 
 /*Responsive*/
 
-@media screen and (min-width: 992px) and (max-width: 1365px)  {
+@media screen and (min-width: 992px) and (max-width: 1366px)  {
     .slider.slick-slider {
         margin: 40px auto;
     }
