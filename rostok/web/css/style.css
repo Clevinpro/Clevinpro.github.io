@@ -4,16 +4,14 @@ body {
     font-family: 'Arsenal', sans-serif;
 }
 
-@media (min-width: 768px) {
-    body {
-        padding-top: 110px;
-    }
-}
+
 
 body.modal-open {
     /*overflow: auto;*/
 }
-
+video {
+    width: 100%;
+}
 .fix_modal {
     padding-right: 0 !important;
 }
