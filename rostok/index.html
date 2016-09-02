@@ -762,21 +762,25 @@
 			
 			<script src="web/js/custom_nativ.js"></script>
 			<script src="web/js/jquery.min.js"></script>
-			<script src="web/js/jquery.vimelar.min.js"></script>
-			<script src="web/js/video.js" ></script>
+			<!-- <script src="web/js/jquery.vimelar.min.js"></script>
+			<script src="web/js/video.js" ></script> -->
 			<script src="web/js/slick.js" type="text/javascript"></script>
 			<script type="text/javascript">
-		    
-		    	$(".center").slick({
-		        infinite: true,
-		        centerMode: true,
-		        slidesToShow: 5,
-		        slidesToScroll: 3
-		    	});
-		    
-			 
-				
-			
+		    	if (window.matchMedia('(min-width: 768px)').matches) {
+		    		$(".center").slick({
+			        infinite: true,
+			        centerMode: true,
+			        slidesToShow: 5,
+			        slidesToScroll: 3
+			    	});
+		    	}else {
+		    		$(".center").slick({
+			        infinite: true,
+			        centerMode: true,
+			        slidesToShow: 2,
+			        slidesToScroll: 3
+			    	});
+		    	}
 			</script>
 			<script src="web/js/scrolling.js"></script>
 			<script src="web/js/bootstrap.min.js"></script>

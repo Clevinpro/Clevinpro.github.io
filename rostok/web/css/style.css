@@ -11,6 +11,9 @@ body.modal-open {
 }
 video {
     width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 .fix_modal {
     padding-right: 0 !important;
@@ -21,7 +24,7 @@ video {
     overflow: auto;
 }
 .slider {
-    width: 80%;
+    width: 85%;
     margin: 150px auto;
 }
 
@@ -42,7 +45,7 @@ video {
     position: absolute;
     left: -50px;
     font-size: 38px;
-    top: 0px;
+    top: -9px;
 }
 
 .slick-next:before {
@@ -52,7 +55,7 @@ video {
     position: absolute;
     right: -50px;
     font-size: 38px;
-    top: 0px;
+    top: -9px;
 }
 
 .close {
@@ -127,13 +130,19 @@ video {
     font-weight: normal;
     font-style: normal;
 }
+.navbar-toggle {
+    padding: 10px;
+    border: 3px solid #fff;
+    border-radius: 20px;
 
+}
 .navbar .container {
     background-color: transparent;
 }
 
 .navbar-toggle .icon-bar {
-    background-color: #000000;
+    background-color: #fff;
+    width: 17px;
 }
 
 .nav > li > a:focus,
@@ -333,7 +342,7 @@ br.visible-xs {
     margin-top: 10px;
 }
 .section-1{
-    height: 796px;
+    height: 920px;
 }
 
 .first-title {
@@ -343,7 +352,7 @@ br.visible-xs {
     letter-spacing: 0.05em;
     line-height: 1.2;
     margin-bottom: 85px;
-    padding-top: 100px;
+    padding-top: 256px;
     position: relative;
     text-align: center;
     z-index: 1;
@@ -1119,13 +1128,58 @@ blockquote:before {
 
 
 /*Responsive*/
+@media screen and (min-width: 481px) and (max-width: 768px)  {
+    div#navbar {
+        position: absolute;
+        width: 100%;
+        background: #fff;
+        box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+    }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px)  {
+    .slider {
+        margin: 20px auto;
+        width: 76%;
+    }
+    .section-1 {
+        height: 515px;
+    }
+    .first-title {
+        font-size: 28px;
+        padding-top: 124px;
+        margin-bottom: 70px;
+    }
+    .about {
+        font-size: 17px;
+    }
+    .btn-theme {
+        font-size: 16px;
+    }
+    .navbar-brand>img {
+        display: block;
+        height: 50px;
+    }
+}
+@media screen and (min-width: 1025px) and (max-width: 1280px)  {
+    .slider {
+        margin: 40px auto;
+    }
+    .section-1 {
+        height: 680px;
+    }
+    .first-title {
+        font-size: 38px;
+        padding-top: 195px;
+    }
 
-@media screen and (min-width: 992px) and (max-width: 1366px)  {
+}
+@media screen and (min-width: 1281px) and (max-width: 1480px)  {
     .slider.slick-slider {
         margin: 40px auto;
     }
     .section-1 {
-        height: 545px;
+        height: 796px;
     }
 }
+
 
