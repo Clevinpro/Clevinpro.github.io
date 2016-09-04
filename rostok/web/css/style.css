@@ -378,13 +378,6 @@ br.visible-xs {
         padding-top: 125px;
     }
 }
-
-@media (max-width: 767px) {
-    .first-title {
-        font-size: 24px;
-    }
-}
-
 .first-title:before {
     background-image: url("../img/icon-brand-w.png");
     background-repeat: no-repeat;
@@ -639,6 +632,7 @@ fieldset[disabled] .btn {
         padding-left: 15px;
         padding-right: 15px;
         white-space: normal;
+        font-size: 16px;
     }
 }
 
@@ -1128,12 +1122,79 @@ blockquote:before {
 
 
 /*Responsive*/
+@media screen and (min-width: 320px) and (max-width: 480px)  {
+    div#navbar {
+        position: absolute;
+        width: 100%;
+        background: #fff;
+        box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+    }
+    .first-title {
+        margin-bottom: 48px;
+        padding: 96px 10px 0px;
+        font-size: 21px;
+    }
+    .about {
+        font-size: 18px;
+        padding: 0 10px;
+        max-width: 340px;
+    }
+    .affix-top{
+        position: fixed;
+    }
+    video {
+        display: none;
+    }
+    .bg {
+        background: url('../img/bg.jpg') no-repeat;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+    .slider {
+      width: 70%;
+      margin: 30px auto;
+    }
+    .slick-next {
+        right: 10px;
+    }
+    .slick-prev {
+        left: 10px;
+    }
+}
 @media screen and (min-width: 481px) and (max-width: 768px)  {
     div#navbar {
         position: absolute;
         width: 100%;
         background: #fff;
         box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+    }
+    .first-title {
+        margin-bottom: 55px;
+        padding-top: 96px;
+        font-size: 24px;
+    }
+    .affix-top{
+        position: fixed;
+    }
+    video {
+        display: none;
+    }
+    .bg {
+        background: url('../img/bg.jpg') no-repeat;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+    .slider {
+      width: 75%;
+      margin: 40px auto;
+    }
+    .slick-next {
+        right: 10px;
+    }
+    .slick-prev {
+        left: 10px;
     }
 }
 @media screen and (min-width: 769px) and (max-width: 1024px)  {

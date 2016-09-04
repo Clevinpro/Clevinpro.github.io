@@ -64,10 +64,13 @@
 		</div>
 	</div>
 </nav>
-<video  autoplay>
-			  <source src="rostok.mp4" type="video/mp4">
-			Your browser does not support the video tag.
-</video>
+<article>
+	<video  autoplay>
+				  <source src="rostok.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+	</video>
+</article>
+<div class="bg"></div>
 <div class="container">
 	<div class="col-sm-12 col-lg-12">
 		<div class="row section section-1">
@@ -773,11 +776,18 @@
 			        slidesToShow: 5,
 			        slidesToScroll: 3
 			    	});
-		    	}else {
+		    	}else if (window.matchMedia('(min-width: 481px)').matches) {
 		    		$(".center").slick({
 			        infinite: true,
 			        centerMode: true,
 			        slidesToShow: 2,
+			        slidesToScroll: 3
+			    	});
+		    	}else {
+		    		$(".center").slick({
+			        infinite: true,
+			        centerMode: true,
+			        slidesToShow: 1,
 			        slidesToScroll: 3
 			    	});
 		    	}
