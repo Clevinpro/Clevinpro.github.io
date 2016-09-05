@@ -25,5 +25,9 @@ document.addEventListener("DOMContentLoaded", function() {
 			document.querySelector('.navbar-nav li:nth-of-type(2) img').setAttribute('src', 'web/img/bvk.png');
 			document.querySelector('.navbar-nav li:nth-of-type(3) img').setAttribute('src', 'web/img/bfb.png');
 			nav.classList.add("visible");
+
+
 		}	
+
+
 });

@@ -131,9 +131,10 @@ video {
 }
 .navbar-toggle {
     padding: 10px;
-    border: 2px solid #fff;
-    border-radius: 20px;
-
+    background: url('../img/bttn.png') no-repeat;
+    width: 40px;
+    height: 40px;
+    background-size: 100%;
 }
 .navbar .container {
     background-color: transparent;
@@ -1137,9 +1138,6 @@ blockquote:before {
     .navbar.visible  .icon-bar {
         background: #000;
     }
-    .navbar.visible .navbar-toggle {
-        border-color: #000;
-    }
     .phone {
         color: #000;
         text-align: center;
@@ -1165,6 +1163,11 @@ blockquote:before {
         padding: 0 10px;
         max-width: 340px;
     }
+    .slick-initialized .slick-slide {
+        min-height: 72px;
+        vertical-align: middle;
+        line-height: 72px;
+    }
     .affix-top{
         position: fixed;
     }
@@ -1176,6 +1179,7 @@ blockquote:before {
         width: 100%;
         height: 100%;
         position: absolute;
+        max-height: 500px;
     }
     .slider {
       width: 70%;
@@ -1202,9 +1206,6 @@ blockquote:before {
     .navbar.visible  .icon-bar {
         background: #000;
     }
-    .navbar.visible .navbar-toggle {
-        border-color: #000;
-    }
     .phone {
         color: #000;
         text-align: center;
@@ -1222,6 +1223,11 @@ blockquote:before {
         padding-top: 96px;
         font-size: 24px;
     }
+    .slick-initialized .slick-slide {
+        min-height: 72px;
+        vertical-align: middle;
+        line-height: 72px;
+    }
     .affix-top{
         position: fixed;
     }
@@ -1233,6 +1239,7 @@ blockquote:before {
         width: 100%;
         height: 100%;
         position: absolute;
+        max-height: 500px;
     }
     .slider {
       width: 75%;
