@@ -82,7 +82,6 @@ video {
 
     .affix-top {
         position: relative;
-        margin-top: 20px;
     }
 
     .affix + .container,
@@ -132,7 +131,7 @@ video {
 }
 .navbar-toggle {
     padding: 10px;
-    border: 3px solid #fff;
+    border: 2px solid #fff;
     border-radius: 20px;
 
 }
@@ -847,7 +846,12 @@ fieldset[disabled] .btn {
     .fa-angle-left:before {
         position: absolute;
         top: 23px;
-        left: 22px;
+    }
+    .fa-angle-right:before{
+        right: 5px;
+    }
+    .fa-angle-left:before{
+        left: 5px;
     }
 }
 
@@ -1123,11 +1127,33 @@ blockquote:before {
 
 /*Responsive*/
 @media screen and (min-width: 320px) and (max-width: 480px)  {
+     .navbar {
+        display: none;
+    }
+    .navbar.visible {
+        display: block;
+        background: #fff;
+    }
+    .navbar.visible  .icon-bar {
+        background: #000;
+    }
+    .navbar.visible .navbar-toggle {
+        border-color: #000;
+    }
+    .phone {
+        color: #000;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
     div#navbar {
         position: absolute;
         width: 100%;
         background: #fff;
         box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+    }
+    .section-1 {
+        height: 480px;
     }
     .first-title {
         margin-bottom: 48px;
@@ -1163,6 +1189,28 @@ blockquote:before {
     }
 }
 @media screen and (min-width: 481px) and (max-width: 768px)  {
+    .section-1 {
+        height: 490px;
+    }
+    .navbar {
+        display: none;
+    }
+    .navbar.visible {
+        display: block;
+        background: #fff;
+    }
+    .navbar.visible  .icon-bar {
+        background: #000;
+    }
+    .navbar.visible .navbar-toggle {
+        border-color: #000;
+    }
+    .phone {
+        color: #000;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
     div#navbar {
         position: absolute;
         width: 100%;
