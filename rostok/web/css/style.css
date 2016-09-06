@@ -187,6 +187,12 @@ video {
     font-size: 16px;
     padding-bottom: 15px;
 }
+.navbar-right {
+  margin: 0; 
+}
+.navbar-center {
+  margin-right: 45px;
+}
 
 
 @media (max-width: 767px) {
@@ -213,6 +219,7 @@ video {
     .navbar-nav > li {
         margin-top: 12px;
     }
+
 }
 
 @media (max-width: 767px) {
@@ -1131,6 +1138,12 @@ blockquote:before {
      .navbar {
         display: none;
     }
+    .navbar-center {
+        text-align: center;
+        display: block;
+        width: 100%;
+        margin: 0;
+    }
     .navbar.visible {
         display: block;
         background: #fff;
@@ -1195,6 +1208,12 @@ blockquote:before {
 @media screen and (min-width: 481px) and (max-width: 768px)  {
     .section-1 {
         height: 490px;
+    }
+    .navbar-center {
+        text-align: center;
+        display: block;
+        width: 100%;
+        margin: 0;
     }
     .navbar {
         display: none;
@@ -1275,6 +1294,10 @@ blockquote:before {
         display: block;
         height: 50px;
     }
+    .navbar-center {
+        margin-right: 15px;
+    }
+
 }
 @media screen and (min-width: 1025px) and (max-width: 1280px)  {
     .slider {
