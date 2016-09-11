@@ -1,0 +1,448 @@
+/* FuturaPT Font */
+@font-face {
+  font-family: 'FuturaPT';
+  src: url('../fonts/Futura/FuturaPTMedium.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuturaPT';
+  src: url('../fonts/Futura/FuturaPTMediumOblique.otf');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'FuturaPT';
+  src: url('../fonts/Futura/FuturaPTBold.otf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuturaPT';
+  src: url('../fonts/Futura/FuturaPTBoldOblique.otf');
+  font-weight: 700;
+  font-style: italic;
+}
+/* end FuturaPT Font */
+/* Russia Font */
+@font-face {
+  font-family: 'Russia';
+  src: url('../fonts/Russia/Russia-Medium.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Russia';
+  src: url('../fonts/Russia/Russia-MediumItalic.otf');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Russia';
+  src: url('../fonts/Russia/Russia-Bold.otf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Russia';
+  src: url('../fonts/Russia/Russia-BoldItalic.otf');
+  font-weight: 700;
+  font-style: italic;
+}
+/* End Russia Font */
+@font-face {
+  font-family: 'Intro';
+  src: url('../fonts/1oI20TYr.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+  font-family: Russia;
+}
+ul, li, a, p, h1, h2, h3, figure {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style-type: none;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+.sectionTitle {
+  font-family: Intro;
+  color:  #050101;
+  font-size: 48px;
+  line-height: 36px;
+  text-align: center;
+  padding: 70px 0;
+}
+.form__title {
+  font-family: Intro;
+  color:  #ffffff;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 36px;
+  text-align: center;
+  letter-spacing: 2px;
+  padding: 96px 0 62px 0;
+}
+/*                                        Header Section                                            */
+header{
+  display: block;
+  margin: 25px auto 70px;
+  max-width: 960px;
+}
+.navigation {
+  display: inline-block;
+  max-width: 775px;
+  vertical-align: top;
+
+
+  .navigation__item  {
+    display: inline-block;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 9px;
+      font-weight: 400;
+      font-size: 19px;
+      font-family: Russia;
+      display: block;
+    }
+  }
+}
+.feedback {
+  display: inline-block;
+  margin-left: 60px;
+  text-align: right;
+
+  strong {
+    display: block;
+    font-family: FuturaPT;
+    color:  #ffffff;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 36px;
+    text-align: left;
+    margin-bottom: 22px;
+  }
+  button{
+    border-radius: 2px;
+    border: 0;
+    background-color:  #de1f00;
+    width: 140px;
+    height: 39px;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-family: Russia;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  }
+}
+/*                                     End of Header Section                                        */
+/*                                           Main Section                                           */
+main {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 960px;
+}
+.firstBg{
+  background: url('../../img/bg_1.jpg') no-repeat;
+  background-size: 100% 942px;
+  width: 100%;
+  height: 100%;
+  min-height: 942px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+/*                                           About Me Section                                        */
+.aboutMe {
+  max-width: 500px;
+  min-height: 750px;
+  color: #fff;
+  display: inline-block;
+
+  h1{
+    font-family: Intro;
+    text-align: left;
+    line-height: 70px;
+    font-size: 72px;
+    max-width: 368px;
+    display: inline-block;
+    margin-bottom: 32px;
+  }
+
+  p{
+    font-family: Russia;
+    line-height: 36px;
+    font-size: 30px;
+    max-width: 340px;
+    margin-bottom: 50px;
+  }
+
+}
+.bestLogo {
+
+  img{
+    margin-bottom: 30px;
+  }
+
+  figcaption{
+    font-family: Russia;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 36px;
+    max-width: 240px;
+  }
+
+}
+.socialGroups {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 70px;
+
+  a {
+    display: block;
+    max-width: 40px;
+    margin-top: 10px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+}
+/*                                       End of About Me Section                                     */
+/*                                             Radio Section                                         */
+.radio {
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  padding: 70px 0 56px;
+
+
+
+  .radio__item {
+    display: inline-block;
+
+    figcaption {
+      max-width: 124px;
+      font-family: Russia;
+      font-size: 20px;
+      line-height: 24px;
+      margin: 0 auto;
+    }
+
+    &:nth-of-type(1) {
+      margin-right: 160px;
+    }
+    &:nth-of-type(2) {
+      margin-right: 180px;
+    }
+  }
+}
+.form {
+  display: block;
+  vertical-align: middle;
+  min-height: 320px;
+
+
+  i {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      left: 10px;
+      top: 2px;
+      font-size: 20px;
+
+    }
+  }
+  input {
+    border-radius: 4px;
+    border: 0;
+    background-color:  #ffffff;
+    width: 245px;
+    height: 46px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    padding: 0 0 0 40px;
+    box-sizing: border-box;
+
+    &::-webkit-input-placeholder {
+      color: #000;
+      font-family: Russia;
+      line-height: 24px;
+      font-size: 16px;
+    }
+  }
+  button {
+    border-radius: 4px;
+    border: 0;
+    background-color:  #030303;
+    width: 198px;
+    height: 46px;
+    font-family: Russia;
+    color: #fff;
+    font-size: 18px;
+    line-height: 36px;
+    box-sizing: border-box;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  }
+}
+.formBg {
+  background: linear-gradient(to right, #a72c21 0%,#df552f 25%,#df552f 75%,#df552f 75%,#a72c21 100%);
+  position: absolute;
+  top: 1235px;
+  left: 0;
+  width: 100%;
+  height: 320px;
+  z-index: -1;
+
+
+}
+/*                                       End of Radio Section                                        */
+/*                                            Info Section                                           */
+.infoBg {
+  position: absolute;
+  top: 1555px;
+  left: 0;
+  width: 100%;
+  height: 872px;
+  background: url('../../img/info_bg.jpg');
+  z-index: -1;
+}
+.info {
+  min-height: 872px;
+
+
+  p {
+    font-family: Russia;
+    color:  #050101;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    margin-bottom: 30px;
+
+    &:nth-of-type(1){
+      max-width: 610px;
+    }
+
+    &:nth-of-type(2){
+      max-width: 510px;
+    }
+
+    &:nth-of-type(3){
+      max-width: 465px;
+    }
+    &:nth-of-type(4){
+      max-width: 455px;
+    }
+  }
+}
+/*                                       End of Info Section                                        */
+/*                                       Privilege Section                                        */
+.privilege {
+  min-height: 510px;
+
+  figure {
+    display: inline-block;
+    margin-right: 35px;
+    position: relative;
+    font-family: Russia;
+    text-align: center;
+
+    &:last-child {
+      margin-right: 0;
+    }
+    img {
+      margin: 0 auto;
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+    }
+
+    figcaption {
+      text-align: center;
+      margin-top: 120px;
+      max-width: 240px;
+
+    }
+
+  }
+}
+.privilege__item {
+
+  &:nth-of-type(1){
+
+    p {
+      max-width: 176px;
+    }
+  }
+  &:nth-of-type(2){
+
+    p {
+      max-width: 208px;
+    }
+  }
+  &:nth-of-type(3){
+
+    p {
+      max-width: 201px;
+    }
+  }
+
+  figcaption {
+
+    h2 {
+      font-size: 24px;
+      font-family: Intro;
+      margin-bottom: 28px;
+    }
+    p {
+      font-size: 16px;
+
+    }
+  }
+}
+/*                                       End of Privilege Section                                        */
+/*                                        Form Question Section                                        */
+
+
+.formQuestion {
+    .h1 {
+
+    }
+    .formBg {
+        top: 2937px;
+    }
+}
+/*                                       End of Form Question Section                                        */
+/*                                             Video Section                                                 */
+.video {
+  min-height: 720px;
+  article {
+    iframe {
+      width: 100%;
+      height: 540px;
+    }
+  }
+}
+/*                                         End of Video Section                                           */
+
+/*                                        End of Main Section                                        */
