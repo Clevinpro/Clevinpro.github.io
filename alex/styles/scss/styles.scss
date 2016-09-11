@@ -167,6 +167,12 @@ main {
   left: 0;
   z-index: -1;
 }
+@media screen and (max-width: 1366px) {
+  .firstBg {
+    background: url('../../img/min_bg_1.jpg') no-repeat;
+    background-size: 100% 942px;
+  }
+}
 /*                                           About Me Section                                        */
 .aboutMe {
   max-width: 500px;
