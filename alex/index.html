@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="./styles/css/slick-theme.min.css">
     <link rel="stylesheet" href="./styles/css/slick.min.css">
     <link rel="stylesheet" href="./styles/css/styles.min.css">
+    <style type="text/css">
+
+    </style>
 </head>
 <body>
 <header>
@@ -27,29 +30,30 @@
 <main>
 
     <div class="firstBg"></div>
-
-    <section class="aboutMe">
-        <h1>АЛЕКСЕЙ ГОРДЕЕВ</h1>
-        <p>
-            теле-радио ведущий,
-            ведущий корпоративных
-            и частных мероприятий
-        </p>
-        <figure class="bestLogo">
-            <img src="./img/best.png" alt="One of the Best">
-            <figcaption>
-                один из лучших
-                ведущих Москвы
-            </figcaption>
-        </figure>
-    </section>
-
-    <div class="socialGroups">
-        <a href=""><img src="./img/ins.png" class="socialIns"></a>
-        <a href=""><img src="./img/fb.png" class="socialFb"></a>
-        <a href=""><img src="./img/vk.png" class="socialVk"></a>
-        <a href=""><img src="./img/in.png" class="socialIn"></a>
+    <div class="container">
+        <section class="aboutMe">
+            <h1>АЛЕКСЕЙ ГОРДЕЕВ</h1>
+            <p>
+                теле-радио ведущий,
+                ведущий корпоративных
+                и частных мероприятий
+            </p>
+            <figure class="bestLogo">
+                <img src="./img/best.png" alt="One of the Best">
+                <figcaption>
+                    один из лучших
+                    ведущих Москвы
+                </figcaption>
+            </figure>
+        </section>
+        <div class="socialGroups">
+            <a href=""><img src="./img/ins.png" class="socialIns"></a>
+            <a href=""><img src="./img/fb.png" class="socialFb"></a>
+            <a href=""><img src="./img/vk.png" class="socialVk"></a>
+            <a href=""><img src="./img/in.png" class="socialIn"></a>
+        </div>
     </div>
+
 
     <section class="radio">
         <figure class="radio__item">
@@ -66,51 +70,50 @@
         </figure>
     </section>
 
-    <section class="form">
+    <section class="form formBg">
         <h1 class="form__title">ОСТАВИТЬ ЗАЯВКУ НА МЕРОПРИЯТИЕ</h1>
-        <form action="">
+        <form class="container" action="">
             <i class="mdi mdi-account"></i><input type="text" placeholder="Ваше имя">
             <i class="mdi mdi-phone"></i><input type="text" placeholder="Ваш телефон">
             <i class="mdi mdi-email"></i><input type="email" placeholder="Ваш e-mail">
             <button type="submit" value="ОТПРАВИТЬ">ОТПРАВИТЬ</button>
         </form>
 
-        <div class="formBg"></div>
     </section>
-    <div class="infoBg"></div>
-    <section class="info">
-        <h1 class="sectionTitle">ОБО МНЕ</h1>
-        <p>
-            Пятнадцать лет опыта, сотни концертных, корпоративных и частных
-            мероприятий, шоу на радио и телевидении, безукоризненное чувство
-            юмора — все это пзволяет ему называться профессионалом разговорного
-            жанра.
-        </p>
-        <p>
-            Приятный голос Алексея покажется вам знакомым с первых же минут:
-            утренние эфиры его радиошоу годами будили всю страну, а шутки
-            Гордеева разбирали на цитаты.
-        </p>
-        <p>
-            Сегодня известный ведущий блестяще проводит самые
-            значимые ивенты. С его участием даже заурядное
-            мероприятие превращается в праздник, полный радости
-            и доброго юмора.
-        </p>
-        <p>
-            Алексей чувствует каждого гостя как самого себя, его
-            обаяние мгновенно очаровывает любого человека.
-            Мастер искрометной импровизации, он способен
-            довести присутствующих до настоящего экстаза!
-        </p>
-        <audio controls>
-            <source src="horse.ogg" type="audio/ogg">
-            <source src="horse.mp3" type="audio/mpeg">
-            Your browser does not support the audio tag.
-        </audio>
-    </section>
-
-    <section class="privilege">
+    <div class="infoBg">
+        <section class="info container">
+            <h1 class="sectionTitle">ОБО МНЕ</h1>
+            <p>
+                Пятнадцать лет опыта, сотни концертных, корпоративных и частных
+                мероприятий, шоу на радио и телевидении, безукоризненное чувство
+                юмора — все это пзволяет ему называться профессионалом разговорного
+                жанра.
+            </p>
+            <p>
+                Приятный голос Алексея покажется вам знакомым с первых же минут:
+                утренние эфиры его радиошоу годами будили всю страну, а шутки
+                Гордеева разбирали на цитаты.
+            </p>
+            <p>
+                Сегодня известный ведущий блестяще проводит самые
+                значимые ивенты. С его участием даже заурядное
+                мероприятие превращается в праздник, полный радости
+                и доброго юмора.
+            </p>
+            <p>
+                Алексей чувствует каждого гостя как самого себя, его
+                обаяние мгновенно очаровывает любого человека.
+                Мастер искрометной импровизации, он способен
+                довести присутствующих до настоящего экстаза!
+            </p>
+            <audio controls>
+                <source src="" type="audio/ogg">
+                <source src="" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </section>
+    </div>
+    <section class="privilege container">
         <h1 class="sectionTitle">ПРЕИМУЩЕСТВА</h1>
         <figure class="privilege__item">
             <img src="./img/privilege-1.png" alt="Privilege">
@@ -158,19 +161,18 @@
         </figure>
     </section>
 
-    <section class="form formQuestion">
+    <section class="form formBg">
         <h1 class="form__title">УЗНАТЬ, СВОБОДНА ЛИ ВАША ДАТА</h1>
-        <form action="">
+        <form class="container" action="">
             <i class="mdi mdi-account"></i><input type="text" placeholder="Ваше имя">
             <i class="mdi mdi-phone"></i><input type="text" placeholder="Ваш телефон">
             <i class="mdi mdi-email"></i><input type="email" placeholder="Ваш e-mail">
             <button type="submit" value="ОТПРАВИТЬ">ОТПРАВИТЬ</button>
         </form>
 
-        <div class="formBg"></div>
     </section>
 
-    <section class="video">
+    <section class="video container">
         <h1 class="sectionTitle">ВИДЕО</h1>
         <article>
             <iframe src="https://player.vimeo.com/video/182282316?loop=1&title=0&byline=0&portrait=0"
@@ -179,37 +181,268 @@
         </article>
     </section>
 
-    <!--<section class="photo">-->
-        <!--<h1 class="sectionTitle">ФОТО</h1>-->
-        <!--<section class="multiple-items slider">-->
-            <!--<div>-->
-                <!--<img src="./img/slides/slide-1.jpg">-->
-            <!--</div>-->
-            <!--<div>-->
-                <!--<img src="./img/slides/slide-2.jpg">-->
-            <!--</div>-->
-            <!--<div>-->
-                <!--<img src="./img/slides/slide-3.jpg">-->
-            <!--</div>-->
-            <!--<div>-->
-                <!--<img src="./img/slides/slide-4.jpg">-->
-            <!--</div>-->
-        <!--</section>-->
-    <!--</section>-->
+    <section class="photo">
+        <h1 class="sectionTitle">ФОТО</h1>
+        <section class="lazy slider">
+            <div>
+                <img data-lazy="./img/slides/slide-1.jpg">
+            </div>
+            <div>
+                <img data-lazy="./img/slides/slide-2.jpg">
+            </div>
+            <div>
+                <img data-lazy="./img/slides/slide-3.jpg">
+            </div>
+            <div>
+                <img data-lazy="./img/slides/slide-4.jpg">
+            </div>
+            <div>
+                <img data-lazy="./img/slides/slide-1.jpg">
+            </div>
+            <div>
+                <img data-lazy="./img/slides/slide-2.jpg">
+            </div>
+            <div>
+                <img data-lazy="./img/slides/slide-3.jpg">
+            </div>
+            <div>
+                <img data-lazy="./img/slides/slide-4.jpg">
+            </div>
+        </section>
+    </section>
+
+    <section class="price form">
+        <h1 class="sectionTitle">СТОИМОСТЬ УСЛУГ</h1>
+        <p class="container">
+            Стоимость услуг ведущего в паре с диджеем или без, обсуждатся в индивидуальном
+            порядке. Стоимость услуг зависит от масштаба мероприятия, стилистики, сложности
+            сценария, удаленности от Москвы.
+            <strong>
+                Чтобы узнать стоимость работы Алексея Гореева
+                на Вашу дату, оставьте Вашу заявку здесь:
+            </strong>
+        </p>
+
+        <form class="container" action="">
+            <i class="mdi mdi-account"></i><input type="text" placeholder="Ваше имя">
+            <i class="mdi mdi-phone"></i><input type="text" placeholder="Ваш телефон">
+            <i class="mdi mdi-email"></i><input type="email" placeholder="Ваш e-mail">
+            <button type="submit" value="ОТПРАВИТЬ">ОТПРАВИТЬ</button>
+        </form>
+    </section>
+
+    <section class="reviews">
+        <h1 class="sectionTitle">ОТЗЫВЫ <br/> КОРПОРАТИВНЫХ КЛИЕНТОВ</h1>
+        <div class="container">
+            <section class="slider">
+                <div class="reviews__item">
+                    <p>
+                        Выражаем благодарность Алексею
+                        Гордееву за качествено организованые
+                        мероприя. Благодаря высокому
+                        профессионализму и креативности эти
+                        мероприятия останутся в памяи наших
+                        стотрудников, как дни, наполненные
+                        весельем, позитивом и отличным
+                        настроением.
+                    </p>
+                    <strong>
+                        Е.Ю. Глинин <br/>
+                        Первый заместитель генерального
+                        директора ООО "Коттона Вэи"
+                    </strong>
+                    <div class="reviews__logo">
+                        <img src="./img/cotton.png" alt="Bronnytskyi">
+                    </div>
+                </div>
+                <div class="reviews__item">
+                    <p>
+                        Благодарим Алексея Гордеева за
+                        проедение корпоративного мероприятия
+                        посвященному празднованию 90-летннего
+                        юбилея Бронницкого велирного завода.
+                        выражаем благодарность за
+                        профессионализм и знание
+                        своего дела
+                    </p>
+                    <strong>
+                        С.В. Никольский
+                        Генеральный директор
+                        ГК "Бронницкий Ювелир"
+                    </strong>
+
+                    <div class="reviews__logo">
+                        <img src="./img/bronn.png" alt="Bronnytskyi">
+                    </div>
+                </div>
+                <div class="reviews__item">
+                    <p>
+                        Выражаем благодарность Алексею
+                        Гордееву за качествено организованые
+                        мероприя. Благодаря высокому
+                        профессионализму и креативности эти
+                        мероприятия останутся в памяи наших
+                        стотрудников, как дни, наполненные
+                        весельем, позитивом и отличным
+                        настроением.
+                    </p>
+                    <strong>
+                        Е.Ю. Глинин <br/>
+                        Первый заместитель генерального
+                        директора ООО "Коттона Вэи"
+                    </strong>
+                    <div class="reviews__logo">
+                        <img src="./img/cotton.png" alt="Bronnytskyi">
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <section class="clients container">
+        <h1 class="sectionTitle">КЛИЕНТЫ</h1>
+        <div class="center slider">
+            <div>
+                <img src="./img/clients/client-1.png">
+            </div>
+            <div>
+                <img src="./img/clients/client-2.png">
+            </div>
+            <div>
+                <img src="./img/clients/client-3.png">
+            </div>
+            <div>
+                <img src="./img/clients/client-4.png">
+            </div>
+            <div>
+                <img src="./img/clients/client-5.png">
+            </div>
+            <div>
+                <img src="./img/clients/client-6.png">
+            </div>
+            <div>
+                <img src="./img/clients/client-7.png">
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews private">
+        <h1 class="sectionTitle">ОТЗЫВЫ <br/> ЧАСТНЫХ КЛИЕНТОВ</h1>
+        <div class="container">
+            <section class="slider">
+                <div class="reviews__item">
+                    <p>
+                        Выражаем благодарность Алексею
+                        Гордееву за качествено организованые
+                        мероприя. Благодаря высокому
+                        профессионализму и креативности эти
+                        мероприятия останутся в памяи наших
+                        стотрудников, как дни, наполненные
+                        весельем, позитивом и отличным
+                        настроением. Выражаем благодарность
+                        Алексею Гордееву за качественно
+                        организованые мероприятия. Очень очень
+                        благодарны, передаем привет!
+                    </p>
+                    <strong>
+                        Виктор и Мария <br/>
+                        Свадьба 9 августа 2016 года"
+                    </strong>
+
+                </div>
+                <div class="reviews__item">
+                    <p>
+                        Выражаем благодарность Алексею
+                        Гордееву за качествено организованые
+                        мероприя. Благодаря высокому
+                        профессионализму и креативности эти
+                        мероприятия останутся в памяи наших
+                        стотрудников, как дни, наполненные
+                        весельем, позитивом и отличным
+                        настроением. Выражаем благодарность
+                        Алексею Гордееву за качественно
+                        организованые мероприятия. Очень очень
+                        благодарны, передаем привет!
+                    </p>
+                    <strong>
+                        Виктор и Мария <br/>
+                        Свадьба 8 сентября 2016 года"
+                    </strong>
+
+                </div>
+                <div class="reviews__item">
+                    <p>
+                        Выражаем благодарность Алексею
+                        Гордееву за качествено организованые
+                        мероприя. Благодаря высокому
+                        профессионализму и креативности эти
+                        мероприятия останутся в памяи наших
+                        стотрудников, как дни, наполненные
+                        весельем, позитивом и отличным
+                        настроением. Выражаем благодарность
+                        Алексею Гордееву за качественно
+                        организованые мероприятия. Очень очень
+                        благодарны, передаем привет!
+                    </p>
+                    <strong>
+                        Виктор и Мария <br/>
+                        Свадьба 9 августа 2016 года"
+                    </strong>
+
+                </div>
+            </section>
+        </div>
+    </section>
 
 </main>
-<footer></footer>
+<footer>
+    <section class="footer">
+        <h1 class="sectionTitle">КОНТАКТЫ</h1>
+        <h1 class="sectionTitle">+7 903 281 62 60</h1>
+        <div class="socialGroups">
+            <a href=""><img src="./img/ins.png" class="socialIns"></a>
+            <a href=""><img src="./img/fb.png" class="socialFb"></a>
+            <a href=""><img src="./img/vk.png" class="socialVk"></a>
+            <a href=""><img src="./img/in.png" class="socialIn"></a>
+        </div>
+        <section class="form">
+            <form class="container" action="">
+                <i class="mdi mdi-account"></i><input type="text" placeholder="Ваше имя">
+                <i class="mdi mdi-phone"></i><input type="text" placeholder="Ваш телефон">
+                <i class="mdi mdi-email"></i><input type="email" placeholder="Ваш e-mail">
+                <button type="submit" value="ОТПРАВИТЬ">ОТПРАВИТЬ</button>
+            </form>
+        </section>
+        <a class="download" href="./img/download.png" download="Presentation">
+            СКАЧАТЬ ПРЕЗЕНТАЦИЮ БЕЗ ПРЯМЫХ КОНТАКТОВ
+        </a>
+    </section>
+</footer>
 
-    <script src="js/jquery.min.js"></script>
-    <script src="./js/slick.min.js"></script>
-    <script>
-        $('.multiple-items').slick({
+<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+<script src="./js/slick.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    $(document).on('ready', function() {
+        $('.lazy').slick({
+            lazyLoad: 'ondemand',
             slidesToShow: 4,
-            slidesToScroll: 1,
-            autoplay: false,
-            autoplaySpeed: 5000,
+            slidesToScroll: 1
         });
-    </script>
+        $('.reviews .slider').slick({
+            dots: true,
+            slidesToShow: 2,
+            slidesToScroll: 1
+        });
+        $('.center').slick({
+            infinite: true,
+            centerMode: true,
+            slidesToShow: 6,
+            slidesToScroll: 3
+        });
+
+    });
+</script>
+
 
 </body>
 </html>
