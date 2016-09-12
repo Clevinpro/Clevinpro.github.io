@@ -62,12 +62,27 @@
   font-weight: normal;
   font-style: normal;
 }
-
 body {
   font-size: 15px;
   margin: 0;
   padding: 0;
   font-family: Russia;
+}
+@media screen and (max-width: 992px) {
+  body {
+    min-width: 1366px;
+
+    .firstBg {
+      min-width: 1366px;
+    }
+    .reviews {
+
+      .reviews__item {
+        margin: 0 15px;
+      }
+
+    }
+  }
 }
 ul, li, a, p, h1, h2, h3, figure {
   margin: 0;
@@ -461,7 +476,6 @@ main {
 
   .slick-prev:before,
   .slick-next:before {
-    color: transparent;
     height: 60px;
     width: 60px;
     content: '';
@@ -483,7 +497,7 @@ main {
     left: 0;
   }
   .slick-next {
-    right: 42px;
+    right: 0;
   }
 }
 /*                                         End of Photos Section                                           */
@@ -539,12 +553,12 @@ main {
   .reviews__item {
     width: 456px;
     height: 565px;
-    margin-right: 30px;
+    margin: 0 15px;
     padding: 95px 23px 0;
     box-sizing: border-box;
     background: #fff;
     position: relative;
-    
+
 
 
 
