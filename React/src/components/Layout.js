@@ -11,7 +11,7 @@ export default class Layout extends React.Component {
  
 
   render() {
-    const { open } = this.props
+    const { open } = this.props;
     return (
       <div>
         <AppBar

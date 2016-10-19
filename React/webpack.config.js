@@ -1,3 +1,42 @@
+// const path = require('path');
+// const webpack = require('webpack');
+
+// module.exports = {
+//   devtool: 'cheap-module-source-map',
+
+//   // Step 1: Source Maps
+//   // devtool: 'cheap-module-source-map',
+//   // devtool: 'eval',
+
+//   entry: [
+//     'babel-polyfill',
+//     './src/index'
+//   ],
+//   output: {
+//     path: path.join(__dirname, 'dist'),
+//     filename: 'bundle.js',
+//     publicPath: '/static/',
+//   },
+
+//   plugins: [
+//     new webpack.DefinePlugin({
+//       'process.env': {
+//         'NODE_ENV': JSON.stringify('production')
+//       }
+//     })
+//   ],
+
+//   module: {
+//     loaders: [
+//       {
+//         test: /\.js$/,
+//         loaders: ['babel']
+//       }
+//     ]
+//   }
+// };
+
+
 var path = require('path')
 var webpack = require('webpack')
 var autoprefixer = require('autoprefixer');

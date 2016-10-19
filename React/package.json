@@ -4,7 +4,18 @@
   "description": "Redux RU tutorial",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "build": "webpack --progress --watch -p"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-0",
+      "react"
+    ],
+    "plugins": [],
+    "miified": true,
+    "ignore": ""
   },
   "author": "Maxim Patsianskiy",
   "license": "MIT",
@@ -16,7 +27,8 @@
     "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
     "react-tap-event-plugin": "^1.0.0",
-    "redux": "^3.5.2"
+    "redux": "^3.5.2",
+    "redux-logger": "^2.6.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",
