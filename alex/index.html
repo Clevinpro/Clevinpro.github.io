@@ -11,27 +11,29 @@
 
     </style>
 </head>
-<body>
+<body id="page">
 <header>
-    <ul class="navigation">
-        <li class="navigation__item"><a href="#">Обо мне</a></li>
-        <li class="navigation__item"><a href="#">Видео</a></li>
-        <li class="navigation__item"><a href="#">Фотографии</a></li>
-        <li class="navigation__item"><a href="#">Стоимость</a></li>
-        <li class="navigation__item"><a href="#">Клиенты</a></li>
-        <li class="navigation__item"><a href="#">Отзывы</a></li>
-        <li class="navigation__item"><a href="#">Контакты</a></li>
-    </ul>
-    <div class="feedback">
-        <strong>+7 903 281 62 60</strong>
-        <button>Задать вопрос</button>
+    <div class="container">
+        <ul class="navigation">
+            <li class="navigation__item"><a href="#info">Обо мне</a></li>
+            <li class="navigation__item"><a href="#video">Видео</a></li>
+            <li class="navigation__item"><a href="#photo">Фотографии</a></li>
+            <li class="navigation__item"><a href="#price">Стоимость</a></li>
+            <li class="navigation__item"><a href="#clients">Клиенты</a></li>
+            <li class="navigation__item"><a href="#reviews">Отзывы</a></li>
+            <li class="navigation__item"><a href="#contacts">Контакты</a></li>
+        </ul>
+        <div class="feedback">
+            <span class="strong"><a href="tel:+79032816260">+7 903 281 62 60</a></span>
+            <button id="myBtn" class="btn" id="modal_open" type="button">Задать вопрос</button>
+        </div>
     </div>
 </header>
 <main>
 
     <div class="firstBg"></div>
-    <div class="container">
-        <section class="aboutMe">
+    <section class="container">
+        <div class="aboutMe">
             <h1>АЛЕКСЕЙ ГОРДЕЕВ</h1>
             <p>
                 теле-радио ведущий,
@@ -45,14 +47,14 @@
                     ведущих Москвы
                 </figcaption>
             </figure>
-        </section>
+        </div>
         <div class="socialGroups">
             <a href=""><img src="./img/ins.png" class="socialIns"></a>
             <a href=""><img src="./img/fb.png" class="socialFb"></a>
             <a href=""><img src="./img/vk.png" class="socialVk"></a>
             <a href=""><img src="./img/in.png" class="socialIn"></a>
         </div>
-    </div>
+    </section>
 
 
     <section class="radio">
@@ -72,16 +74,16 @@
 
     <section class="form formBg">
         <h1 class="form__title">ОСТАВИТЬ ЗАЯВКУ НА МЕРОПРИЯТИЕ</h1>
-        <form class="container" action="">
-            <i class="mdi mdi-account"></i><input type="text" placeholder="Ваше имя">
-            <i class="mdi mdi-phone"></i><input type="text" placeholder="Ваш телефон">
-            <i class="mdi mdi-email"></i><input type="email" placeholder="Ваш e-mail">
-            <button type="submit" value="ОТПРАВИТЬ">ОТПРАВИТЬ</button>
+        <form id="form_application" class="container" action="" role="form" data-type="application">
+            <i class="mdi mdi-account"></i><input type="text" name="name" placeholder="Ваше имя" required="required">
+            <i class="mdi mdi-phone"></i><input type="tel"  name="phone" placeholder="Ваш телефон" required="required">
+            <i class="mdi mdi-email"></i><input type="email" name="email" placeholder="Ваш e-mail" required="required">
+            <button class="callbackButton_2" type="submit" value="ОТПРАВИТЬ" >ОТПРАВИТЬ</button>
         </form>
 
     </section>
     <div class="infoBg">
-        <section class="info container">
+        <section id="info" class="info container">
             <h1 class="sectionTitle">ОБО МНЕ</h1>
             <p>
                 Пятнадцать лет опыта, сотни концертных, корпоративных и частных
@@ -107,8 +109,7 @@
                 довести присутствующих до настоящего экстаза!
             </p>
             <audio controls>
-                <source src="" type="audio/ogg">
-                <source src="" type="audio/mpeg">
+                <source src="./Aleksej_Gordeev.mp3" type="audio/mpeg">
                 Your browser does not support the audio tag.
             </audio>
         </section>
@@ -163,16 +164,16 @@
 
     <section class="form formBg">
         <h1 class="form__title">УЗНАТЬ, СВОБОДНА ЛИ ВАША ДАТА</h1>
-        <form class="container" action="">
-            <i class="mdi mdi-account"></i><input type="text" placeholder="Ваше имя">
-            <i class="mdi mdi-phone"></i><input type="text" placeholder="Ваш телефон">
-            <i class="mdi mdi-email"></i><input type="email" placeholder="Ваш e-mail">
-            <button type="submit" value="ОТПРАВИТЬ">ОТПРАВИТЬ</button>
+        <form id="form_date" class="container" action="" role="form" data-type="date">
+            <i class="mdi mdi-account"></i><input type="text" name="name" placeholder="Ваше имя" required="required">
+            <i class="mdi mdi-phone"></i><input type="tel"  name="phone" placeholder="Ваш телефон" required="required">
+            <i class="mdi mdi-email"></i><input type="email" name="email" placeholder="Ваш e-mail" required="required">
+            <button class="callbackButton_3" type="submit" value="ОТПРАВИТЬ" >ОТПРАВИТЬ</button>
         </form>
 
     </section>
 
-    <section class="video container">
+    <section id="video" class="video container">
         <h1 class="sectionTitle">ВИДЕО</h1>
         <article>
             <iframe src="https://player.vimeo.com/video/182282316?loop=1&title=0&byline=0&portrait=0"
@@ -181,37 +182,37 @@
         </article>
     </section>
 
-    <section class="photo">
+    <section id="photo" class="photo">
         <h1 class="sectionTitle">ФОТО</h1>
         <section class="lazy slider">
             <div>
-                <img data-lazy="./img/slides/slide-1.jpg">
+                <img data-lazy="./img/slides/photo1.jpg">
             </div>
             <div>
-                <img data-lazy="./img/slides/slide-2.jpg">
+                <img data-lazy="./img/slides/photo2.jpg">
             </div>
             <div>
-                <img data-lazy="./img/slides/slide-3.jpg">
+                <img data-lazy="./img/slides/photo3.jpg">
             </div>
             <div>
-                <img data-lazy="./img/slides/slide-4.jpg">
+                <img data-lazy="./img/slides/photo4.jpg">
             </div>
             <div>
-                <img data-lazy="./img/slides/slide-1.jpg">
+                <img data-lazy="./img/slides/photo5.jpg">
             </div>
             <div>
-                <img data-lazy="./img/slides/slide-2.jpg">
+                <img data-lazy="./img/slides/photo6.jpg">
             </div>
             <div>
-                <img data-lazy="./img/slides/slide-3.jpg">
+                <img data-lazy="./img/slides/photo7.jpg">
             </div>
             <div>
-                <img data-lazy="./img/slides/slide-4.jpg">
+                <img data-lazy="./img/slides/photo8.jpg">
             </div>
         </section>
     </section>
 
-    <section class="price form">
+    <section id="price" class="price form">
         <h1 class="sectionTitle">СТОИМОСТЬ УСЛУГ</h1>
         <p class="container">
             Стоимость услуг ведущего в паре с диджеем или без, обсуждатся в индивидуальном
@@ -223,15 +224,15 @@
             </strong>
         </p>
 
-        <form class="container" action="">
-            <i class="mdi mdi-account"></i><input type="text" placeholder="Ваше имя">
-            <i class="mdi mdi-phone"></i><input type="text" placeholder="Ваш телефон">
-            <i class="mdi mdi-email"></i><input type="email" placeholder="Ваш e-mail">
-            <button type="submit" value="ОТПРАВИТЬ">ОТПРАВИТЬ</button>
+        <form id="form_price" class="container" action="" role="form" data-type="price">
+            <i class="mdi mdi-account"></i><input type="text" name="name" placeholder="Ваше имя" required="required">
+            <i class="mdi mdi-phone"></i><input type="tel"  name="phone" placeholder="Ваш телефон" required="required">
+            <i class="mdi mdi-email"></i><input type="email" name="email" placeholder="Ваш e-mail" required="required">
+            <button class="callbackButton_4 btnOrange" type="submit" value="ОТПРАВИТЬ">ОТПРАВИТЬ</button>
         </form>
     </section>
 
-    <section class="reviews">
+    <section  id="reviews"  class="reviews">
         <h1 class="sectionTitle">ОТЗЫВЫ <br/> КОРПОРАТИВНЫХ КЛИЕНТОВ</h1>
         <div class="container">
             <section class="slider">
@@ -299,29 +300,44 @@
         </div>
     </section>
 
-    <section class="clients container">
+    <section id="clients" class="clients container">
         <h1 class="sectionTitle">КЛИЕНТЫ</h1>
-        <div class="center slider">
+        <div class="variable-width slider">
             <div>
-                <img src="./img/clients/client-1.png">
+                <img src="./img/clients/1.png">
             </div>
             <div>
-                <img src="./img/clients/client-2.png">
+                <img src="./img/clients/2.png">
             </div>
             <div>
-                <img src="./img/clients/client-3.png">
+                <img src="./img/clients/3.png">
             </div>
             <div>
-                <img src="./img/clients/client-4.png">
+                <img src="./img/clients/4.png">
             </div>
             <div>
-                <img src="./img/clients/client-5.png">
+                <img src="./img/clients/5.png">
             </div>
             <div>
-                <img src="./img/clients/client-6.png">
+                <img src="./img/clients/6.png">
             </div>
             <div>
-                <img src="./img/clients/client-7.png">
+                <img src="./img/clients/7.png">
+            </div>
+            <div>
+                <img src="./img/clients/8.png">
+            </div>
+            <div>
+                <img src="./img/clients/9.png">
+            </div>
+            <div>
+                <img src="./img/clients/10.png">
+            </div>
+            <div>
+                <img src="./img/clients/11.png">
+            </div>
+            <div>
+                <img src="./img/clients/12.png">
             </div>
         </div>
     </section>
@@ -332,61 +348,67 @@
             <section class="slider">
                 <div class="reviews__item">
                     <p>
-                        Выражаем благодарность Алексею
-                        Гордееву за качествено организованые
-                        мероприя. Благодаря высокому
-                        профессионализму и креативности эти
-                        мероприятия останутся в памяи наших
-                        стотрудников, как дни, наполненные
-                        весельем, позитивом и отличным
-                        настроением. Выражаем благодарность
-                        Алексею Гордееву за качественно
-                        организованые мероприятия. Очень очень
-                        благодарны, передаем привет!
+                        Алексей - великолепный ведущий! Энергичный,
+                        веселый, обаятельный! То, что надо для
+                        отличного праздника! Мне очень понравилось
+                        как он работает! Очень легко находит
+                        язык с публикой, использует свои интересные
+                        авторские наработки. Алексей, еще раз
+                        огромное спасибо, желаю тебе удачи на
+                        профессиональном поприще)
                     </p>
                     <strong>
-                        Виктор и Мария <br/>
-                        Свадьба 9 августа 2016 года"
+                        Анастасия и Виктор
+
                     </strong>
 
                 </div>
                 <div class="reviews__item">
                     <p>
-                        Выражаем благодарность Алексею
-                        Гордееву за качествено организованые
-                        мероприя. Благодаря высокому
-                        профессионализму и креативности эти
-                        мероприятия останутся в памяи наших
-                        стотрудников, как дни, наполненные
-                        весельем, позитивом и отличным
-                        настроением. Выражаем благодарность
-                        Алексею Гордееву за качественно
-                        организованые мероприятия. Очень очень
-                        благодарны, передаем привет!
+                        Огромное-огромное спасибо за классный
+                        праздник! Он получился таким, каким мы
+                        себе его представляли - веселым,
+                        трогательным, с лирическими нежными
+                        нотками, с потрясающими интерактивами,
+                        танцами, спасибо за это Вам!
                     </p>
                     <strong>
-                        Виктор и Мария <br/>
-                        Свадьба 8 сентября 2016 года"
+                        Сергей и Катя
                     </strong>
 
                 </div>
                 <div class="reviews__item">
                     <p>
-                        Выражаем благодарность Алексею
-                        Гордееву за качествено организованые
-                        мероприя. Благодаря высокому
-                        профессионализму и креативности эти
-                        мероприятия останутся в памяи наших
-                        стотрудников, как дни, наполненные
-                        весельем, позитивом и отличным
-                        настроением. Выражаем благодарность
-                        Алексею Гордееву за качественно
-                        организованые мероприятия. Очень очень
-                        благодарны, передаем привет!
+                        Мы хотели бы выразить Вам благодарность
+                        за ваш профессионализм, мастерство,
+                        которые мы имели удовольствие наблюдать
+                        на нашей свадьбе. Вы – великолепный
+                        ведущий, импровизатор с потрясающим
+                        чувством юмора, сделавший наш праздник
+                        ярким, незабываемым, веселым и добрым!
+                        Спасибо Вам огромное за ваш талант,
+                        всегда радостно и приятно видеть
+                        Мастера своего дела!
                     </p>
                     <strong>
-                        Виктор и Мария <br/>
-                        Свадьба 9 августа 2016 года"
+                        Антон и Ольга.
+                    </strong>
+
+                </div>
+                <div class="reviews__item">
+                    <p>
+                        Алексей! Мы хотим выразить глубокое признание
+                        и благодарность! Вы замечательный! Наше
+                        торжество пронеслось как одно незабываемое
+                        счастливое мгновение.. И в этом,несомненно,
+                        заслуга и ваша! Вы смогли сплотить непростой
+                        коллектив гостей, держа темп свадьбы на
+                        высоком уровне! Все до единого отметили
+                        тактичность,ненавязчивость и высокий
+                        профессионализм!
+                    </p>
+                    <strong>
+                        Игорь и Камила
                     </strong>
 
                 </div>
@@ -396,9 +418,9 @@
 
 </main>
 <footer>
-    <section class="footer">
+    <section id="contacts" class="footer">
         <h1 class="sectionTitle">КОНТАКТЫ</h1>
-        <h1 class="sectionTitle">+7 903 281 62 60</h1>
+        <h1 class="sectionTitle"><a href="tel:+79032816260">+7 903 281 62 60</a></h1>
         <div class="socialGroups">
             <a href=""><img src="./img/ins.png" class="socialIns"></a>
             <a href=""><img src="./img/fb.png" class="socialFb"></a>
@@ -406,43 +428,135 @@
             <a href=""><img src="./img/in.png" class="socialIn"></a>
         </div>
         <section class="form">
-            <form class="container" action="">
-                <i class="mdi mdi-account"></i><input type="text" placeholder="Ваше имя">
-                <i class="mdi mdi-phone"></i><input type="text" placeholder="Ваш телефон">
-                <i class="mdi mdi-email"></i><input type="email" placeholder="Ваш e-mail">
-                <button type="submit" value="ОТПРАВИТЬ">ОТПРАВИТЬ</button>
+            <form id="form_feedback" class="container" action="" role="form" data-type="feedback">
+                <i class="mdi mdi-account"></i><input type="text" name="name" placeholder="Ваше имя" required="required">
+                <i class="mdi mdi-phone"></i><input type="tel"  name="phone" placeholder="Ваш телефон" required="required">
+                <i class="mdi mdi-email"></i><input type="email" name="email" placeholder="Ваш e-mail" required="required">
+                <button class="callbackButton_5 btnOrange" type="submit" value="ОТПРАВИТЬ">ОТПРАВИТЬ</button>
             </form>
         </section>
-        <a class="download" href="./img/download.png" download="Presentation">
+        <a class="download" href="./docs/Alexey_Gordeev_Presentation.pdf" download="Presentation">
             СКАЧАТЬ ПРЕЗЕНТАЦИЮ БЕЗ ПРЯМЫХ КОНТАКТОВ
         </a>
     </section>
 </footer>
 
-<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
-<script src="./js/slick.min.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript">
-    $(document).on('ready', function() {
-        $('.lazy').slick({
-            lazyLoad: 'ondemand',
-            slidesToShow: 4,
-            slidesToScroll: 1
-        });
-        $('.reviews .slider').slick({
-            dots: true,
-            slidesToShow: 2,
-            slidesToScroll: 1
-        });
-        $('.center').slick({
-            infinite: true,
-            centerMode: true,
-            slidesToShow: 6,
-            slidesToScroll: 3
-        });
+<div class="modal-overlay" id="modalWindow">
 
-    });
+    <div class="modal-content" id="modalHolder" role="document">
+
+        <h1 class="modal_title">ЕСТЬ ВОПРОС?</h1>
+        <p>
+            Оставьте Ваши контакты <br/> и я обязательо Вам перезвоню:
+        </p>
+        <div class="errorModals"></div>
+        <form id="formMenu" role="form" data-type="question">
+            <i class="mdi mdi-account"><input type="text" name="name" placeholder="Ваше имя" required="required" /></i>
+
+            <i class="mdi mdi-phone"><input type="tel" name="phone" placeholder="Ваш телефон" required="required" /></i>
+
+            <input type="submit" class='btn modalBtn' value="ОТПРАВИТЬ" />
+        </form>
+
+        <button class="btn-close" id="modalClose" type="button" aria-label="close">
+            &times;
+        </button>
+
+    </div> <!-- end .modal-content -->
+
+</div> <!-- end .modal-overlay -->
+<div class="modal-overlay" id="modalSuccess">
+
+
+    <div class="modal-content success" id="modalHolderSuccess" role="document">
+
+        <h1 class="modal_title">Благодарим за обращение!</h1>
+        <p>
+        Мы получили Вашу заявку
+        и перезвоним в самое
+        ближайшее время,
+        чтобы ответить на все
+        Ваши вопросы!
+        </p>
+        <button class="btn-close" id="modalCloseSuccess" type="button" aria-label="close">
+            &times;
+        </button>
+
+    </div> <!-- end .modal-content -->
+
+</div> <!-- end .modal-overlay -->
+
+
+<script src="./js/custom.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+<script src="./js/scrolling.js"></script>
+<script src="./js/ajax.js"></script>
+<script src="./js/slick.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="./js/jquery.maskedinput.min.js"></script>
+<script src="./js/customJQ.js"></script>
+
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-84145227-2', 'auto');
+    ga('send', 'pageview');
+
 </script>
 
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter39715965 = new Ya.Metrika({
+                    id:39715965,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/39715965" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<script type="text/javascript">(window.Image ? (new Image()) : document.createElement('img')).src = location.protocol +
+        '//vk.com/rtrg?r=fuBe/S5yR*xBUwOBk9gkNaPA9OFj*m7rBNPhwuAjFaDOPzctFK69Rq' +
+        '*MXshWPTV5121F4yx9oR/E6VvQTuNgsP4rmZlEpWxNoPYStUFqcqEuUlxTmSux0GgFuqiYiS9INzOdlgjxrb0jOj4jtcJCSGI0yUa/' +
+        'OhBELOcNNzviBcE-&pixel_id=1000020695';</script>
+
+<!-- Facebook Pixel Code -->
+<script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+            document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '678665652282303');
+    fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+               src="https://www.facebook.com/tr?id=678665652282303&ev=PageView&noscript=1"
+/></noscript>
+<!-- DO NOT MODIFY -->
+<!-- End Facebook Pixel Code -->
 
 </body>
 </html>

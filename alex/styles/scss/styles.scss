@@ -30,14 +30,14 @@
 /* Russia Font */
 @font-face {
   font-family: 'Russia';
-  src: url('../fonts/Russia/Russia-Medium.otf');
+  src: url('../fonts/Russia/Russia-Light.otf');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Russia';
-  src: url('../fonts/Russia/Russia-MediumItalic.otf');
+  src: url('../fonts/Russia/Russia-Italic.otf');
   font-weight: normal;
   font-style: italic;
 }
@@ -62,18 +62,22 @@
   font-weight: normal;
   font-style: normal;
 }
+* {
+  outline: none;
+}
 body {
   font-size: 15px;
   margin: 0;
   padding: 0;
   font-family: Russia;
+  -webkit-text-size-adjust: 100%;
 }
 @media screen and (max-width: 992px) {
   body {
-    min-width: 1366px;
+    min-width: 1440px;
 
     .firstBg {
-      min-width: 1366px;
+      min-width: 1440px;
     }
     .reviews {
 
@@ -93,6 +97,13 @@ ul, li, a, p, h1, h2, h3, figure {
 h1, h2, h3 {
   text-align: center;
 }
+a {
+  color: #fff;
+
+  &:hover {
+    color: #fff;
+  }
+}
 .sectionTitle {
   font-family: Intro;
   color:  #050101;
@@ -101,6 +112,7 @@ h1, h2, h3 {
   text-align: center;
   padding: 70px 0;
   letter-spacing: 5px;
+  max-height: 176px;
 }
 .form__title {
   font-family: Intro;
@@ -123,12 +135,52 @@ h1, h2, h3 {
   height: 320px;
   z-index: -1;
 }
+
+button, input[type="submit"] {
+
+  &:hover{
+    cursor: pointer;
+  }
+}
+
 /*                                        Header Section                                            */
 header{
-  display: block;
+  position: fixed;
   margin: 25px auto 70px;
-  max-width: 960px;
+  width: 100%;
+  z-index: 100;
+  top: 0;
+  min-width: 960px;
+
+  &.fixed {
+    position: fixed;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    background: #000;
+    max-width: 100%;
+    max-height: 57px;
+    line-height: 40px;
+    vertical-align: middle;
+    z-index: 100;
+
+    .feedback{
+
+      .strong {
+        margin: 0;
+        vertical-align: middle;
+        line-height: 57px;
+      }
+    }
+
+
+
+    button {
+      display: none;
+    }
+  }
 }
+
 .navigation {
   display: inline-block;
   max-width: 775px;
@@ -151,13 +203,13 @@ header{
 }
 .feedback {
   display: inline-block;
-  margin-left: 60px;
+  margin-left: 50px;
   text-align: right;
 
-  strong {
+  .strong {
     display: block;
     font-family: FuturaPT;
-    color:  #ffffff;
+    color:  #fff !important;
     font-size: 26px;
     font-weight: 700;
     line-height: 36px;
@@ -167,7 +219,7 @@ header{
   button{
     border-radius: 2px;
     border: 0;
-    background-color:  #de1f00;
+    background:  #de1f00;
     width: 140px;
     height: 39px;
     text-transform: uppercase;
@@ -176,6 +228,14 @@ header{
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     color: #fff;
+    padding-top: 2px;
+
+    &:hover {
+      background: #f35e46;
+    }
+    &:active {
+      transform: scale(.95);
+    }
   }
 }
 /*                                     End of Header Section                                        */
@@ -185,21 +245,22 @@ main {
 }
 .firstBg{
   background: url('../../img/bg_1.jpg') no-repeat;
-  background-size: 100% 942px;
+  background-size: auto 942px;
+  background-position: center;
   width: 100%;
   height: 100%;
+  max-height: 942px;
   min-height: 942px;
   position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
-}
-@media screen and (max-width: 1440px) {
-  .firstBg {
-    background: url('../../img/min_bg_1.jpg') no-repeat;
-    background-size: 100% 942px;
+
+  &+.container {
+    margin-top: 192px;
   }
 }
+
 /*                                           About Me Section                                        */
 .aboutMe {
   max-width: 500px;
@@ -254,6 +315,7 @@ main {
     &:first-child {
       margin-top: 0;
     }
+
   }
 
 }
@@ -298,7 +360,7 @@ main {
     &::before {
       position: absolute;
       left: 10px;
-      top: 0;
+      top: -1px;
       font-size: 20px;
 
     }
@@ -311,6 +373,16 @@ main {
     height: 46px;
     padding: 0 0 0 40px;
     box-sizing: border-box;
+    font-family: Russia;
+    font-size: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    margin-right: 5px;
+
+    &:focus {
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+
 
     &::-webkit-input-placeholder {
       color: #000;
@@ -332,7 +404,25 @@ main {
     box-sizing: border-box;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    padding-left: 0;
+    vertical-align: bottom;
+
+    &:hover {
+      background: #333333;
+    }
+    &:active {
+      transform: scale(.95);
+    }
+
   }
+  .btnOrange {
+    background: #de1f00;
+
+    &:hover {
+      background: #f35e46;
+    }
+  }
+
 }
 
 /*                                       End of Radio Section                                        */
@@ -355,6 +445,7 @@ main {
     line-height: 24px;
     text-align: left;
     margin-bottom: 30px;
+    max-height: 610px;
 
     &:nth-of-type(1){
       max-width: 610px;
@@ -461,6 +552,7 @@ main {
 .slider {
   width: 100%;
   margin: 0 auto;
+  max-height: 580px;
 
   .slick-track {
     padding-bottom: 25px;
@@ -515,15 +607,19 @@ main {
     font-weight: 400;
     line-height: 30px;
     text-align: center;
-    margin-bottom: 70px;
+    display: block;
+    max-height: 120px;
+    height: 100%;
+  }
+  form {
+    margin-top: 70px;
   }
   input {
     border: 1px solid #000;
   }
-  button {
-    background: #de1f00;
-  }
+
 }
+
 /*                                         End of Price Section                                           */
 /*                                           Reviews Section                                           */
 .reviews {
@@ -629,17 +725,21 @@ main {
   }
   .slider .slick-prev {
     left: -100px;
+    top: 35px;
   }
   .slider .slick-next {
     right: -100px;
+    top:35px;
   }
   .slick-slide {
     line-height: 65px;
     text-align: center;
+    margin: 0 5px;
 
     img {
       display: inline-block;
       vertical-align: middle;
+      max-height: 50px;
     }
   }
 }
@@ -647,12 +747,15 @@ main {
 /*                                         Reviews Private Clients Section                                       */
 .private {
   background: url('../../img/private_reviews_bg.jpg') no-repeat;
-  background-size: 100% 1098px ;
+  background-size: auto 1098px ;
+  background-position: center;
 
 
   .reviews__item{
     p {
       max-height: 360px;
+      display: flex;
+      align-items: center;
     }
   }
 }
@@ -673,17 +776,17 @@ footer {
     text-align: center;
 
     input {
-      width: 315px;
+      width: 312px;
       box-shadow: 0 1px 3px rgba(255,255,255,0.12), 0 1px 2px rgba(255,255,255,0.24);
-      transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+      transition: all 0.4s cubic-bezier(.25,.8,.25,1);
+      margin: 0 5px 0 0;
 
       &:focus {
-        box-shadow: 0 4px 6px rgba(255,255,255,0.29), 0 -4px 6px rgba(255,255,255,0.33);
+        box-shadow: 0 0 6px 6px rgba(255,255,255,.59);
       }
     }
     button {
       width: 275px;
-      background: #de1f00;
       margin-top: 30px;
 
     }
@@ -696,6 +799,8 @@ footer {
     a {
       display: inline-block;
       margin-right: 10px;
+
+
 
       &:last-child{
         margin: 0;
@@ -731,7 +836,161 @@ footer {
 }
 /*                                            End of Footer  Section                                  */
 
-
-
-
 /*                                              End of Main Section                                        */
+/*                                                 Modal Overlay                                          */
+.modal-overlay {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+  padding-top: 14%;
+}
+
+.modal-content {
+  background: #fff;
+  margin: auto;
+  width: 343px;
+  height: 407px;
+  text-align: center;
+  position: relative;
+  border-radius: 5px;
+
+  &.success {
+    height: 280px;
+
+    p {
+      margin: 24px 0 50px;
+      padding: 10px 20px;
+      font-size: 18px;
+    }
+  }
+  .errorModals {
+    display: none;
+    padding: 4px;
+    color: #de1f00;
+    z-index: 1;
+    top: 135px;
+    border: 2px solid red;
+    margin: 0 auto;
+    max-width: 289px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    display: none;
+  }
+  .modal_title {
+    font-family: Intro;
+    color:  #000000;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 36px;
+    text-align: center;
+    padding-top: 30px;
+  }
+  p {
+    font-family: Russia;
+    color:  #000;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+    margin: 15px 0 15px 0;
+  }
+  .mdi {
+    position: relative;
+    display: block;
+  }
+  .mdi-phone {
+
+    &::before {
+      position: absolute;
+      top: 32px;
+      left: 41px;
+      font-size: 16px;
+    }
+  }
+  .mdi-account {
+
+    &::before{
+      position: absolute;
+      top: 32px;
+      left: 41px;
+    }
+  }
+  input {
+    border-radius: 4px;
+    border:2px solid #000;
+    background-color:  #fff;
+    width: 245px;
+    height: 46px;
+    padding-left: 40px;
+    margin: 15px auto 0;
+    font-size: 16px;
+    font-family: Russia;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+    &::-webkit-input-placeholder {
+      color: #000;
+      font-family: Russia;
+      line-height: 24px;
+      font-size: 16px;
+    }
+
+    &[type="submit"] {
+      border-radius: 4px;
+      background-color:  #de1f00;
+      width: 198px;
+      height: 46px;
+      padding-left: 0;
+      margin-top: 30px;
+      line-height: 36px;
+      font-size: 18px;
+      border: 0;
+      color: #fff;
+      letter-spacing: 1px;
+
+    }
+  }
+  .btn-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: arial;
+    font-size: 2em;
+    font-weight: 800;
+    line-height: 1;
+    padding: 0;
+    position: absolute;
+    right: -30px;
+    top: -30px;
+    z-index: 2;
+    color: rgba(255,255,255,.5);
+  }
+
+  .btn-close{
+
+    &:hover {
+      color: #c12f48;
+    }
+
+  }
+
+}
+
+
+
+
+
+
+/*
+
+  This is here purely for demo styling
+
+*/
+
