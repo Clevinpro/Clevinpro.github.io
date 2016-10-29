@@ -101,7 +101,7 @@ class MenuItems extends React.Component {
                 primaryText: 'Feedback',
                 onTouchTap: this.props.toggleSidebar
             }
-        ]
+        ];
         const menuItems = items.map( (item) => 
                             <MenuItem
                             key={item.id}    

@@ -4,11 +4,11 @@ import createLogger from 'redux-logger'
 
 
 export default function configureStore(initialState) {
-  const logger = createLogger()
+  const logger = createLogger();
   const store = createStore(
     rootReducer,
     initialState,
-    applyMiddleware(logger))
+    applyMiddleware(logger));
 
   if (module.hot) {
     module.hot.accept('../reducers', () => {

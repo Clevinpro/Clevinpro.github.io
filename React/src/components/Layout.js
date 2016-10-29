@@ -2,11 +2,12 @@ import React from 'react';
 import Drawer from 'material-ui/Drawer';
 import MenuItems from './MenuItems';
 import AppBar from 'material-ui/AppBar';
+
 // import Divider from 'material-ui/Divider';
 
 
 
-export default class Layout extends React.Component {
+    export default class Layout extends React.Component {
 
  
 
@@ -30,6 +31,7 @@ export default class Layout extends React.Component {
         >
           <MenuItems toggleSidebar={this.props.toggleSidebar} />
         </Drawer>
+        
       </div>
     );
   }

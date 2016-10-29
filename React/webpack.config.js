@@ -1,94 +1,69 @@
-// const path = require('path');
-// const webpack = require('webpack');
-
-// module.exports = {
-//   devtool: 'cheap-module-source-map',
-
-//   // Step 1: Source Maps
-//   // devtool: 'cheap-module-source-map',
-//   // devtool: 'eval',
-
-//   entry: [
-//     'babel-polyfill',
-//     './src/index'
-//   ],
-//   output: {
-//     path: path.join(__dirname, 'dist'),
-//     filename: 'bundle.js',
-//     publicPath: '/static/',
-//   },
-
-//   plugins: [
-//     new webpack.DefinePlugin({
-//       'process.env': {
-//         'NODE_ENV': JSON.stringify('production')
-//       }
-//     })
-//   ],
-
-//   module: {
-//     loaders: [
-//       {
-//         test: /\.js$/,
-//         loaders: ['babel']
-//       }
-//     ]
-//   }
-// };
 
 
-var path = require('path')
-var webpack = require('webpack')
+var path = require('path');
 var autoprefixer = require('autoprefixer');
 var precss = require('precss');
 
+
 module.exports = {
-  devServer: {
-        inline: true,
-        contentBase: './',
-        port: 3000
-    },
-  devtool: 'cheap-module-eval-source-map',
-  entry: [
-    'webpack-hot-middleware/client',
-    'babel-polyfill',
-    './src/index'
-  ],
+  entry: './src/index',
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/static/'
+    path: path.join(__dirname, '/public/build/'),
+    publicPath: '/build/',
+    filename: 'bundle.js'
   },
-  plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-  ],
   module: {
     preLoaders: [
       {
         test: /\.js$/,
         loaders: ['eslint'],
         include: [
-          path.resolve(__dirname, "src"),
-        ],
+          path.resolve(__dirname, "src")
+        ]
       }
     ],
     loaders: [
       {
-        loaders: ['react-hot', 'babel-loader'],
-        include: [
-          path.resolve(__dirname, "src"),
-        ],
         test: /\.js$/,
-        plugins: ['transform-runtime'],
+        loader: "react-hot-loader!babel",
+        exclude: [/node_modules/, /public/]
       },
       {
-        test:   /\.css$/,
-        loader: "style-loader!css-loader!postcss-loader"
+        test: /\.css$/,
+        loader: 'style-loader!css-loader!autoprefixer-loader'
+      },
+      {
+        test: /\.scss$/,
+        loader: 'style-loader!css-loader!autoprefixer-loader!sass?sourceMap'
+      },
+      {
+        test: /\.gif$/,
+        loader: "url-loader?limit=10000&mimetype=image/gif"
+      },
+      {
+        test: /\.jpg$/,
+        loader: "url-loader?limit=10000&mimetype=image/jpg"
+      },
+      {
+        test: /\.png$/,
+        loader: "url-loader?limit=10000&mimetype=image/png"
+      },
+      {
+        test: /\.svg/,
+        loader: "url-loader?limit=26000&mimetype=image/svg+xml"
+      },
+      {
+        test: /\.jsx$/,
+        loader: "react-hot!babel",
+        exclude: [/node_modules/, /public/]
+      },
+      {
+        test: /\.json$/,
+        loader: "json-loader"
       }
     ]
   },
   postcss: function () {
     return [autoprefixer, precss];
   }
-}
+};
