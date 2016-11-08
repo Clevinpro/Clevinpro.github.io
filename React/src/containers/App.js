@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Layout from '../components/Layout'
-import HotelCards from '../components/HotelCards';
-import NoteApp from '../components/NotesApp'
+
+
 
 import * as layoutActions from '../actions/LayoutActions'
 
@@ -15,28 +15,22 @@ class App extends Component {
     const { toggleSidebar } = this.props.layoutActions;
 
     return (
-      <div>
-        <Layout open={sidebar.open} toggleSidebar={toggleSidebar}/>
-        <main>
-          
-          <HotelCards />
-          <NoteApp />
-        </main>
-      </div>
-  )
-}
+        <div>
+          <Layout open={sidebar.open} toggleSidebar={toggleSidebar}/>
+          <main>
+            {this.props.children}
+          </main>
+        </div>
+    );
+  }
 }
 
-function mapStateToProps(state) {
-  return {
+const mapStateToProps = (state) => ({
     sidebar: state.sidebar
-  }
-}
+});
 
-function mapDispatchToProps(dispatch) {
-  return {
+const mapDispatchToProps = (dispatch) => ({
     layoutActions: bindActionCreators(layoutActions, dispatch)
-  }
-}
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

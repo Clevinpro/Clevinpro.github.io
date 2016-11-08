@@ -1,17 +1,27 @@
 
 
 var path = require('path');
+var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var precss = require('precss');
 
 
 module.exports = {
-  entry: './src/index',
+  entry: [
+    // listen to code updates emitted by hot middleware:
+    // 'webpack-hot-middleware/client',
+    // your code:
+    './src/index'
+  ],
   output: {
     path: path.join(__dirname, '/public/build/'),
     publicPath: '/build/',
     filename: 'bundle.js'
   },
+  devtool: 'cheap-module-eval-source-map',
+  plugins: [
+    new webpack.NoErrorsPlugin()
+  ],
   module: {
     preLoaders: [
       {
@@ -34,7 +44,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: 'style-loader!css-loader!autoprefixer-loader!sass?sourceMap'
+        loader: 'style-loader!css-loader?sourceMap!autoprefixer-loader!sass?sourceMap'
       },
       {
         test: /\.gif$/,

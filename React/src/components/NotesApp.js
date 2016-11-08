@@ -4,7 +4,7 @@
 
 import Masonry from 'masonry-layout'
 import React from 'react'
-import './NoteApp.scss'
+import './NotesApp.scss'
 
 class Note extends React.Component {
     render() {
@@ -42,7 +42,7 @@ class NoteEditor extends React.Component {
     }
 
     handleChangeTextColor(e) {
-       
+
         this.setState({
             textColor: { color: e.target.value }
         })
