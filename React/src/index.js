@@ -2,7 +2,7 @@ import 'babel-polyfill';
 import React from 'react';
 import { Provider } from 'react-redux'
 import { render } from 'react-dom'
-import { Router, Route, browserHistory } from 'react-router'
+import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 
@@ -21,6 +21,7 @@ render(
         <MuiThemeProvider>
             <Router history={browserHistory}>
                 <Route path="/" component={App}>
+                    <IndexRoute component={HotelCards} />
                     <Route path="/HotelCards" component={HotelCards} />
                     <Route path="/NotesApp" component={NotesApp} />
                 </Route>
