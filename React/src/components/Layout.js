@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import Drawer from 'material-ui/Drawer';
 import MenuItems from './MenuItems';
 import AppBar from 'material-ui/AppBar';
@@ -7,10 +8,7 @@ import AppBar from 'material-ui/AppBar';
 
 
 
-    export default class Layout extends React.Component {
-
- 
-
+class Layout extends Component {
   render() {
     const { open } = this.props;
     return (
@@ -19,6 +17,7 @@ import AppBar from 'material-ui/AppBar';
           title="TestoRator"
           iconClassNameRight="muidocs-icon-navigation-expand-more"
           onLeftIconButtonTouchTap={this.props.toggleSidebar}
+          onTitleTouchTap={() => this.props.router.push('')}
         />
        
         <Drawer
@@ -36,3 +35,5 @@ import AppBar from 'material-ui/AppBar';
     );
   }
 }
+
+export default withRouter(Layout);

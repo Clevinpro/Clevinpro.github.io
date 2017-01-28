@@ -2,8 +2,8 @@
  * Created by Clevin on 25.10.2016.
  */
 
-import Masonry from 'masonry-layout'
 import React from 'react'
+import Masonry from 'masonry-layout'
 import './NotesApp.scss'
 
 class Note extends React.Component {
@@ -95,13 +95,15 @@ class NoteEditor extends React.Component {
 
 class NotesGrid extends React.Component {
     componentDidMount() {
-        let grid = this.refs.grid;
+        const grid = this.refs.grid;
         this.msnry = new Masonry( grid, {
             itemSelector: '.note',
             columnWidth: 200,
             gutter: 10,
-            isFitWidth: true
+            isFitWidth: false
         })
+        this.msnry.reloadItems();
+        this.msnry.layout();
 
     }
 
@@ -153,11 +155,13 @@ export default class NotesApp extends React.Component {
         const localNotes = JSON.parse(localStorage.getItem('notes'));
         if(localNotes) {
             this.setState({ notes: localNotes });
+           
         }
     }
 
     componentDidUpdate() {
         this._updateLocalStorage();
+         
     }
 
     handleNoteDelete(note) {

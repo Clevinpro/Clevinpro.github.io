@@ -8,9 +8,8 @@ var precss = require('precss');
 
 module.exports = {
   entry: [
-    // listen to code updates emitted by hot middleware:
-    // 'webpack-hot-middleware/client',
-    // your code:
+    'webpack-hot-middleware/client',
+    'babel-polyfill',
     './src/index'
   ],
   output: {

@@ -4,6 +4,7 @@ import MenuItem from 'material-ui/MenuItem';
 
 import SocialPerson from 'material-ui/svg-icons/social/person';
 import NotificationNetworkLocked from 'material-ui/svg-icons/notification/network-locked';
+import Extension from 'material-ui/svg-icons/action/extension';
 
 
 class MenuItems extends React.Component {
@@ -11,16 +12,23 @@ class MenuItems extends React.Component {
         const items = [
             {
                 id: 1,
+                leftIcon: <NotificationNetworkLocked />,
+                primaryText: 'Hotel Cards',
+                link: '/HotelCards'
+            },
+            {
+                id: 2,
                 leftIcon: <SocialPerson />,
                 primaryText: 'Notes App',
                 link: '/NotesApp'
             },
             {
-                id: 2,
-                leftIcon: <NotificationNetworkLocked />,
-                primaryText: 'Hotel Cards',
-                link: '/HotelCards'
-            }
+                id: 3,
+                leftIcon: <Extension />,
+                primaryText: 'Calculator',
+                link: '/Calculator'
+            },
+            
         ];
         const menuItems = items.map( (item) =>
             <Link key={item.id} to={item.link}>

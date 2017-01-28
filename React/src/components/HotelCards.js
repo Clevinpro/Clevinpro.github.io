@@ -43,9 +43,29 @@ export default class HotelCards extends React.Component {
         super(props);
         this.handleSearch = this.handleSearch.bind(this);
         this.state = {
-            displayedHotels: HOTELS
+            displayedHotels: HOTELS,
+            date: new Date()
         }
     }
+
+    
+
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    this.setState({
+      date: new Date()
+    });
+  }
     handleSearch (e) {
         const searchQuery = e.target.value.toLowerCase();
 
@@ -76,7 +96,7 @@ export default class HotelCards extends React.Component {
         return (
             <section className="hotel-app">
                 <h1 className="header">Hotel Look</h1>
-
+                <h2>It is {this.state.date.toLocaleTimeString()}</h2>                        
                 <SearchBar onSearch={this.handleSearch} />
 
                 <section className="hotels-list">
