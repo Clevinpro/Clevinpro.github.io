@@ -1,0 +1,42 @@
+/* Arkiv Font */
+@font-face {
+  font-family: 'Arkiv';
+  src: url('../fonts/Arkiv-Bold.otf');
+  font-weight: bold;
+  font-style: normal;
+}
+/* Russia Font */
+@font-face {
+  font-family: 'Russia';
+  src: url('../fonts/Russia/Russia-Regular.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Russia';
+  src: url('../fonts/Russia/Russia-Italic.otf');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Russia';
+  src: url('../fonts/Russia/Russia-Bold.otf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Russia';
+  src: url('../fonts/Russia/Russia-BoldItalic.otf');
+  font-weight: 700;
+  font-style: italic;
+}
+/* End Russia Font */
+
+
+$font-stack:    Russia, sans-serif;
+$primary-color: #ffba00;
+$font-size: 19px;
+$color-orange: #ffba00;
