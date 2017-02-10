@@ -593,15 +593,37 @@ a {
   }
 }
 
-.gallery-for {
 
-  .slick-list.draggable {
-    padding: 0 500px !important;
+
+
+@media screen and (min-width: 1400px) {
+  .gallery-for {
+
+    .slick-list.draggable {
+      padding: 0 500px !important;
+    }
+
+
+    .slick-slide {
+      padding:0 5px;
+    }
+
   }
+}
 
 
-  .slick-slide {
-    padding:0 5px;
+
+@media screen and (min-width: 1200px)and (max-width: 1400px) {
+  .gallery-for {
+
+    .slick-list.draggable {
+      padding: 0 400px !important;
+    }
+
+
+    .slick-slide {
+      padding:0 5px;
+    }
+
   }
-
 }
