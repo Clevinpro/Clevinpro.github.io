@@ -593,6 +593,33 @@ a {
   }
 }
 
+.gmaps {
+  margin: 0;
+  padding: 0;
+}
+.maps-block {
+  position: relative;
+}
+
+.maps-block-contacts {
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 20px;
+  text-align: center;
+  padding: 40px 0;
+  position: absolute;
+  right: 0;
+  top: calc(50% - 220px);
+  height: 400px;
+  width: 400px;
+  z-index: 100;
+}
+.maps-block-contacts .btn-theme {
+  display: inline-block;
+  width: 167px;
+  margin-top: 40px;
+}
+
 
 
 
