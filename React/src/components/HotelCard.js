@@ -1,11 +1,11 @@
 /**
  * Created by Clevin on 20.10.2016.
  */
-import React from 'react';
+import React, { PropTypes, Component } from 'react';
 
 const MAX_DESCRIPTION_LENGTH = 100;
     
-export default class HotelCard extends React.Component {
+export default class HotelCard extends Component {
 
     render() {
         const {
@@ -42,4 +42,12 @@ export default class HotelCard extends React.Component {
             </figure>
         )
     }
+}
+
+HotelCard.propTypes = {
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired
 }
