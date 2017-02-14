@@ -33,6 +33,10 @@ $(document).ready(function() {
         centerMode: false,
         focusOnSelect: true
     });
+
+
+    // if (window.matchMedia('(min-width: 769px)').matches) { }
 });
+
 
 
