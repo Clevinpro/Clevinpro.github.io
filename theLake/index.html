@@ -7,6 +7,7 @@
         <link href="./styles/css/styles.min.css" rel="stylesheet">
         <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
               rel="stylesheet" type="text/css" />
+        <script src="../7.62/wp-content/themes/object 7.62/js/custom.js"></script>
 
 
     </head>
@@ -15,19 +16,25 @@
             <div class="nav-container">
                 <img src="images/logo.png" alt="" class="logo">
                 <ul class="navbar">
+                    <li class="info info-mobile">
+                        <a href="tel:+7 (495) 485-93-95" class="tel">+7 (495) 485-93-95</a>
+                        <button id="myBtn1" class="modal-btn" type="button">заказать звонок</button>
+                    </li>
                     <li class="nav"><a href="#">локация</a></li>
                     <li class="nav"><a href="#">шатёр</a></li>
                     <li class="nav"><a href="#">преимущества</a></li>
                     <li class="nav"><a href="#">галерея</a></li>
                     <li class="nav"><a href="#">контакты</a></li>
+                    <li class="close-menu">
 
+                    </li>
                 </ul>
                 <div class="info">
                     <a href="tel:+7 (495) 485-93-95" class="tel">+7 (495) 485-93-95</a>
-                    <button id="modal-btn" type="button">заказать звонок</button>
+                    <button id="myBtn2" class="modal-btn" type="button">заказать звонок</button>
                 </div>
             </div>
-            <button class="mdi mdi-menu"></button>
+            <button id="toggle" class="mdi mdi-menu"></button>
         </header>
         <main>
             <section class="header__section">
@@ -49,10 +56,11 @@
                                 на аренде мебели
                             </p>
                         </section>
-                        <form class="form__submit" action="submit">
-                            <input type="text" name="name" placeholder="Имя" />
-                            <input type="text" name="tel" placeholder="Телефон" />
-                            <button class="button-primary" type="button">ОТПРАВИТЬ ЗАЯВКУ</button>
+                        <form id="form1" class="form__submit" role="form" data-type="book">
+                            <input type="text" name="name" placeholder="Ваше имя" required="required"></i>
+
+                            <input type="tel" name="phone" placeholder="Ваш телефон" required="required"></i>
+                            <button class="button-primary formBtn1" type="submit">ОТПРАВИТЬ ЗАЯВКУ</button>
                         </form>
                     </div>
 
@@ -81,10 +89,11 @@
                             на аренде мебели
                         </p>
                     </section>
-                    <form class="form__submit" action="submit">
-                        <input type="text" name="name" placeholder="Имя" />
-                        <input type="text" name="tel" placeholder="Телефон" />
-                        <button class="button-primary" type="button">ОТПРАВИТЬ ЗАЯВКУ</button>
+                    <form id="form2" class="form__submit" role="form" data-type="book">
+                        <input type="text" name="name" placeholder="Ваше имя" required="required"></i>
+
+                        <input type="tel" name="phone" placeholder="Ваш телефон" required="required"></i>
+                        <button type="submit" class="button-primary formBtn2" >ОТПРАВИТЬ ЗАЯВКУ</button>
                     </form>
                 </div>
             </div>
@@ -487,10 +496,61 @@
             <p>THE LAKE 2017 ©</p>
         </footer>
 
+        <div class="modal-overlay" id="modalWindow">
+
+            <div class="modal-content" id="modalHolder" role="document">
+
+                <h1 class="title">Мы на связи!</h1>
+                <p>
+
+                    Хотите записаться на просмотр
+                    площадки или задать любой вопрос
+                    нашему менеджеру? Оставьте ваши
+                    контакты и мы свяжемся с вами
+                    в течение 30 мин.
+                </p>
+                <div class="errorModals"></div>
+                <form id="formMenu" role="form" class="form__submit" data-type="question">
+                    <input type="text" name="name" placeholder="Ваше имя" required="required"></i>
+
+                    <input type="tel" name="phone" placeholder="Ваш телефон" required="required"></i>
+
+                    <button type="submit" class="button-primary modalBtn" >ОТПРАВИТЬ ЗАЯВКУ</button>
+                </form>
+
+                <button class="btn-close" id="modalClose" type="button" aria-label="close">
+
+                </button>
+
+            </div> <!-- end .modal-content -->
+
+        </div>
+        <div class="modal-overlay" id="modalSuccess">
+
+
+            <div class="modal-content success" id="modalHolderSuccess" role="document">
+
+                <h1 class="title">Благодарим за обращение!</h1>
+                <p>
+                    Мы получили Вашу заявку
+                    и перезвоним в самое
+                    ближайшее время,
+                    чтобы ответить на все
+                    Ваши вопросы!
+                </p>
+                <button class="btn-close" id="modalCloseSuccess" type="button" aria-label="close">
+
+                </button>
+
+            </div> <!-- end .modal-content -->
+
+        </div>
+
 
         <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
         <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
         <script type="text/javascript" src="js/slick.min.js"></script>
+        <script type="text/javascript" src="js/ajax.js"></script>
         <script type="text/javascript" src="./js/main.js"></script>
     </body>
 </html>

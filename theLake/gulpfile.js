@@ -45,7 +45,7 @@ gulp.task('scripts', function() {
         	title: 'size of custom js'
         }))
         .pipe(gulp.dest('js/'));
-    var jsDeps = gulp.src(['js/*jquery*', 'js/*bootstrap*'])
+    var jsDeps = gulp.src(['js/*jquery*', 'js/*bootstrap*', '!js/*slick*'])
     	.pipe(concat('main.js'))
     	.pipe(size({
     		title: 'size of js dependencies'
