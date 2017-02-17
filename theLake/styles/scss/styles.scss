@@ -1487,13 +1487,18 @@ footer {
     text-align: center;
 
     .fs__scheme {
-      justify-content: center;
+      display: block;
 
       img {
         height: 100%;
         width: 50%;
         margin: 0 5%;
         margin-bottom: 60px;
+        display: inline-block;
+      }
+
+      .features__items {
+        display: inline-block;
       }
 
     }
@@ -1819,13 +1824,17 @@ footer {
     text-align: center;
 
     .fs__scheme {
-      justify-content: center;
+      display: block;
 
       img {
         height: 100%;
         width: 75%;
-        margin: 0 5%;
         margin-bottom: 60px;
+      }
+
+      .features__items {
+        max-width: 360px;
+        margin: 0 auto;
       }
 
     }
@@ -2205,13 +2214,17 @@ footer {
     text-align: center;
 
     .fs__scheme {
-      justify-content: center;
+      display: block;
 
       img {
         height: 100%;
         width: 100%;
-        margin: 0 5%;
         margin-bottom: 60px;
+      }
+
+      .features__items {
+        max-width: 360px;
+        margin: 0 auto;
       }
 
     }
