@@ -2052,7 +2052,8 @@ footer {
 
     .nav-container {
       margin: 48px 20px 0;
-      justify-content: center;
+      display: block;
+      text-align: center;
     }
 
     ul {
@@ -2068,6 +2069,7 @@ footer {
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
+      overflow: auto;
 
     }
 
