@@ -675,6 +675,7 @@ a {
   .section__content {
     max-width: 710px;
     margin-bottom: 90px;
+    line-height: 26px;
   }
 
 }
@@ -859,6 +860,7 @@ a {
   .section__content {
     margin-bottom: 55px;
     color: #fff;
+    line-height: 26px;
   }
 
   .recommend__list {
@@ -2048,12 +2050,15 @@ footer {
 
     img {
       width: 172px;
+      height: initial;
     }
 
     .nav-container {
       margin: 48px 20px 0;
       display: block;
       text-align: center;
+      height: 666px;
+      overflow: auto;
     }
 
     ul {
@@ -2247,6 +2252,15 @@ footer {
 
   }
 
+  .mdi {
+
+    .mdi-map-marker{
+      &:before {
+      font-size: 38px;
+      }
+    }
+  }
+
 
   /*
       About Section
@@ -2273,6 +2287,14 @@ footer {
 
   .features__section {
     text-align: center;
+
+    .title{
+      .icon {
+        height: 29px;
+        width: 22px;
+        background-size: 22px auto;
+      }
+    }
 
     .fs__scheme {
       display: block;
@@ -2323,10 +2345,10 @@ footer {
     .title {
       font-size: 28px;
 
-      &.icon {
-        height: 29px;
-        width: 22px;
-        background-size: 22px auto;
+      .icon {
+        height: 27px;
+        width: 21px;
+        background-size: 21px auto;
       }
     }
 
@@ -2353,6 +2375,18 @@ footer {
   /*
       Gallery
   */
+
+  .gallery__section {
+
+    .title {
+      .icon {
+        height: 22px;
+        width: 30px;
+        background-size: 30px auto;
+      }
+    }
+
+  }
 
   .gallery-for {
 
@@ -2397,6 +2431,14 @@ footer {
     position: static;
     padding: 0 0 120px;
 
+    .title {
+      .icon {
+        height: 28px;
+        width: 28px;
+        background-size: 28px auto;
+      }
+    }
+
     .tel {
       margin: 56px 0 66px;
       position: relative;
@@ -2408,6 +2450,34 @@ footer {
     }
 
   }
+
+  /*
+    Modal Window
+  */
+
+  .modal-content {
+    width: 95%;
+
+    p {
+      span {
+        display: none;
+      }
+    }
+
+    .btn-close {
+      width: 14px;
+      height: 14px;
+      background-size: 14px auto;
+    }
+
+    .form__submit {
+      input {
+        width: 90%;
+      }
+    }
+
+  }
+
 }
 
 @media screen and (max-width: 428px) {
