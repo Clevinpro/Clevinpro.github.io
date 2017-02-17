@@ -34,6 +34,19 @@ a {
   background: linear-gradient(0deg, #ffaf02 0%, #ffc600 100%);
   border: none;
   border-radius: 40px;
+  transition: all .2s linear;
+
+  &:hover {
+    transform: scale(1.031);
+    cursor: pointer;
+  }
+
+  &:active {
+    background: linear-gradient(0deg,rgba(255, 175, 2, 0.68) 0,#ffc600 100%);
+  }
+
+
+
 }
 
 .title {
@@ -59,7 +72,7 @@ a {
   top: 0;
   height: 100%;
   max-height: 90px;
-  z-index: 100;
+  z-index: 10;
 
   &.opennav {
 
@@ -85,6 +98,7 @@ a {
     right: 8px;
     top: 8px;
     display: none;
+    cursor: pointer;
   }
 
   .nav-container {
@@ -102,11 +116,9 @@ a {
   }
 
 
-
   li {
     display: inline-block;
     height: 39px;
-    align-self: center;
 
     a {
       font-size: 25px;
@@ -114,12 +126,42 @@ a {
       line-height: 32px;
       text-align: center;
       text-decoration: none;
+      position: relative;
+
+
+    }
+
+  }
+
+  .nav {
+
+    a {
+
+      &::before {
+        visibility: hidden;
+        display: block;
+        content: '';
+        width: 100%;
+        height: 3px;
+        background: #ffbb00;
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        transition: .2s linear;
+
+
+      }
+      &:hover::before, &:active::before {
+        bottom: -6px;
+        visibility: visible;
+      }
     }
 
   }
 
   .info {
     display: inline-block;
+    text-align: right;
 
     a {
       display: block;
@@ -134,11 +176,14 @@ a {
       font-size: 23px;
       font-weight: 400;
       line-height: 27px;
-      text-decoration: underline;
       text-align: right;
       background: none;
       border: none;
-      width: 100%;
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      padding: 0;
+      transition: .2s linear;
 
     }
 
@@ -146,6 +191,25 @@ a {
 
 }
 
+.modal-btn {
+
+  &::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 1px;
+    background: #000;
+    display: block;
+    bottom: 2px;
+
+
+  }
+
+  &:hover {
+    opacity: .8;
+  }
+
+}
 
 
 .navbar {
@@ -174,6 +238,11 @@ a {
       font-size: 31px;
       font-family: Russia;
       text-align: center;
+
+      &::before {
+        background: #fff;
+        bottom: -3px;
+      }
     }
 
   }
@@ -309,6 +378,12 @@ a {
     min-width: 357px;
     border-radius: 40px;
     margin-bottom: 14px;
+    border: none;
+    transition: .2s linear;
+
+    &:focus {
+      box-shadow: 0px 0px 1px 4px rgba(248, 248, 248, .7);
+    }
 
   }
 
@@ -665,7 +740,7 @@ a {
 
 .contacts {
   position: absolute;
-  z-index: 100;
+  z-index: 1;
   text-align: center;
   background: #fff;
   padding: 60px 70px;
@@ -796,7 +871,7 @@ a {
       display: block;
       border: 8px solid white;
 
-      &:hover {
+      &:hover, &:active {
         border-color: $color-orange;
       }
     }
@@ -823,9 +898,9 @@ footer {
 */
 
 .modal-overlay {
-  display: none;
+  visibility: hidden;
   position: fixed;
-  z-index: 1;
+  z-index: 12;
   left: 0;
   top: 0;
   width: 100%;
@@ -834,9 +909,25 @@ footer {
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.94);
   padding-top: 14%;
+  transition: .2s linear;
+
+  &.show-modal {
+
+    visibility: visible;
+
+    .modal-content {
+      visibility: visible;
+
+      top: 50%;
+
+    }
+
+  }
+
 }
 
 .modal-content {
+  visibility: hidden;
   background: #fff;
   margin: auto;
   max-width: 436px;
@@ -844,12 +935,15 @@ footer {
   height: 481px;
   text-align: center;
   position: fixed;
-  left: 50%;
-  top: 50%;
   transform: translate(-50%, -50%);
+  top: -600px;
+  left: 50%;
   border-radius: 5px;
   background: #6299d3;
   border: 3px solid white;
+  transition:  .3s linear;
+
+
 
   .title {
     color: #fff;
@@ -1293,6 +1387,7 @@ footer {
     -webkit-background-size:100%;
     background-size: 100%;
     min-height: 1000px;
+    display: block;
 
     &::before {
       display: none;
@@ -1308,8 +1403,11 @@ footer {
       &.white {
         font-size: 36px;
         line-height: 40px;
-        align-self: flex-end;
-        margin: 0 0 40px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto 40px;
       }
 
     }
@@ -1363,14 +1461,20 @@ footer {
   */
 
   .ls__content {
+    display: block;
 
     .slider {
       max-width: 56%;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 3%;
     }
 
     .slider__caption {
       max-width: 40%;
       font-size: 15px;
+      display: inline-block;
+      vertical-align: middle;
     }
 
   }
@@ -1422,10 +1526,17 @@ footer {
   */
 
   .ps__items {
+    display: block;
+    text-align: center;
+    max-width: 780px;
+    margin: 0 auto;
 
     figure {
-      width: 50%;
+      display: inline-block;
       text-align: center;
+      width: 250px;
+      margin: 0 40px;
+
 
       img {
         display: inline-block;
@@ -1460,7 +1571,18 @@ footer {
   .recommend__section {
 
     .recommend__list {
-      justify-content: space-around;
+      display: block;
+      text-align: center;
+
+      a {
+        display: inline-block;
+        margin: 0 10px;
+      }
+
+      img {
+        max-width: 300px;
+      }
+
     }
 
   }
@@ -1575,6 +1697,7 @@ footer {
       background: url('../../images/close.png');
       top: 16px;
       right: 16px;
+      cursor: pointer;
 
       &:active {
         transform: scale(.9);
@@ -1592,9 +1715,9 @@ footer {
   .header__section {
 
     background: url('../../images/bg-1-mb.jpg') top no-repeat;
-    -webkit-background-size:100%;
     background-size: 100%;
     min-height: 860px;
+    display: block;
 
     &::before {
       display: none;
@@ -1610,8 +1733,11 @@ footer {
       &.white {
         font-size: 32px;
         line-height: 40px;
-        align-self: flex-end;
-        margin: 0 20px 40px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto 40px;
       }
 
     }
@@ -1667,17 +1793,23 @@ footer {
   */
 
   .ls__content {
+    display: block;
 
     .slider {
       max-width: 100%;
     }
 
     .slider__caption {
-      max-width: 100%;
-      font-size: 15px;
+      max-width: 500px;
+      width: 100%;
+      font-size: 19px;
+      display: block;
+      margin: 40px auto 0;
     }
 
   }
+
+
 
   /*
     Features section
@@ -1691,7 +1823,7 @@ footer {
 
       img {
         height: 100%;
-        width: 50%;
+        width: 75%;
         margin: 0 5%;
         margin-bottom: 60px;
       }
@@ -1727,12 +1859,15 @@ footer {
 
   .ps__items {
 
-    justify-content: space-around;
+    display: block;
+    text-align: center;
 
     figure {
-      width: 50%;
+      display: inline-block;
       text-align: center;
-      min-width: 250px;
+      width: 250px;
+      margin: 0 40px;
+
 
       img {
         display: inline-block;
@@ -1767,10 +1902,16 @@ footer {
   .recommend__section {
 
     .recommend__list {
-      justify-content: space-around;
+      display: block;
+      text-align: center;
+
+      a {
+        display: inline-block;
+        margin: 0 15px;
+      }
 
       img {
-        max-width: 280px;
+        max-width: 240px;
       }
     }
 
@@ -1844,7 +1985,7 @@ footer {
   }
 
   .container {
-    padding: 0 20px;
+    padding: 0 10px;
     align-self: center;
   }
 
@@ -1916,9 +2057,15 @@ footer {
       background: url('../../images/close.png');
       top: 16px;
       right: 16px;
+      cursor: pointer;
+      transition: .2s linear;
 
       &:active {
         transform: scale(.9);
+      }
+
+      &:hover {
+        opacity: .8;
       }
 
     }
@@ -1936,6 +2083,7 @@ footer {
     -webkit-background-size:100%;
     background-size: 100%;
     min-height: 821px;
+    display: block;
 
     &::before {
       display: none;
@@ -1951,8 +2099,11 @@ footer {
       &.white {
         font-size: 28px;
         line-height: 33px;
-        align-self: flex-end;
-        margin: 0 20px 40px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto 40px;
         max-width: 250px;
       }
 
@@ -2040,7 +2191,8 @@ footer {
 
     .slider__caption {
       max-width: 100%;
-      font-size: 15px;
+      font-size: 19px;
+      margin-top: 20px;
     }
 
   }
@@ -2057,7 +2209,7 @@ footer {
 
       img {
         height: 100%;
-        width: 50%;
+        width: 100%;
         margin: 0 5%;
         margin-bottom: 60px;
       }
@@ -2108,12 +2260,13 @@ footer {
 
   .ps__items {
 
-    justify-content: space-around;
+    display: block;
+    text-align: center;
 
     figure {
-      width: 50%;
+      display: inline-block;
       text-align: center;
-      min-width: 250px;
+      width: 250px;
 
       img {
         display: inline-block;
@@ -2148,7 +2301,12 @@ footer {
   .recommend__section {
 
     .recommend__list {
-      justify-content: space-around;
+      display: block;
+      text-align: center;
+
+      a {
+        display: inline-block;
+      }
 
       img {
         max-width: 280px;

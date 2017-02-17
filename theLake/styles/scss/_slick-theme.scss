@@ -80,13 +80,15 @@ $slick-opacity-not-active: 0.25 !default;
     border: none;
     outline: none;
     z-index: 10;
-    &:hover, &:focus {
-        outline: none;
+    &:hover, &:active {
         background: $color-orange;
         color: transparent;
         &:before {
             opacity: $slick-opacity-on-hover;
         }
+    }
+    &:focus {
+        outline: none;
     }
     &.slick-disabled:before {
         opacity: $slick-opacity-not-active;
@@ -173,11 +175,13 @@ $slick-opacity-not-active: 0.25 !default;
             color: transparent;
             padding: 5px;
             cursor: pointer;
-            &:hover, &:focus {
-                outline: none;
+            &:hover {
                 &:before {
                     opacity: $slick-opacity-on-hover;
                 }
+            }
+            &:focus {
+                outline: none;
             }
             &:before {
                 position: absolute;

@@ -22,7 +22,7 @@ $headers = 'Content-type: text/html; charset=UTF-8' . "\r\n";
 $headers .= 'From: thelake.ru' . "\r\n";
 
 // отправка письма
-mail('clevin.pro@gmail.com', $type_text, $text, $headers);
+mail('clevin.pro@gmail.com, matveev-show@mail.ru', $type_text, $text, $headers);
 
 die(json_encode(array('result' => 'ok')));
 
