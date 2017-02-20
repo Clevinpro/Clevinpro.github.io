@@ -16,7 +16,7 @@ var gulp = require('gulp'),
 	browserSync = require('browser-sync').create();
 
 gulp.task('lint', function() {
-    return gulp.src(['js/*.js', '!js/main.js', '!js/*.min.js', '!js/*jquery*', '!js/*bootstrap*'])
+    return gulp.src(['js/*.js', '!js/main.js', '!js/*.min.js', '!js/*jquery*', '!js/*bootstrap*', ])
         .pipe(jshint())
         .pipe(jshint.reporter('default'));
 });
