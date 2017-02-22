@@ -22,7 +22,7 @@ $(document).ready(function() {
         speed: 500,
         variableWidth: false,
         asNavFor: '.gallery-nav',
-        arrows: false
+        arrows: true
     });
 
     $('.gallery-nav').slick({
