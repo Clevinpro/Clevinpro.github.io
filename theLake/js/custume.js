@@ -37,7 +37,7 @@ $(document).ready(function() {
 
     var navButton = document.getElementById('toggle');
     var navbar = document.querySelector('.navigation');
-    var nav = $('.nav a');
+
     var closeMenu = document.querySelector('.close-menu');
 
 
@@ -57,16 +57,9 @@ $(document).ready(function() {
         }
     }
 
-    document.querySelector('body').addEventListener("click", function(event) {
-        navbar.classList.remove('opennav');
-    });
 
-    nav.addEventListener("click", function(event){
-        setInterval(function () {
-            navbar.classList.remove('opennav');
-        },2500)
 
-    });
+
 
     // Get the modal
     var modal = document.getElementById('modalWindow');
@@ -113,18 +106,22 @@ $(document).ready(function() {
         }
     };
 
-    $('a[href*="#"]:not([href="#"])').click(function() {
+    $('a[href*="#"]:not([href="#"])').on('click', function() {
         if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
             var target = $(this.hash);
             target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
             if (target.length) {
                 $('html, body').animate({
                     scrollTop: target.offset().top
+
                 }, 1500);
+                navbar.classList.remove('opennav');
                 return false;
             }
         }
     });
+
+
 });
 /**
  * Created by Clevin on 20.02.2017.

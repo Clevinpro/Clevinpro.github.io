@@ -54,7 +54,7 @@ a {
 .title {
   text-align: center;
   font-family: Arkiv;
-  font-size: 50px;
+  font-size: 48px;
   font-weight: 700;
   line-height: 52px;
   position: relative;
@@ -81,6 +81,7 @@ a {
     .navbar {
       visibility: visible;
       opacity: 1;
+      position: relative;
 
     }
 
@@ -215,15 +216,18 @@ a {
   }
 }
 
+.navbar__overflow {
+  width: 100%;
+  max-width: calc(100% - 200px - 253px - 120px);
+}
+
 .navbar {
   display: inline-flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  max-width: calc(100% - 200px - 253px - 160px);
   width: 100%;
   margin-top: 5px;
   transition: .8s linear;
-
 
   .info {
     display: none;
@@ -1126,8 +1130,8 @@ footer {
       margin: 48px 20px 0;
     }
 
-    ul {
-
+    .navbar__overflow {
+      width: 100%;
       max-width: calc(100% - 200px - 253px - 120px);
 
     }
@@ -1206,7 +1210,7 @@ footer {
       margin: 48px 20px 0;
     }
 
-    ul {
+    .navbar__overflow {
 
       max-width: calc(100% - 200px - 253px - 40px);
 
@@ -1396,8 +1400,8 @@ footer {
 
     .info {
       visibility: hidden;
-      display: block;
-      margin: 70px auto 176px;
+      display: inline-block;
+      padding: 70px 0 176px;
       max-width: 290px;
 
 
@@ -1405,8 +1409,30 @@ footer {
 
   }
 
+  .navigation {
+    max-height: inherit;
+    &.opennav {
+
+      .navbar__overflow {
+        height: 100%;
+        max-width: inherit;
+        max-height: 666px;
+        overflow-y: auto;
+        width: 100%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+
+
+    }
+  }
+
   .navbar {
     display: block;
+    text-align: center;
 
     .nav {
       display: block;
@@ -1753,9 +1779,10 @@ footer {
 
     .info {
       visibility: hidden;
-      display: block;
-      margin: 70px auto 176px;
+      display: inline-block;
+      padding: 70px 0 176px;
       max-width: 290px;
+
 
 
     }
@@ -1764,9 +1791,29 @@ footer {
 
   }
 
+  .navigation {
+    max-height: inherit;
+    &.opennav {
+
+      .navbar__overflow {
+        height: 100%;
+        max-width: inherit;
+        max-height: 666px;
+        overflow-y: auto;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+
+
+    }
+  }
+
   .navbar {
     display: block;
-
+    text-align: center;
     .nav {
       display: block;
       text-align: center;
@@ -2108,6 +2155,8 @@ footer {
       Navigation Section
   */
 
+
+
   .navigation {
 
     .mdi-menu {
@@ -2147,14 +2196,34 @@ footer {
     .info {
       visibility: hidden;
       display: block;
-      margin: 70px auto 146px;
+      margin: 70px auto 176px;
       max-width: 290px;
-
+      display: inline-block;
 
     }
 
 
 
+  }
+
+  .navigation {
+    max-height: inherit;
+    &.opennav {
+
+      .navbar__overflow {
+        height: 100%;
+        max-width: inherit;
+        max-height: 666px;
+        overflow-y: auto;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+
+
+    }
   }
 
   .navbar {
