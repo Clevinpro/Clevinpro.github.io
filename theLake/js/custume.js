@@ -37,12 +37,14 @@ $(document).ready(function() {
 
     var navButton = document.getElementById('toggle');
     var navbar = document.querySelector('.navigation');
+    var nav = $('.nav a');
     var closeMenu = document.querySelector('.close-menu');
 
 
 
     navButton.addEventListener("click", handleStart, false);
     closeMenu.addEventListener("click", handleStart, false);
+
     function handleStart (event) {
         event.preventDefault();
         if (navbar.classList.contains('opennav') === true) {
@@ -57,6 +59,13 @@ $(document).ready(function() {
 
     document.querySelector('body').addEventListener("click", function(event) {
         navbar.classList.remove('opennav');
+    });
+
+    nav.addEventListener("click", function(event){
+        setInterval(function () {
+            navbar.classList.remove('opennav');
+        },2500)
+
     });
 
     // Get the modal
@@ -78,7 +87,7 @@ $(document).ready(function() {
         modal.classList.add('show-modal');
     };
     btn2.onclick = function() {
-        modal.classList.add('show-modal')
+        modal.classList.add('show-modal');
     };
     btn3.onclick = function() {
         modal.classList.add('show-modal');

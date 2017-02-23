@@ -62,10 +62,10 @@ a {
 
 }
 
+
 /*
     Navigation bar
 */
-
 
 .navigation {
 
@@ -312,7 +312,7 @@ a {
   justify-content: space-between;
   border: 5px solid #fff;
   padding: 21px 24px;
-  background-color: #4598cf;
+  background-color: $primary-bg;
   position: relative;
   width: 100%;
   margin-bottom: 85px;
@@ -898,7 +898,7 @@ a {
 */
 
 .recommend__section {
-  background: #4598cf;
+  background: $primary-bg;
   text-align: center;
   padding-bottom: 125px;
 
@@ -2123,8 +2123,8 @@ footer {
       margin: 48px 20px 0;
       display: block;
       text-align: center;
-      height: 666px;
-      overflow: auto;
+      height: 100%;
+      max-height: 666px;
     }
 
     ul {
@@ -2137,17 +2137,17 @@ footer {
       background: #0098d9;
       z-index: 100;
       transition: opacity .5s linear;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      overflow: auto;
+      left: 0;
+      right: 0;
+      top: 0;
+      margin: auto;
 
     }
 
     .info {
       visibility: hidden;
       display: block;
-      margin: 70px auto 176px;
+      margin: 70px auto 146px;
       max-width: 290px;
 
 
@@ -2236,7 +2236,7 @@ footer {
   }
 
   .form__bg {
-    background: #6299d3;
+    background: $primary-bg;
     width: 100%;
     padding: 60px 20px;
   }
@@ -2355,6 +2355,8 @@ footer {
     text-align: center;
 
     .title{
+      text-align: center;
+
       .icon {
         height: 29px;
         width: 22px;
@@ -2456,6 +2458,10 @@ footer {
 
   .gallery-for {
 
+    .slick-next, .slick-prev {
+      width: 75px;
+    }
+
     .slick-list.draggable {
       padding: 0 75px !important;
     }
@@ -2523,14 +2529,18 @@ footer {
 
   .modal-content {
     width: 95%;
+    height: 425px;
 
     p {
       span {
         display: none;
       }
+      margin: 0 auto 20px;
     }
 
     .btn-close {
+      right: 14px;
+      top: 14px;
       width: 14px;
       height: 14px;
       background-size: 14px auto;

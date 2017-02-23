@@ -79,7 +79,8 @@ $slick-opacity-not-active: 0.25 !default;
     padding: 0;
     border: none;
     outline: none;
-    z-index: 10;
+    z-index: 1;
+
     &:hover, &:active {
         background: $color-orange;
         color: transparent;
