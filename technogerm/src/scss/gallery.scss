@@ -1,0 +1,28 @@
+.doubleFigure, .tripleFigure {
+  display: inline-block;
+
+  img {
+    width: 100%;
+  }
+}
+
+.gallery {
+  padding: 40px 0 80px;
+  .btn {
+    margin: 56px auto 0;
+    display: block;
+    max-width: 205px;
+  }
+
+}
+
+
+.doubleFigure {
+  max-width: 680px;
+  height: 452px;
+}
+
+.tripleFigure {
+  max-width: 452px;
+  height: 320px;
+}

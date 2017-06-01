@@ -1,0 +1,100 @@
+@import 'reset';
+@import 'colors';
+@import 'typografy';
+@import 'settings';
+@import 'header';
+@import 'footer';
+@import 'slick';
+@import 'slick-theme';
+
+@import 'indexPage';
+@import 'projections';
+@import 'gallery';
+@import 'productSinglePage';
+@import 'news';
+@import 'product';
+@import 'publication';
+
+body{
+  width: 100%;
+  font-size: 17px;
+  letter-spacing: -.4px;
+}
+
+.bgSection {
+  height: 245px;
+  color: white;
+  background-size: cover;
+  border-top:4px solid #289ce7;
+  .container {
+    line-height: 245px;
+    vertical-align: middle;
+  }
+  h1 {
+    font-size: 29px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .btn {
+    margin-left: 30px;
+    line-height: 1;
+    vertical-align: middle;
+  }
+
+}
+
+.catalogSection {
+  padding-top: 65px;
+  padding-bottom: 110px;
+  background-color: #009ef2;
+  background-position: 88% 83px , 0 0 ;
+  background-repeat:no-repeat;
+  .contactsForm__container__size {
+    width: 51.3%;
+    min-width: 635px;
+  }
+  .contactsForm__container {
+    padding:26px 28px 30px 26px;
+    margin-top: 50px;
+    p{
+      width: 75%;
+      color: white;
+      line-height: 28px;
+      font-size: 18px;
+    }
+    button {
+      margin-top: 25px;
+    }
+    form {
+      margin-top: 10px;
+    }
+    input {
+      margin: 5px;
+      box-sizing: border-box;
+      &:nth-of-type(1) {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+      }
+      &:nth-of-type(2) {
+        width: 49%;
+        float: left;
+        margin-left: 0;
+      }
+      &:nth-of-type(3) {
+        width: 49%;
+        float: right;
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+

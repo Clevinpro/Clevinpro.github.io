@@ -1,0 +1,20 @@
+.newsPage {
+  .topInfoSection {
+    text-align: center;
+    .infoBox {
+      text-align: left;
+    }
+    .row>div {
+      margin-top: 25px;
+      margin-bottom: 25px;
+    }
+    .btn {
+      margin-top: 25px;
+    }
+    p.newsTitle {
+      margin-top: 25px;
+      font-size: 22px;
+    }
+  }
+
+}

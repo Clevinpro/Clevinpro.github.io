@@ -1,0 +1,70 @@
+$firaFont : "FiraSansCondensed" ;
+
+* {
+font-family: $firaFont, sans-serif;}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+.titleOfSection {
+  font-weight: 900;
+  font-size: 34px;
+  margin-top:35px;
+  margin-bottom: 35px;
+}
+p {
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -.4px;
+  line-height: 28px;
+}
+
+
+/* FiraSansCondensed Font */
+@font-face {
+  font-family: 'FiraSansCondensed';
+  src: url('../fonts/FiraSansCondensed-Bold.otf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FiraSansCondensed';
+  src: url('../fonts/FiraSansCondensed-BoldItalic.otf');
+  font-weight: bold;
+  font-style: italic;
+}
+
+
+@font-face {
+  font-family: 'FiraSansCondensed';
+  src: url('../fonts/FiraSansCondensed-Book.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FiraSansCondensed';
+  src: url('../fonts/FiraSansCondensed-BookItalic.otf');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'FiraSansCondensed';
+  src: url('../fonts/FiraSansCondensed-Eight.otf');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FiraSansCondensed';
+  src: url('../fonts/FiraSansCondensed-EightItalic.otf');
+  font-weight: 300;
+  font-style: italic;
+}
+/* End FiraSansCondensed Font */
+
+* {
+  font: $firaFont;
+}

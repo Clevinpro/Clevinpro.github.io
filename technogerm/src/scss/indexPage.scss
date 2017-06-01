@@ -1,0 +1,148 @@
+.contactsbox {
+  height: 490px;
+  padding-top: 90px;
+  padding-bottom: 65px;
+  background-color: #009ef2;
+  background-position: 85% 0 , 0 0 ;
+  background-repeat:no-repeat;
+  .contactsForm__container input{
+    width: 39%;
+    margin-right: 22px;
+    font-size: 18x;
+    &:nth-of-type(2) {
+      margin-right: 0;
+    }
+  }
+  .contactsForm__container_size {
+    padding: 28px 30px 25px 32px ;
+    margin-top: 55px;
+    p {
+      font-size: 18px;
+      margin-bottom: 25px;
+      font-weight: 400;
+    }
+    .btn {
+      float: right;
+    }
+  }
+  *{
+    color: white;
+  }
+  .grafflex {
+    margin-left:20px;
+  }
+  .firstTitle {
+    margin-top: 15px;
+    font-size: 45px;
+  }
+  .firstTitle__caption {
+    font-size: 32px;
+    font-weight: 700;
+  }
+}
+.topInfoSection {
+  padding-top: 35px;
+  padding-bottom:50px;
+  .row>div {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .infoBox {
+    padding: 8px 8px 8px 32px;
+    height: 318px;
+    position: relative;
+    * {
+      z-index: 10;
+      position: relative;
+    }
+    .newsTitle {
+      font-weight: 900;
+      font-size: 28px;
+    }
+    span {
+      position: absolute;
+      top:18px;
+      left:32px;
+      .date {
+        font-weight: 700;
+        color: black;
+        font-style: normal;
+      }
+    }
+    a {
+      margin-top: 45px;
+      display: block;
+      font-weight: 900;
+      text-decoration: underline;
+      font-size: 18px;
+    }
+    h4 {
+      margin-top:30px ;
+      margin-bottom: 20px;
+    }
+    img {
+      float: right;
+      margin-left: 50px;
+    }
+    .bgImage {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      margin: 0;
+    }
+  }
+
+}
+.productionSection {
+  padding-bottom: 65px;
+  .production__item {
+    height: 320px;
+    margin-top: 17px;
+    margin-bottom: 17px;
+    padding: 30px 25% 0 35px;
+    background: #eeeeee;
+    overflow: hidden;
+    position: relative;
+    img {
+      position: absolute;
+      z-index: 1;
+      background: #eeeeee;
+      top: 0;
+      right: 0;
+      max-width: 320px;
+      width: 100%;
+    }
+    p {
+      font-weight: 900;
+      z-index: 5;
+      position: relative;
+    }
+  }
+  .btn {
+    margin-top: 25px;
+    display: inline-block;
+  }
+}
+
+.advantages__infos {
+  margin-top: 70px;
+  margin-bottom: 70px;
+  .advantages__info {
+    text-align: center;
+    span {
+      margin: 0 auto 35px auto;
+      display: block;
+      text-align: center;
+      line-height: 121px;
+    }
+    img {
+      vertical-align: middle;
+    }
+    p {
+      font-weight: 700;
+    }
+  }
+}

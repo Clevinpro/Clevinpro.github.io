@@ -1,0 +1,39 @@
+.productionPage {
+  position: relative;
+
+  .asideBg {
+    &::after{
+      left: 0;
+      right: inherit;
+    }
+  }
+
+  .topInfoSection{
+    .btn {
+      margin: auto;
+    }
+    &>div {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }
+  .bgSection {
+    background-size:cover;
+  }
+  .production__menu {
+    ul {
+      margin-top: 60px;
+      position: relative;
+      z-index: 100;
+      li {
+        margin:20px 0 20px 0;
+      }
+    }
+
+  }
+  footer {
+    float: left;
+
+  }
+
+}
