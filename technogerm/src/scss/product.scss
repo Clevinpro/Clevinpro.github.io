@@ -1,13 +1,11 @@
 .productionPage {
   position: relative;
-
   .asideBg {
     &::after{
       left: 0;
       right: inherit;
     }
   }
-
   .topInfoSection{
     .btn {
       margin: auto;
@@ -16,17 +14,54 @@
       margin-top: 20px;
       margin-bottom: 20px;
     }
+    .production__item {
+      overflow: hidden;
+      padding:25px 10px 30px 0;
+      transition-duration: .3s;
+      outline: 0 solid black;
+      &:hover {
+        outline: 8px solid $lightBlue;
+        border-color: transparent;
+        transition-duration: .3s;
+        cursor: pointer;
+      }
+      .middle_img {
+        line-height: 260px;
+        height: 260px;
+        width: 100%;
+        display: block;
+        text-align: center;
+      }
+      h4 {
+        color: $lightBlue;
+        margin:15px 0 15px 0;
+      }
+      p , .production__item__standart {
+        font-size: 17px;
+      }
+      .production__item__standart {
+        margin: 15px 0 0 0;
+        color: lightgray;
+
+      }
+      p,h4,.production__item__standart{
+        margin-left: 32px;
+        width: calc(100% - 32px);
+      }
+    }
   }
   .bgSection {
     background-size:cover;
   }
   .production__menu {
     ul {
-      margin-top: 60px;
+      margin: 60px 0 0 0;
       position: relative;
-      z-index: 100;
+      z-index: 10;
       li {
         margin:20px 0 20px 0;
+        font-size: 22px;
+        line-height:30px;
       }
     }
 
@@ -34,6 +69,43 @@
   footer {
     float: left;
 
+  }
+}
+
+@media (min-width: 1200px)  and  (max-width: 1599px){
+  .productionPage .topInfoSection .infoBox {
+    height: 265px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .productionPage .topInfoSection .production__item .production__item__standart,
+  .productionPage .topInfoSection .production__item p {
+    font-size: 14px;
+  }
+  .productionPage .production__menu ul li {
+    font-size: 17px;
+  }
+  .topInfoSection .infoBox .newsTitle {
+    font-size: 18px;
+
+  }
+}
+@media (min-width: 480px) and  (max-width: 991px){
+  .productionPage .production__menu ul li {
+    font-size: 15px;
+    line-height: 1.25;
+  }
+}
+@media (min-width: 320px) and (max-width: 992px) {
+  .productionPage .topInfoSection .production__item .production__item__standart,
+  .productionPage .topInfoSection .production__item p {
+    font-size: 13px;
+  }
+  .productionPage .production__menu ul li {
+    font-size: 15px;
+  }
+  .productionPage .topInfoSection .infoBox .newsTitle {
+    font-size: 16px;
   }
 
 }

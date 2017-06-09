@@ -3,6 +3,10 @@
   h2 {
     padding: 34px 0 27px;
   }
+
+  img {
+    width: 100%;
+  }
 }
 
 .projection__item {
@@ -22,11 +26,7 @@
 }
 
 .projection__images {
-  margin: 0 -17px;
 
-  img {
-    margin: 0 16px 60px;
-  }
 }
 
 .aside__news, .aside__publication {
@@ -36,9 +36,13 @@
 
 .aside__container {
   width: 100%;
-  height: 495px;
+}
 
 
+.newsOpen, .newsClose {
+  visibility: hidden;
+  display: none;
+  cursor: pointer;
 }
 
 .newsBar {
@@ -63,6 +67,7 @@
 
   img {
     width: 100%;
+    height: 100%;
   }
 }
 
@@ -77,6 +82,7 @@
   h4 {
     font-size: 21px;
     letter-spacing: -.4px;
+    padding-bottom: 80px;
   }
 
 
@@ -84,9 +90,8 @@
 
 .aside__publication {
 
-
   .aside__container {
-    padding: 40px 21px 35px;
+    padding: 40px 21px 70px;
     position: relative;
     color: #fff;
   }
@@ -115,4 +120,138 @@
     left: 21px;
   }
 
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .aside__news {
+    h4 {
+      font-size: 19px;
+      padding-bottom: 60px;
+    }
+  }
+
+  .aside__publication {
+    h4 {
+      font-size: 23px;
+      line-height: 28px;
+      padding-bottom: 100px;
+    }
+  }
+
+  .newsBar {
+    button {
+      font-size: 17px;
+    }
+  }
+}
+
+
+@media (min-width: 320px) and (max-width: 991px) {
+
+  .projection__stages h2 {
+    color: #fff;
+  }
+
+  .aside__news {
+    h4 {
+      padding-bottom: 65px;
+    }
+  }
+
+  .aside__publication {
+    h4 {
+      font-size: 26px;
+      line-height: 32px;
+      padding-bottom: 240px;
+    }
+  }
+
+  .newsBar {
+    button {
+      font-size: 16px;
+    }
+  }
+
+  .newsOpen {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    width: 35px;
+    height: 35px;
+    display: block;
+    visibility: visible;
+    z-index: -1;
+    transition: .5s .3s ease-out;
+    path {
+      fill: $blue;
+    }
+  }
+
+  .newsClose {
+    position: fixed;
+    display: block;
+    right: 350px;
+    top: 50%;
+    width: 35px;
+    height: 35px;
+    transition: none;
+
+    path {
+      fill: #fff;
+    }
+
+  }
+
+  .newsBar {
+    position: fixed;
+    z-index: 11;
+    width: 300px;
+    padding: 0 0 50px;
+    top: 100px;
+    right: -300px;
+    overflow: auto;
+    height: 540px;
+    transition: .5s linear;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: $blue;
+      position: fixed;
+      visibility: hidden;
+      left: 0;
+      top: 0;
+      z-index: -1;
+      opacity: 0;
+      transition: .5s linear;
+    }
+
+
+
+    &.newsBarOpen {
+      right: 0;
+
+
+      &::before {
+        visibility: visible;
+        opacity: .96;
+      }
+
+
+      .newsClose {
+        visibility: visible;
+        right: 310px;
+        transition: .5s .3s ease-out;
+      }
+
+      .newsOpen {
+        visibility: hidden;
+        right: -40px;
+        transition: none;
+      }
+
+    }
+  }
 }

@@ -1,14 +1,13 @@
 .contactsbox {
   height: 490px;
-  padding-top: 90px;
-  padding-bottom: 65px;
-  background-color: #009ef2;
-  background-position: 85% 0 , 0 0 ;
-  background-repeat:no-repeat;
+  padding: 90px 0 65px 0;
+  background: #048aeb;
+  background: linear-gradient(to right, #048aeb 0%,#4fa3f0 43%,#4fa3f0 57%,#068bec 100%);
+  .container { position: relative }
   .contactsForm__container input{
     width: 39%;
     margin-right: 22px;
-    font-size: 18x;
+    font-size: 18px;
     &:nth-of-type(2) {
       margin-right: 0;
     }
@@ -30,6 +29,7 @@
   }
   .grafflex {
     margin-left:20px;
+    margin-top: -20px;
   }
   .firstTitle {
     margin-top: 15px;
@@ -40,12 +40,19 @@
     font-weight: 700;
   }
 }
+
+.spritespinContaioner {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 300px;
+  width: 300px;
+}
+
 .topInfoSection {
-  padding-top: 35px;
-  padding-bottom:50px;
+  padding: 35px 0 50px 0;
   .row>div {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin:15px 0 15px 0;
   }
   .infoBox {
     padding: 8px 8px 8px 32px;
@@ -77,8 +84,7 @@
       font-size: 18px;
     }
     h4 {
-      margin-top:30px ;
-      margin-bottom: 20px;
+      margin:30px 0 20px 0;
     }
     img {
       float: right;
@@ -89,6 +95,7 @@
       width: 100%;
       height: 100%;
       z-index: 1;
+      max-width: 100%;
       top: 0;
       left: 0;
       margin: 0;
@@ -100,12 +107,13 @@
   padding-bottom: 65px;
   .production__item {
     height: 320px;
-    margin-top: 17px;
-    margin-bottom: 17px;
+    max-width: 320px;
+    margin:17px auto;
     padding: 30px 25% 0 35px;
-    background: #eeeeee;
+    background: #f1f1f1;
     overflow: hidden;
     position: relative;
+    cursor: pointer;
     img {
       position: absolute;
       z-index: 1;
@@ -114,6 +122,7 @@
       right: 0;
       max-width: 320px;
       width: 100%;
+      height: 100%;
     }
     p {
       font-weight: 900;
@@ -128,8 +137,7 @@
 }
 
 .advantages__infos {
-  margin-top: 70px;
-  margin-bottom: 70px;
+  margin:70px 0 70px 0;
   .advantages__info {
     text-align: center;
     span {
@@ -146,3 +154,94 @@
     }
   }
 }
+
+@media (min-width: 1200px)  and  (max-width: 1599px){
+  .productionSection .production__item {
+    height: 290px;
+  }
+  .topInfoSection .infoBox img {
+    margin-left: 20px;
+  }
+  .btn,
+  .date {
+    font-size: 14px;
+  }
+  .contactsbox {
+    background-position: 100% 0,0 0;
+    .contactsForm__container input {
+      margin-right: 3%;
+    }
+  }
+  .catalogSection {
+    background-position: 90% 83px,0 0;
+  }
+}
+
+@media (min-width: 992px) and  (max-width: 1199px) {
+  .topInfoSection .infoBox {
+    padding-left: 20px;
+    padding-bottom:20px;
+    height: auto;
+    min-height: 270px;
+    a {
+      font-size: 14px;
+    }
+    img {
+      margin-left: 10px;
+      max-width: 60%;
+    }
+    span {
+      top: 8px;
+      left: 20px;
+    }
+  }
+
+}
+  @media (min-width: 480px) and  (max-width: 992px) {
+    .contactsbox {
+      padding: 15px 0 65px;
+      .contactsForm__container input {
+        width: 100%;
+        margin: 0 0 20px 0;
+        &:nth-of-type(2) {
+          width: 65%;
+        }
+      }
+      .firstTitle {
+        font-size: 38px;
+      }
+      .firstTitle__caption {
+        font-size: 26px;
+      }
+    }
+    .topInfoSection .infoBox {
+      padding: 8px 8px 8px 10px;
+
+      img { margin-left: 10px;
+        max-width: 60%;
+      }
+      span {
+        top: 8px;
+        left: 10px;
+      }
+    }
+    .catalogSection .contactsForm__container__size {
+      width: 100%;
+    }
+  }
+
+@media (min-width: 320px) and (max-width:991px ) {
+  .advantages__info {
+  margin-bottom: 35px;
+  }
+  .clearfix {
+    display: block;
+  }
+  .catalogSection .contactsForm__container__size {
+    min-width: 0;
+    width: 90%;
+  }
+
+}
+
+

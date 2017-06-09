@@ -65,14 +65,14 @@ gulp.task('bs', function() {
 // Так как это просто пример, то лучшим вариантом было бы разделение на основные и 
 // вспомогательные скрипты (например основные - jquery/bootstrap и вспомогательные - lightbox/fotorama) 
 gulp.task('scriptsRun', function() {
-    var js = gulp.src(['src/js/*.js', '!src/js/*jquery*', '!src/js/*bootstrap*', '!src/js/*slick*'])
+    var js = gulp.src(['src/js/*.js', '!src/js/*jquery*', '!src/js/*spritespin*', '!src/js/*bootstrap*', '!src/js/*slick*'])
         .pipe(concat('all.min.js'))
         .pipe(uglify())
         .pipe(size({
         	title: 'size of custom js'
         }))
         .pipe(gulp.dest('src/js/'));
-    var jsDeps = gulp.src(['src/js/*jquery*', 'src/js/*bootstrap*', 'src/js/*slick*', '!src/js/main.js', '!src/js/ajax.js'])
+    var jsDeps = gulp.src(['src/js/*jquery*', 'src/js/*spritespin*', 'src/js/*bootstrap*', 'src/js/*slick*', '!src/js/main.js', '!src/js/ajax.js'])
     	.pipe(concat('vendors.min.js'))
     	.pipe(size({
     		title: 'size of js dependencies'

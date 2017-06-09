@@ -25,7 +25,6 @@ body{
   height: 245px;
   color: white;
   background-size: cover;
-  border-top:4px solid #289ce7;
   .container {
     line-height: 245px;
     vertical-align: middle;
@@ -38,6 +37,7 @@ body{
   .btn {
     margin-left: 30px;
     line-height: 1;
+    letter-spacing: 0.4px;
     vertical-align: middle;
   }
 
@@ -46,9 +46,16 @@ body{
 .catalogSection {
   padding-top: 65px;
   padding-bottom: 110px;
-  background-color: #009ef2;
   background-position: 88% 83px , 0 0 ;
   background-repeat:no-repeat;
+  position: relative;
+  .catalogSection_bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
   .contactsForm__container__size {
     width: 51.3%;
     min-width: 635px;
@@ -77,12 +84,12 @@ body{
         margin-right: 0;
       }
       &:nth-of-type(2) {
-        width: 49%;
+        width: 48.5%;
         float: left;
         margin-left: 0;
       }
       &:nth-of-type(3) {
-        width: 49%;
+        width: 48.5%;
         float: right;
         margin-right: 0;
       }
@@ -91,6 +98,41 @@ body{
 }
 
 
+@media (min-width: 1200px)  and  (max-width: 1599px){
+  .catalogSection {
+    background-position: 95% 83px,0 0;
+  }
+}
+@media (min-width: 992px) and  (max-width: 1199px) {
+}
+@media (min-width: 768px) and  (max-width: 991px) {
+}
+
+@media (min-width: 480px) and (max-width:  991px) {
+  .catalogSection .contactsForm__container__size {
+    min-width: 0;
+    width: 90%;
+    margin: auto;
+  }
+  .bgSection h1 {
+    font-size: 26px;
+  }
+}
+@media (min-width: 320px) and (max-width: 767px) {
+  .catalogSection .contactsForm__container__size input {
+    width: 100%;
+}
+
+}
+
+@media (min-width: 320px) and (max-width: 1199px) {
+  .catalogSection {
+    background: linear-gradient(to right,#048aeb 0,#4fa3f0 47%,#4fa3f0 53%,#068bec 100%);
+    img{
+      display: none;
+    }
+  }
+}
 
 
 

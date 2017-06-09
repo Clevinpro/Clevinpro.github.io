@@ -1,7 +1,3 @@
-$firaFont : "FiraSansCondensed" ;
-
-* {
-font-family: $firaFont, sans-serif;}
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
@@ -12,12 +8,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-top:35px;
   margin-bottom: 35px;
 }
-p {
-  font-size: 18px;
-  font-weight: 400;
-  letter-spacing: -.4px;
-  line-height: 28px;
-}
+
 
 
 /* FiraSansCondensed Font */
@@ -66,5 +57,5 @@ p {
 /* End FiraSansCondensed Font */
 
 * {
-  font: $firaFont;
+  font-family: 'FiraSansCondensed';
 }

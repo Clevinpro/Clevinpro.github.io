@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "bootstrap-only-grid, scss, responsive, bem",
   "main": "main.js",
-  "scripts": {
-
-  },
+  "scripts": {},
   "author": "",
   "license": "ISC",
   "dependencies": {},
@@ -26,6 +24,7 @@
     "gulp-size": "^2.1.0",
     "gulp-sourcemaps": "^2.6.0",
     "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
     "jshint": "^2.9.4"
   }
 }

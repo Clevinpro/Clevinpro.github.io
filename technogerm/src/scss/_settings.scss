@@ -1,7 +1,6 @@
 
 h1 {
   font-size: 38px;
-  font-weight: 700;
   letter-spacing: -1px;
 }
 
@@ -14,9 +13,18 @@ h3 {
   font-size: 21px;
   letter-spacing: -.4px;
 }
-
+p {
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -.4px;
+  line-height: 28px;
+}
+p.newsTitle {
+  margin-top: 35px;
+  font-size: 22px;
+}
 input {
-   line-height: 51px;
+   height: 51px;
    padding-left: 20px;
 }
 
@@ -82,9 +90,12 @@ input {
  .dib ,
 .dib-li > li{
   display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+}
+.verticalAlign_top_footer_li > li{
   vertical-align: top;
 }
-
 .borderBlue {
   border: 12px solid $lightBlue ;
   height: 158px;
@@ -93,10 +104,67 @@ input {
 }
 
 .date {
-  color: #ababab;
+  color: #ababab !important;
   font-style: italic;
+}
+.clearfix {
+  display: none;
+  clear: both;
 }
 
 .border_3px {
   border: 3px solid black;
+}
+
+
+@media (min-width: 1200px) and (max-width: 1599px) {
+  h1 {
+    font-size: 34px;
+  }
+  h2 {
+    font-size: 26px;
+  }
+
+  h3 {
+    font-size: 19px;
+  }
+  p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px){
+  h1 {
+    font-size: 30px;
+  }
+  h2 {
+    font-size: 22px;
+  }
+
+  h3 {
+    font-size: 17px;
+  }
+  p {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+@media (min-width: 320px) and (max-width: 991px){
+  .asideNoBgRight, .asideNoBgLeft {
+    background: transparent;
+    border: none;
+  }
+
+  .asideBg::after {
+    display: none;
+  }
+}
+@media (min-width: 320px) and (max-width: 767px){
+  .displayNone {
+    display: none;
+  }
 }

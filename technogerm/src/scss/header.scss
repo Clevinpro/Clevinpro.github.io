@@ -1,34 +1,43 @@
 
+.toggleBtn, .navClose { display: none; }
+
 header {
-  height: 145px;
-  padding: 30px 0 28px 0;
+  padding: 30px 0;
+  border-bottom:4px solid #289ce7;
   .navigation {
-    margin-left: 80px;
+    margin: 0 68px;
   }
   .nav__item {
-    padding-left: 13px;
-    padding-right: 13px;
-    padding-bottom:25px;
-    margin-left: -5px;
+    padding: 0 23px 0;
     text-align: center;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 700;
-
     &:nth-of-type(1) {
-      margin-left: 0;
+      svg {
+        padding-left: 19px;
+      }
+
     }
     a {
       color: black;
-      &:hover {
-        text-decoration: none;
+      transition: .3s ease-out;
+      .navFill {
+        transition: .3s ease-out;
       }
+      &:hover {
+          text-decoration: none;
+          color: $lightBlue;
+          .navFill {
+            fill: $lightBlue;
+          }
+        }
     }
-    img  {
-      margin-top: 13px;
-      margin-bottom: 11px;
+    svg  {
       height: 35px;
-      text-align: center;
+      display: block;
+      margin: 0 auto 7px;
     }
+
   }
 
 }
@@ -36,24 +45,235 @@ header {
   height: 86px;
   h3 {
     display: inline-block;
-    vertical-align: middle;
-    margin-top: 30px;
     font-size: 35px;
-    margin-left: 25px;
+    margin-left: 21px;
+    letter-spacing: 1.9px;
   }
 }
 
 .call {
   text-align: right;
-  float: right ;
   span {
     font-size: 30px;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     display: block;
+    font-weight: bold;
+    letter-spacing: -1.2px;
   }
   a {
     color: black;
     font-size: 22px;
     border-bottom: 3px dotted black;
   }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+
+  header {
+    padding: 15px 0;
+    .navigation {
+      margin: 0 73px;
+    }
+
+
+
+    .nav__item {
+      padding: 0 14px 0;
+      font-size: 15px;
+      &:nth-of-type(1) {
+        svg {
+          padding-left: 12px;
+        }
+      }
+      svg{
+        height: 30px;
+      }
+
+    }
+
+  }
+
+  .logo {
+    height: 68px;
+    img{
+      line-height: 1;
+      vertical-align: middle;
+      height: 100%;
+    }
+    h3 {
+      display: inline-block;
+      margin: 0 0 0 16px;
+      font-size: 30px;
+      letter-spacing: 1.6px;
+      line-height: 1;
+      vertical-align: middle;
+    }
+  }
+  .call {
+    span {
+      font-size: 27px;
+    }
+    a {
+      font-size: 19px;
+    }
+  }
+}
+
+
+@media (min-width: 320px) and (max-width: 1199px) {
+  body {
+    padding-top: 84px;
+  }
+
+  .logo {
+    height: 48px;
+    img{
+      line-height: 1;
+      vertical-align: middle;
+      height: 100%;
+    }
+    h3 {
+      display: inline-block;
+      margin: 0 0 0 16px;
+      font-size: 26px;
+      letter-spacing: 1.4px;
+      line-height: 1;
+      vertical-align: middle;
+    }
+  }
+
+
+
+  header {
+    padding: 16px 0;
+    position: fixed;
+    width: 100%;
+    z-index: 11;
+    top: 0;
+    left: 0;
+    background: #fff;
+    .navigation {
+      display: block;
+      margin: 0;
+      width: 280px;
+      left: 50%;
+      top: calc(50% - 200px);
+      padding: 0 0 0 50px;
+      transform: translate(-50%, -50%);
+      position: absolute;
+      transition: .3s ease-out;
+      opacity: 0;
+    }
+
+
+
+    .nav__item {
+      padding: 0 15px 0;
+      display: block;
+      font-size: 30px;
+      text-align: left;
+      margin-bottom: 20px;
+      font-weight: 400;
+
+      &:nth-of-type(1) svg {
+         padding: 0;
+       }
+
+      svg{
+        height: 28px;
+        display: inline-block;
+        margin: 0 10px 0 0;
+        padding: 0;
+        vertical-align: middle;
+        line-height: 1;
+        g {
+          fill: #fff;
+        }
+      }
+
+      a {
+        color: #fff
+      }
+
+    }
+
+  }
+
+  .call {
+    display: block;
+    max-width: 200px;
+    margin: 0;
+    position: absolute;
+    top: calc(50% + 160px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: .3s ease-out;
+    span, a {
+      color: #fff;
+      border-color: #fff;
+    }
+  }
+
+  .toggleBtn {
+    display: block;
+    position: absolute;
+    right: 40px;
+    top: 22px;
+    width: 35px;
+    height: 35px;
+    z-index: 12;
+    cursor: pointer;
+    visibility: visible;
+
+  }
+  .toggleMenu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: #22315a;
+    width: 100%;
+    height: 100%;
+    z-index: 11;
+    visibility: hidden;
+    transition: visibility .3s linear;
+
+
+    &.openNav {
+      visibility: visible;
+      transition: none;
+
+      .navClose {
+        display: block;
+        width: 35px;
+        height: 35px;
+        position: absolute;
+        top: 22px;
+        right: 40px;
+        cursor: pointer;
+      }
+
+      path {
+        fill: #fff;
+      }
+
+      .toggleBtn {
+        display: none;
+
+      }
+
+      .navigation {
+        top: calc(50% - 100px);
+        opacity: 1;
+      }
+
+      .call {
+        top: calc(50% + 120px);
+        opacity: 1;
+      }
+
+    }
+
+  }
+
 }
