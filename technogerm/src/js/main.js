@@ -48,7 +48,7 @@ $(document).ready(function() {
   $('.spritespin').spritespin({
     // generate an array of image urls.
     // this is a helper function that takes a {frame} placeholder
-    source: SpriteSpin.sourceArray( '/src/image/roto/{frame}.jpg', {
+    source: SpriteSpin.sourceArray( document.location.origin + '/technogerm/src/image/roto/{frame}.jpg', {
       // this ramge of numbers is interpolated into the {frame} placeholder
       frame: [1, 193],
       // the frame placeholder will be padded with leading '0' up to the number of 'digits'
