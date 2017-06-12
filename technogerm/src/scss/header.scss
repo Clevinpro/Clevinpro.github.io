@@ -202,6 +202,7 @@ header {
   .call {
     display: block;
     max-width: 200px;
+    width: 100%;
     margin: 0;
     position: absolute;
     top: calc(50% + 160px);
@@ -252,13 +253,16 @@ header {
         right: 40px;
         cursor: pointer;
       }
+
       path {
         fill: #fff;
       }
+
       .toggleBtn {
         display: none;
 
       }
+
       .navigation {
         top: calc(50% - 100px);
         opacity: 1;
@@ -273,4 +277,52 @@ header {
 
   }
 
+}
+
+
+@media (min-width: 320px) and (max-width: 479px) {
+  .logo {
+    height: 40px;
+  }
+
+  header {
+    padding: 8px 0;
+
+    .navigation {
+      padding: 0 0 0 30px;
+    }
+  }
+
+  .toggleBtn {
+    right: 20px;
+    top: 10px;
+  }
+
+  .logo {
+    h3 {
+      display: inline-block;
+      margin: 0 0 0 8px;
+      font-size: 21px;
+      letter-spacing: 1px;
+    }
+  }
+
+  body {
+    padding-top: 60px;
+  }
+
+  .toggleMenu{
+    &.openNav{
+
+      .navigation {
+        top: 50%;
+        opacity: 1;
+
+      }
+      .call {
+        top: initial;
+        bottom: 0;
+      }
+    }
+  }
 }

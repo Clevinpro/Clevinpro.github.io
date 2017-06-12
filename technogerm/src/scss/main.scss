@@ -19,6 +19,7 @@ body{
   width: 100%;
   font-size: 17px;
   letter-spacing: -.4px;
+  -webkit-text-size-adjust: 100%;
 }
 
 .bgSection {
@@ -111,26 +112,48 @@ body{
 @media (min-width: 480px) and (max-width:  991px) {
   .catalogSection .contactsForm__container__size {
     min-width: 0;
-    width: 90%;
-    margin: auto;
+    width: 100%;
   }
   .bgSection h1 {
     font-size: 26px;
   }
 }
 @media (min-width: 320px) and (max-width: 767px) {
-  .catalogSection .contactsForm__container__size input {
-    width: 100%;
-}
+  .catalogSection {
+    .contactsForm__container__size {
+      width: 100%;
+      min-width: inherit;
+      p {
+        width: 100%;
+        font-size: 17px;
+        line-height: 24px;
+      }
+      input {
+        width: 100%;
+
+        &:nth-of-type(2), &:nth-of-type(3) {
+          width: 100%;
+        }
+      }
+    }
+  }
 
 }
 
 @media (min-width: 320px) and (max-width: 1199px) {
   .catalogSection {
-    background: linear-gradient(to right,#048aeb 0,#4fa3f0 47%,#4fa3f0 53%,#068bec 100%);
-    img{
-      display: none;
-    }
+      background: linear-gradient(to right,#048aeb 0,#4fa3f0 47%,#4fa3f0 53%,#068bec 100%);
+      img{
+        display: none;
+      }
+  }
+
+
+}
+
+@media (min-width: 320px) and (max-width: 479px) {
+  input::-webkit-input-placeholder, input:-moz-placeholder {
+    font-size: 15px;
   }
 }
 

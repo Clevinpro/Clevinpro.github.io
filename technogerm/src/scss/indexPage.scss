@@ -8,6 +8,7 @@
     width: 39%;
     margin-right: 22px;
     font-size: 18px;
+    color: #757575;
     &:nth-of-type(2) {
       margin-right: 0;
     }
@@ -43,10 +44,11 @@
 
 .spritespinContaioner {
   position: absolute;
-  right: 0;
+  right: 15px;
   top: 0;
   height: 300px;
   width: 300px;
+  z-index: 7;
 }
 
 .topInfoSection {
@@ -101,23 +103,20 @@
       margin: 0;
     }
   }
-
 }
 .productionSection {
   padding-bottom: 65px;
   .production__item {
-    height: 320px;
+    width: 100%;
+    height: 100%;
     max-width: 320px;
     margin:17px auto;
-    padding: 30px 25% 0 35px;
     background: #f1f1f1;
     overflow: hidden;
     position: relative;
     cursor: pointer;
     img {
-      position: absolute;
-      z-index: 1;
-      background: #eeeeee;
+      z-index: -1;
       top: 0;
       right: 0;
       max-width: 320px;
@@ -127,7 +126,12 @@
     p {
       font-weight: 900;
       z-index: 5;
-      position: relative;
+      position: absolute;
+      display: block;
+      max-width: 240px;
+      margin: 35px auto 0 ;
+      left: 0;
+      right: 0;
     }
   }
   .btn {
@@ -197,51 +201,93 @@
   }
 
 }
-  @media (min-width: 480px) and  (max-width: 992px) {
-    .contactsbox {
-      padding: 15px 0 65px;
-      .contactsForm__container input {
-        width: 100%;
-        margin: 0 0 20px 0;
-        &:nth-of-type(2) {
-          width: 65%;
-        }
-      }
-      .firstTitle {
-        font-size: 38px;
-      }
-      .firstTitle__caption {
-        font-size: 26px;
-      }
-    }
-    .topInfoSection .infoBox {
-      padding: 8px 8px 8px 10px;
 
-      img { margin-left: 10px;
-        max-width: 60%;
-      }
-      span {
-        top: 8px;
-        left: 10px;
-      }
-    }
-    .catalogSection .contactsForm__container__size {
-      width: 100%;
-    }
+@media (min-width: 320px) and (max-width: 1199px) {
+  .spritespinContaioner .spritespin {
+    display: none;
   }
+}
 
-@media (min-width: 320px) and (max-width:991px ) {
-  .advantages__info {
-  margin-bottom: 35px;
+@media (min-width: 320px) and (max-width: 991px) {
+  .contactsbox {
+    padding: 15px 0 65px;
+    height: 100%;
+    .contactsForm__container_size {
+      .btn {
+
+      }
+    }
+
+    .contactsForm__container input {
+      width: 100%;
+      margin: 0 0 20px 0;
+    }
+    .firstTitle {
+      font-size: 38px;
+    }
+    .firstTitle__caption {
+      font-size: 26px;
+    }
   }
   .clearfix {
     display: block;
   }
-  .catalogSection .contactsForm__container__size {
-    min-width: 0;
-    width: 90%;
+  .topInfoSection .infoBox {
+    padding: 8px 8px 20px 10px;
+    height: 100%;
+
+    img {
+      margin-left: 10px;
+      max-width: 60%;
+      object-fit: cover;
+    }
+    span {
+      top: 8px;
+      left: 10px;
+    }
   }
+  .advantages__info {
+    margin-bottom: 35px;
+  }
+
 
 }
 
+@media (min-width: 320px) and (max-width: 767px) {
+  .productionSection {
+    .btn {
+    max-width: 227px;
+    display: block;
+    margin: 30px auto 0;
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 479px) {
+  .advantages__infos {
+    .col-xs-6 {
+      width: 100%;
+    }
+    .advantages__info {
+      p {
+        max-width: 220px;
+        font-size: 15px;
+        margin: 0 auto;
+        line-height: 20px;
+      }
+      span{
+        margin: 0 auto 15px;
+      }
+    }
+  }
+
+  .contactsbox {
+      .contactsForm__container_size {
+        .btn {
+          float: none;
+        }
+      }
+  }
+
+}
 
