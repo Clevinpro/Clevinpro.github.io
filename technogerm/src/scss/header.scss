@@ -288,8 +288,26 @@ header {
   header {
     padding: 8px 0;
 
+    .nav__item {
+      font-size: 22px;
+      margin-bottom: 16px;
+      svg {
+        height: 22px;
+      }
+    }
+
     .navigation {
-      padding: 0 0 0 30px;
+      padding: 0;
+
+    }
+  }
+  .call {
+    top: calc(50% + 200px);
+    span {
+      font-size: 24px;
+    }
+    a {
+      font-size: 18px;
     }
   }
 
@@ -316,12 +334,16 @@ header {
 
       .navigation {
         top: 50%;
-        opacity: 1;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
 
       }
       .call {
-        top: initial;
-        bottom: 0;
+        top: calc(50% + 157px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+
       }
     }
   }
