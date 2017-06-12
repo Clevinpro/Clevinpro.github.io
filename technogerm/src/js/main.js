@@ -56,11 +56,13 @@ $(document).ready(function() {
     }),
     // Specify the display width and height of the frame.
     // Optionally the size of the container can be defined with CSS.
-
+    width: 600,
+    height: 600,
     // Sense controls the direction and speed of the animation for mouse/touch interactions.
     // Here a negative value is chosen to invert the rotation, so the animation 'follows' the drag direction.
     // Values towards 0 will slow the animation down.
-    sense: 1
+    sense: 1,
+    responsive: true
   });
 });
 
