@@ -39,11 +39,7 @@
 }
 
 
-.newsOpen, .newsClose {
-  visibility: hidden;
-  display: none;
-  cursor: pointer;
-}
+
 
 .newsBar {
   button {
@@ -172,34 +168,14 @@
     }
   }
 
-  .newsOpen {
-    position: fixed;
-    right: 20px;
-    top: 50%;
-    width: 35px;
-    height: 35px;
+  .barOpen {
     display: block;
     visibility: visible;
-    z-index: -1;
-    transition: .5s .3s ease-out;
-    path {
-      fill: $blue;
-    }
+
   }
 
-  .newsClose {
-    position: fixed;
+  .barClose {
     display: block;
-    right: 350px;
-    top: 50%;
-    width: 35px;
-    height: 35px;
-    transition: none;
-
-    path {
-      fill: #fff;
-    }
-
   }
 
   .newsBar {
@@ -228,9 +204,7 @@
       transition: .5s linear;
     }
 
-
-
-    &.newsBarOpen {
+    &.toggleBarOpen {
       right: 0;
 
 
@@ -239,14 +213,13 @@
         opacity: .96;
       }
 
-
-      .newsClose {
+      .barClose {
         visibility: visible;
         right: 310px;
         transition: .5s .3s ease-out;
       }
 
-      .newsOpen {
+      .barOpen {
         visibility: hidden;
         right: -40px;
         transition: none;

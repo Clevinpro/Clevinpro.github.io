@@ -2,6 +2,7 @@
 <html lang="rus">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name=”viewport” content=”user-scalable=no” />
   <link href="src/css/bootstrap.min.css" rel="stylesheet">
   <link href="src/css/bootstrap-theme.min.css" rel="stylesheet">
   <link href="src/css/styles.min.css" rel="stylesheet">
@@ -17,7 +18,7 @@
     <div class="toggleMenu dib">
       <ul class="navigation dib dib-li">
         <li class="nav__item">
-          <a href="/">
+          <a href="./pages/about/projection.html">
             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                viewBox="0 0 490.929 490.929" style="enable-background:new 0 0 490.929 490.929;" xml:space="preserve">
               <g class="navFill">
@@ -160,7 +161,7 @@
   <section class="contactsbox">
     <div class="container">
       <div class="spritespinContaioner">
-        <div class="spritespin"></div>
+        <div class="spritespin" style="max-width: 100%; max-height: 100%"></div>
       </div>
       <!-- gradient bg -->
       <h1 class="firstTitle dib">МЕХАНИЧЕСКИЕ УПЛОТНЕНИЯ</h1> <img src="src/image/graflex.png" class="grafflex displayNone" alt="">
@@ -182,28 +183,30 @@
     <div class="container">
       <div class="row" style="text-align: center;">
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="text-align: left;">
-          <div class="infoBox colorWhite"><span class="date"></span>
+          <div class="infoBox colorWhite infobox--bgImage"><span class="date"></span>
             <img src="src/image/news/news1.png" class="bgImage" alt="">
+              <div class="infobox__Container verticalAlign_top">
             <h4 class="newsTitle">О компании “ТЕХНОГЕРМ”</h4>
             <p>ЗАО «Технологии Герметизации» специализируется на проектировании,
               производстве, поставке и ремонте механических уплотнений.
               Вся производимая предприятием продукция базируется
               на конструктивных разработках лидера Российского рынка в области
               уплотнительной техники ЗАО НПО «УНИХИМТЕК».</p>
-            <a href="">Подробнее о “ТЕХНОГЕРМ”</a>
+                  <a href="">Подробнее о “ТЕХНОГЕРМ”</a></div>
           </div>
         </div>
 
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="text-align: left;">
-          <div class="infoBox  colorBlack border_3px">
-            <img src="src/image/news/news2.png" alt="">
+          <div class="infoBox  colorBlack borderPrimary">
+           <div class="infobox__Container verticalAlign_top">
             <span class="date"><p>22.12.2016</p></span>
             <h4 class="newsTitle">Новости</h4>
             <p>«Роснефть» начала
               строительство трубопровода
               с месторождения «Русское».
             </p>
-            <a href="">Все новости</a>
+               <a href="">Все новости</a></div>
+              <div class="infobox__Container__img"><img src="src/image/news/news2.png" alt="" class="verticalAlign_top"></div>
           </div>
         </div>
       </div>
@@ -250,7 +253,7 @@
               <img src="src/image/production_items/production_5.png" alt="">
             </div>
           </div>
-          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" >
+          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="production__item"><p>Одинарные картриджные уплотнения</p>
               <img src="src/image/production_items/production_6.png" alt="">
             </div>
@@ -340,7 +343,7 @@
   <section class="footerSection ">
     <div class="container">
       <ul class="row">
-        <li class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <li class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
           <ul class="contacts_info_list">
             <li><img src="src/image/logo_mini.png" alt="" class="dib">
               <p class="dib">ТЕХНОГЕРМ</p></li>
@@ -350,10 +353,10 @@
             <li>ОКВЭД 60.21.1</li>
           </ul>
         </li>
-        <li class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-          <ul class="row float_right footer_lists verticalAlign_top_footer_li">
+        <li class="col-lg-9 col-md-9 col-sm-6 col-xs-6">
+          <ul class="row  footer_lists verticalAlign_top_footer_li dib verticalAlign__Top" >
             <li class="dib">
-              <ul>
+              <ul class="footer_nav">
                 <li><a href="">O компании</a></li>
                 <li><a href="">Проектирование</a></li>
                 <li><a>Производство</a></li>
@@ -363,7 +366,7 @@
               </ul>
             </li>
             <li class="dib ">
-              <ul>
+              <ul class="footer_nav">
                 <li><a href="">Продукция</a></li>
                 <li><a href="">Уплотнения</a></li>
                 <li><a href="">Изделия из стали и графита</a></li>
@@ -371,26 +374,23 @@
               </ul>
             </li>
             <li class="dib">
-              <ul>
+              <ul class="footer_nav">
 
-                <li><a href="">Иформация</a></li>
+                <li><a href="">Информация</a></li>
                 <li><a href="">Новости</a></li>
                 <li><a href="">Публикации</a></li>
               </ul>
             </li>
-            <li class="dib ">
-              <ul>
-
-                <li><a href="">Контакты</a></li>
-                <li><p>+7 (495) 580-38-98</p></li>
-                <li><b>info@tehnogerm.ru</b></li>
-                <li>
-                  <p> 142181, Московская обл. <br> город Климовск, <br> ул. Заводская д.2</p>
-                </li>
-                <li><a href="">схема проезда</a></li>
-              </ul>
-            </li>
           </ul>
+
+          <ul class="dib footer_nav contacts__list float_right" >
+            <li><a href="">Контакты</a></li>
+            <li><p>+7 (495) 580-38-98</p></li>
+            <li><b>info@tehnogerm.ru</b></li>
+            <li><p> 142181, Московская обл. <br> город Климовск, <br> ул. Заводская д.2</p></li>
+            <li><a href="">схема проезда</a></li>
+          </ul>
+
         </li>
       </ul>
     </div>

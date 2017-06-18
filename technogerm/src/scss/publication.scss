@@ -3,9 +3,37 @@
     text-align: center;
     .infoBox {
       text-align: left;
+      padding: 8px 8px 8px 32px;
+      min-height: 270px;
+      height: 1px;
+      h4 {
+        font-size: 28px;
+        line-height: 1.5;
+      }
     }
   }
   .btn {
     margin-top: 45px;
+  }
+  .topInfoSection .infoBox .btn--readPublication {
+    position: absolute;
+    bottom: 22px;
+    display: block;
+    margin: 0;
+  }
+}
+@media (min-width: 320px) and  (max-width: 480px) {
+  .publicationPage .topInfoSection .infoBox  {
+    height: auto;
+    min-height: 150px;
+      h4 {
+        margin-bottom: 80px;
+      }
+  }
+  .publicationPage .topInfoSection .infoBox .date {
+    bottom: 22px;
+  }
+  .publicationPage .topInfoSection .infoBox .btn--readPublication {
+    right: 20px;
   }
 }

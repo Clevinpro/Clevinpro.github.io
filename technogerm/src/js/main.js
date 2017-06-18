@@ -29,19 +29,19 @@ $(document).ready(function() {
     });
   }
 
-  if (newsOpen) {
-    // NewsMenu toggle
-    var newsOpen = document.querySelector('.newsOpen'),
-      newsBar = document.querySelector('.newsBar');
 
-    newsOpen.addEventListener("click", function (event) {
+    // Bar window toggle
+    var barOpen = document.querySelector('.barOpen'),
+      bar = document.querySelector('.windowBar');
+  if (bar) {
+    barOpen.addEventListener("click", function (event) {
       event.stopPropagation();
-      newsBar.classList.toggle('newsBarOpen');
+      bar.classList.toggle('toggleBarOpen');
     });
 
 
     document.querySelector('body').addEventListener("click", function (event) {
-      newsBar.classList.remove('newsBarOpen');
+      bar.classList.remove('toggleBarOpen');
     });
   }
 
@@ -64,5 +64,36 @@ $(document).ready(function() {
     sense: 1,
     responsive: true
   });
+
+
+
+  jQuery(function($){
+    $('input[type="tel"]').mask("+7 (999) 999-99-99");
+  });
+
+
 });
+
+if (window.matchMedia('(max-width: 991px)').matches) {
+  $('.product__slider').slick({
+    initialSlide: 1,
+    centerMode: true,
+    infinite: false,
+    // centerPadding: '200px',
+    slidesToShow: 1,
+    speed: 500
+  });
+}
+// else if (window.matchMedia('(max-width: 840px)').matches) {
+//   $('.product__slider').slick({
+//     initialSlide: 1,
+//     centerMode: true,
+//     infinite: false,
+//     centerPadding: '150px',
+//     slidesToShow: 1,
+//     speed: 500
+//   });
+// }
+
+
 

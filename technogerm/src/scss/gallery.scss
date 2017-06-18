@@ -1,8 +1,10 @@
 .doubleFigure, .tripleFigure {
   display: inline-block;
+  padding: 0;
 
   img {
     width: 100%;
+    border: 1px solid transparent;
   }
 }
 
@@ -13,16 +15,20 @@
     display: block;
     max-width: 205px;
   }
+  .row {
+    margin: 0;
+  }
 
 }
 
 
 .doubleFigure {
   max-width: 680px;
-  height: 452px;
+  max-height: 452px;
+
 }
 
 .tripleFigure {
-  max-width: 452px;
-  height: 320px;
+  max-width: 453.6px;
+  max-height: 320px;
 }

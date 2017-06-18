@@ -219,13 +219,13 @@
                     </ul>
 
                 </section>
-                <aside class="newsBar col-md-3">
-                    <div class="newsOpen">
+                <aside class="newsBar windowBar col-md-3">
+                    <div class="barOpen">
                         <svg  viewBox="0 0 24 24">
                             <path fill="#000000" d="M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22V22H9M5,5V7H19V5H5M5,9V11H13V9H5M5,13V15H15V13H5Z" />
                         </svg>
                     </div>
-                    <div class="newsClose">
+                    <div class="barClose">
                         <svg  viewBox="0 0 24 24">
                             <path fill="#000000" d="M20,18H22V6H20M11.59,7.41L15.17,11H1V13H15.17L11.59,16.58L13,18L19,12L13,6L11.59,7.41Z" />
                         </svg>
@@ -260,21 +260,13 @@
         </div>
     </div>
 
-    <section class="catalogSection" style="
-            background-image: url(../../src/image/backgrounds/boottomForm.png),url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxyYWRpYWxHcmFkaWVudCBpZD0idnNnZyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjUwJSI+PHN0b3Agc3RvcC1jb2xvcj0iIzAwYTJmMSIgc3RvcC1vcGFjaXR5PSIxIiBvZmZzZXQ9IjAuNjA5Ii8+PHN0b3Agc3RvcC1jb2xvcj0iIzAwOGRmNCIgc3RvcC1vcGFjaXR5PSIxIiBvZmZzZXQ9IjEiLz48L3JhZGlhbEdyYWRpZW50PjxyZWN0IHg9Ii01MCIgeT0iLTUwIiB3aWR0aD0iMTAxIiBoZWlnaHQ9IjEwMSIgZmlsbD0idXJsKCN2c2dnKSIgLz48L3N2Zz4=);
-              /* Android 2.3- hack (needed for the actual radial gradient) */
-              background-image: url(../../src/image/backgrounds/boottomForm.png),url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxyYWRpYWxHcmFkaWVudCBpZD0idnNnZyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjUwJSI+PHN0b3Agc3RvcC1jb2xvcj0iIzAwYTJmMSIgc3RvcC1vcGFjaXR5PSIxIiBvZmZzZXQ9IjAuNjA5Ii8+PHN0b3Agc3RvcC1jb2xvcj0iIzAwOGRmNCIgc3RvcC1vcGFjaXR5PSIxIiBvZmZzZXQ9IjEiLz48L3JhZGlhbEdyYWRpZW50PjxyZWN0IHg9Ii01MCIgeT0iLTUwIiB3aWR0aD0iMTAxIiBoZWlnaHQ9IjEwMSIgZmlsbD0idXJsKCN2c2dnKSIgLz48L3N2Zz4=),
-              -webkit-gradient(radial, center center, 0, center center, 295,color-stop(0.609, rgb(0, 162, 241)),color-stop(1, rgb(0, 141, 244)));
-              /* Android 2.3 */
-              background-image:url(../../src/image/backgrounds/boottomForm.png),-webkit-radial-gradient(center center, ellipse farthest-side,rgb(0, 162, 241) 60.9%,rgb(0, 141, 244) 100%);
-              /* IE10+ */
-              background-image:url(../../src/image/backgrounds/boottomForm.png),radial-gradient(ellipse farthest-side at center center,rgb(0, 162, 241) 60.9%,rgb(0, 141, 244) 100%);
-              background-image: url(../../src/image/backgrounds/boottomForm.png),-ms-radial-gradient(center center, ellipse farthest-side,rgb(0, 162, 241) 60.9%,rgb(0, 141, 244) 100%);
-            ">
+    <section class="catalogSection  gradient">
+        <div class="catalogSection_bg" style="background: url('../../src/image/forn_bottom.jpg') no-repeat center; background-size: cover; z-index: -1" ></div>
         <div class="container">
-            <h2>КАТАЛОГ ПРОДУКЦИИ</h2>
+            <h3 class="titleOfSection">КАТАЛОГ ПРОДУКЦИИ</h3>
             <div class="contactsForm__container borderGradient contactsForm__container__size">
-                <p>Оставьте Ваши контакты и мы вышлем Вам на почту полный каталог механических уплотнений “Графлекс” с подробным описаниеми и всеми спецификациями</p>
+                <p>Оставьте Ваши контакты и мы вышлем Вам на почту полный каталог механических уплотнений “Графлекс” с подробным
+                    описаниеми и всеми спецификациями</p>
                 <form action="">
                     <input type="text" placeholder="Ваше имя или название организации">
                     <input type="text" class="dib" placeholder="Ваш E-mail">
@@ -292,20 +284,21 @@
 <footer>
     <section class="footerSection ">
         <div class="container">
-            <ul class="row ">
-                <li class="col-lg-3">
+            <ul class="row">
+                <li class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
                     <ul class="contacts_info_list">
-                        <li><img src="../../src/image/logo_mini.png" alt="" class="dib"><p class="dib">ТЕХНОГЕРМ</p></li>
-                        <li>ООО “Технологии Герметизации” </li>
+                        <li><img src="../../src/image/logo_mini.png" alt="" class="dib">
+                            <p class="dib">ТЕХНОГЕРМ</p></li>
+                        <li>ООО “Технологии Герметизации”</li>
                         <li>ОГРН 73530523042</li>
                         <li>КПП 23523426</li>
                         <li>ОКВЭД 60.21.1</li>
                     </ul>
                 </li>
-                <li class="col-lg-9">
-                    <ul class="row float_right footer_lists verticalAlign_top_footer_li">
+                <li class="col-lg-9 col-md-9 col-sm-6 col-xs-6">
+                    <ul class="row  footer_lists verticalAlign_top_footer_li dib verticalAlign__Top" >
                         <li class="dib">
-                            <ul>
+                            <ul class="footer_nav">
                                 <li><a href="">O компании</a></li>
                                 <li><a href="">Проектирование</a></li>
                                 <li><a>Производство</a></li>
@@ -314,8 +307,8 @@
                                 <li><a>Обслуживание</a></li>
                             </ul>
                         </li>
-                        <li class="dib">
-                            <ul>
+                        <li class="dib ">
+                            <ul class="footer_nav">
                                 <li><a href="">Продукция</a></li>
                                 <li><a href="">Уплотнения</a></li>
                                 <li><a href="">Изделия из стали и графита</a></li>
@@ -323,39 +316,35 @@
                             </ul>
                         </li>
                         <li class="dib">
-                            <ul>
+                            <ul class="footer_nav">
 
                                 <li><a href="">Иформация</a></li>
                                 <li><a href="">Новости</a></li>
                                 <li><a href="">Публикации</a></li>
                             </ul>
                         </li>
-                        <li class="dib">
-                            <ul>
-
-                                <li><a href="">Контакты</a></li>
-                                <li><p>+7 (495) 580-38-98</p></li>
-                                <li><b>info@tehnogerm.ru</b></li>
-                                <li>
-                                    <p> 142181, Московская обл. <br>  город Климовск, <br>  ул. Заводская д.2</p>
-                                </li>
-                                <li><a href="">схема проезда</a></li>
-                            </ul>
-                        </li>
                     </ul>
+
+                    <ul class="dib footer_nav contacts__list float_right" >
+                        <li><a href="">Контакты</a></li>
+                        <li><p>+7 (495) 580-38-98</p></li>
+                        <li><b>info@tehnogerm.ru</b></li>
+                        <li><p> 142181, Московская обл. <br> город Климовск, <br> ул. Заводская д.2</p></li>
+                        <li><a href="">схема проезда</a></li>
+                    </ul>
+
                 </li>
             </ul>
         </div>
     </section>
 
 
-
-
-
     <section class="copyrightSection">
         <div class="container">
-            <p>Все права на материалы, находящиеся на сайте, охраняются в соответствии с законодательством РФ. При любом использовании
-                материалов сайта письменное согласие обязательно. Торговые марки, логотипы и марки услуг, размещенные на данном сайте,
+            <p>Все права на материалы, находящиеся на сайте, охраняются в соответствии с законодательством РФ. При любом
+                использовании
+                материалов сайта письменное согласие обязательно. Торговые марки, логотипы и марки услуг, размещенные на данном
+                сайте,
                 являются собственностью ООО «ТЕХНОГЕРМ». <a href="" class="colorWhite">Политика кофединциальности</a></p>
         </div>
     </section>

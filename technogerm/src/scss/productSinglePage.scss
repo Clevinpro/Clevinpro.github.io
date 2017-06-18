@@ -1,5 +1,5 @@
 .productSingle {
-  width: 1178px;
+  max-width: 1178px;
   padding-bottom: 88px;
 
   h2 {
@@ -31,6 +31,7 @@
       padding: 16px 5px;
       box-sizing: content-box;
       cursor: pointer;
+
     }
 
     .slick-track {
@@ -105,7 +106,36 @@
 
   .productLogo {
     margin: 75px 0 0 10px;
+    height: 100%;
+    width: 100%;
   }
 
 }
 
+
+@media (min-width: 320px) and (max-width: 991px) {
+  .aboutProduct {
+    .productLogo {
+      margin: 75px 0 0;
+    }
+  }
+
+  .productSingle {
+    .row {
+      padding: 0 15px;
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 479px) {
+  .catalog__content {
+    padding: 50px 0 0 30px;
+  }
+  .catalogFade {
+    .slider-nav{
+      img {
+        padding: 11px 0px;
+      }
+    }
+  }
+}

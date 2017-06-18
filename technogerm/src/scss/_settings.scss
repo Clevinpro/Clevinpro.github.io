@@ -93,7 +93,7 @@ input {
   vertical-align: middle;
   line-height: 1;
 }
-.verticalAlign_top_footer_li > li{
+.verticalAlign_top_footer_li > li , .verticalAlign_top{
   vertical-align: top;
 }
 .borderBlue {
@@ -112,8 +112,72 @@ input {
   clear: both;
 }
 
-.border_3px {
+.borderPrimary {
   border: 3px solid black;
+}
+
+// Bar windows
+
+.barOpen, .barClose {
+  visibility: hidden;
+  display: none;
+  cursor: pointer;
+}
+
+.barOpen {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  width: 35px;
+  height: 35px;
+  z-index: -1;
+  transition: .5s .3s ease-out;
+  path {
+    fill: $blue;
+  }
+  &::before {
+    content: '';
+    background: rgba(255,255,255, .7);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    left: -5px;
+    z-index: -1;
+    top: -5px;
+  }
+
+}
+.barClose {
+  position: fixed;
+  right: 350px;
+  top: 50%;
+  width: 35px;
+  height: 35px;
+  transition: none;
+
+  path {
+    fill: #fff;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 1199px) {
+  .windowBar {
+    &::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: $blue;
+      position: fixed;
+      visibility: hidden;
+      left: 0;
+      top: 0;
+      z-index: -1;
+      opacity: 0;
+      transition: .5s linear;
+    }
+  }
 }
 
 
@@ -153,7 +217,7 @@ input {
 
 }
 
-@media (min-width: 320px) and (max-width: 991px){
+@media (min-width: 320px) and (max-width: 1199px){
   .asideNoBgRight, .asideNoBgLeft {
     background: transparent;
     border: none;
@@ -166,5 +230,10 @@ input {
 @media (min-width: 320px) and (max-width: 767px){
   .displayNone {
     display: none;
+  }
+}
+@media (min-width: 320px) and (max-width:  480px) {
+  .btn {
+    font-size: 12px;
   }
 }

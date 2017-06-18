@@ -148,7 +148,7 @@ header {
     padding: 16px 0;
     position: fixed;
     width: 100%;
-    z-index: 11;
+    z-index: 13;
     top: 0;
     left: 0;
     background: #fff;
@@ -281,6 +281,7 @@ header {
 
 
 @media (min-width: 320px) and (max-width: 479px) {
+
   .logo {
     height: 40px;
   }
@@ -303,6 +304,7 @@ header {
   }
   .call {
     top: calc(50% + 200px);
+    max-width: 160px;
     span {
       font-size: 24px;
     }
@@ -336,7 +338,7 @@ header {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 200px;
+        width: 180px;
 
       }
       .call {
