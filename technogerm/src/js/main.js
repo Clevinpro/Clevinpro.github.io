@@ -18,16 +18,33 @@ $(document).ready(function() {
   // Navbar toggle
   var navButton = document.querySelector('.toggleBtn'),
       navbar = document.querySelector('.toggleMenu');
-  if (navButton) {
-    navButton.addEventListener("click", function (event) {
-      event.stopPropagation();
-      navbar.classList.toggle('openNav');
-    });
+  // if (navButton) {
+  //   navButton.addEventListener("click", function (event) {
+  //     event.stopPropagation();
+  //     navbar.classList.toggle('openNav');
+  //   });
+  //
+  //   document.querySelector('body').addEventListener("click", function(event) {
+  //     navbar.classList.remove('openNav');
+  //   });
+  // }
 
-    document.querySelector('body').addEventListener("click", function(event) {
+  navButton.addEventListener("click", handleStart, false);
+  function handleStart (event) {
+    event.preventDefault();
+    if (navbar.classList.contains('openNav') == true) {
       navbar.classList.remove('openNav');
-    });
+      event.stopPropagation();
+
+    }else if (navbar.classList.contains('openNav') !== true) {
+      navbar.classList.add('openNav');
+      event.stopPropagation();
+    }
   }
+
+  document.querySelector('body').addEventListener("click", function(event) {
+    navbar.classList.remove('openNav');
+  });
 
 
     //  window bar toggle
