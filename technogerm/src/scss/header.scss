@@ -340,7 +340,6 @@ header {
     position: fixed;
     top: 0;
     right: 0;
-    background: #22315a;
     width: 100%;
     height: 100%;
     z-index: 11;
@@ -350,6 +349,7 @@ header {
     &.openNav {
       visibility: visible;
       transition: none;
+      background: $blue;
 
       .navClose {
         display: block;
