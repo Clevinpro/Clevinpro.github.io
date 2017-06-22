@@ -298,7 +298,7 @@ header {
           }
         }
 
-      }
+    }
     }
 
 
@@ -420,7 +420,13 @@ header {
 
     .navigation {
       padding: 0;
-
+      &>.menu-item {
+        &>a {
+          &::before {
+            left: 10px;
+          }
+        }
+      }
     }
   }
   .call {
@@ -456,17 +462,23 @@ header {
     &.openNav {
 
       .navigation {
-        top: 50%;
+        top: calc(50% - 30px);
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 180px;
+        width: 320px;
+        height: 320px;
 
       }
       .call {
-        top: calc(50% + 157px);
+        top: calc(50% + 180px);
         left: 50%;
         transform: translate(-50%, -50%);
 
+      }
+
+      .navClose {
+        top: 8px;
+        right: 8px;
       }
     }
   }
