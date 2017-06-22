@@ -21,15 +21,13 @@
       overflow: hidden;
       padding: 25px 10px 30px 0;
       transition-duration: .3s;
-      outline: 0 solid black;
       max-width: 318px;
       max-height: 523px;
       margin: 0 auto;
-      &:hover {
-        border: 8px solid $lightBlue;
-        padding: 25px 10px 22px 0;
-        transition-duration: .3s;
-        cursor: pointer;
+      cursor: pointer;
+      &:hover  {
+        box-shadow:0 0 0 5px $lightBlue;
+        border-color: $lightBlue;
       }
       .middle_img {
         line-height: 260px;
@@ -65,6 +63,9 @@
   }
 }
 .production__menu {
+  .productionMenu__items {
+    margin-right: 15px;
+  }
   ul {
     margin: 60px 0 0 0;
     position: relative;

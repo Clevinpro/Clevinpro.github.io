@@ -50,6 +50,9 @@
     position: absolute;
     bottom: 35px;
     left: 12px;
+    &:hover {
+      opacity: .8;
+    }
   }
 
   .date {
@@ -78,16 +81,19 @@
   h4 {
     font-size: 21px;
     letter-spacing: -.4px;
-    padding-bottom: 80px;
+    padding:0 10px 80px;
+    font-weight: 400;
   }
-
+  button {
+    left: 22px;
+  }
 
 }
 
 .aside__publication {
 
   .aside__container {
-    padding: 40px 21px 70px;
+    padding: 40px 21px 300px;
     position: relative;
     color: #fff;
   }
@@ -110,6 +116,7 @@
     font-size: 29px;
     letter-spacing: -.8px;
     line-height: 38px;
+    font-weight: 400;
   }
 
   button {
@@ -155,10 +162,13 @@
   }
 
   .aside__publication {
+    .aside__container {
+      padding: 40px 21px 70px;
+      height: 465px;
+    }
     h4 {
       font-size: 26px;
       line-height: 32px;
-      padding-bottom: 240px;
     }
   }
 

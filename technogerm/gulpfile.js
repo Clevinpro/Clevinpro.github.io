@@ -65,7 +65,7 @@ gulp.task('bs', function() {
 // Так как это просто пример, то лучшим вариантом было бы разделение на основные и
 // вспомогательные скрипты (например основные - jquery/bootstrap и вспомогательные - lightbox/fotorama)
 gulp.task('scriptsRun', function() {
-    var js = gulp.src(['src/js/*.js', '!src/js/*jquery*', '!src/js/*spritespin*', '!src/js/*bootstrap*', '!src/js/*slick*'])
+    var js = gulp.src(['src/js/*.js', '!src/js/*jquery*', '!src/js/*fancybox*', '!src/js/*spritespin*', '!src/js/*bootstrap*', '!src/js/*slick*'])
         .pipe(concat('all.min.js'))
         .pipe(uglify())
         .pipe(size({

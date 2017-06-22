@@ -30,10 +30,10 @@ $(document).ready(function() {
   }
 
 
-    // Bar window toggle
+    //  window bar toggle
     var barOpen = document.querySelector('.barOpen'),
       bar = document.querySelector('.windowBar');
-  if (bar) {
+  if (barOpen) {
     barOpen.addEventListener("click", function (event) {
       event.stopPropagation();
       bar.classList.toggle('toggleBarOpen');
@@ -84,16 +84,7 @@ if (window.matchMedia('(max-width: 991px)').matches) {
     speed: 500
   });
 }
-// else if (window.matchMedia('(max-width: 840px)').matches) {
-//   $('.product__slider').slick({
-//     initialSlide: 1,
-//     centerMode: true,
-//     infinite: false,
-//     centerPadding: '150px',
-//     slidesToShow: 1,
-//     speed: 500
-//   });
-// }
+
 
 
 

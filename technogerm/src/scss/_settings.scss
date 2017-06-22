@@ -27,6 +27,21 @@ input {
    height: 51px;
    padding-left: 20px;
 }
+input::-webkit-input-placeholder { /* WebKit browsers */
+  color:    #757575;
+}
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color:    #757575;
+}
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color:    #757575;
+}
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color:    #757575;
+}
+a:hover{
+  text-decoration: none;
+}
 
 .asideBg::after {
   content: '';
@@ -80,6 +95,11 @@ input {
   color:white;
   font-weight: 600;
   border-bottom: 4px solid #192242 ;
+  transition: all .2s linear;
+  &:hover {
+    background: lighten($blue, 5%);
+    color: #fff;
+  }
 }
 .textAlign__Center {
   text-align: center;
@@ -130,7 +150,7 @@ input {
   top: 50%;
   width: 35px;
   height: 35px;
-  z-index: -1;
+  z-index: 10;
   transition: .5s .3s ease-out;
   path {
     fill: $blue;
