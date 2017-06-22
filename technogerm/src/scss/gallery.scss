@@ -10,10 +10,11 @@
 
 .gallery {
   padding: 40px 0 80px;
+  text-align: center;
   .btn {
     margin: 56px auto 0;
-    display: block;
-    max-width: 205px;
+    display: inline-block;
+
   }
   .row {
     margin: 0;

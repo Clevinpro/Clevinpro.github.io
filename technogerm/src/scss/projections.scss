@@ -190,7 +190,7 @@
 
   .newsBar {
     position: fixed;
-    z-index: 11;
+    z-index: 14;
     width: 300px;
     padding: 0 0 50px;
     top: 100px;
@@ -237,4 +237,21 @@
 
     }
   }
+}
+
+@media (min-width: 320px) and (max-width: 479px) {
+  .newsBar {
+    top: 0;
+    width: 260px;
+    &.toggleBarOpen {
+      right: 0;
+      left: 0;
+      margin: 0 auto;
+    }
+    .barClose {
+      right: inherit;
+      left: -5px;
+    }
+  }
+
 }

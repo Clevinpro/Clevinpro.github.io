@@ -61,9 +61,14 @@ body{
     width: 51.3%;
     min-width: 635px;
   }
+  img {
+    width: 100%;
+    max-width: 580px;
+  }
   .contactsForm__container {
     padding:26px 28px 30px 26px;
     margin-top: 50px;
+
     p{
       width: 75%;
       color: white;
@@ -107,14 +112,10 @@ body{
     background-position: 95% 83px,0 0;
   }
 }
-@media (min-width: 992px) and  (max-width: 1199px) {
-}
-@media (min-width: 320px) and  (max-width: 480px) {
-  .advantages__infos>div {
-    width: 100%;
-  }
-  .production__item div {
-    width: 100%;
+@media (min-width: 1200px) {
+  .catalogSection {
+    background-position: 95% 83px,0 0;
+    img { display: none;}
   }
 }
 
@@ -124,14 +125,29 @@ body{
     width: 100%;
   }
   .bgSection h1 {
-    font-size: 26px;
+    font-size: 23px;
   }
 }
 @media (min-width: 320px) and (max-width:  480px) {
-  .bgSection {height: 180px;
+  .bgSection {
+    height: 180px;
+    .btn {
+      font-size: 10px;
+    }
+  .titleOfSection {
+    text-align: center;
+  }
   .container {
     line-height: 180px;
+    position: relative;
+    text-align: center;
   }}
+  .advantages__infos>div {
+    width: 100%;
+  }
+  .production__item div {
+    width: 100%;
+  }
   .catalogSection .contactsForm__container__size {
     min-width: 0;
     width: 100%;
@@ -145,6 +161,25 @@ body{
     font-size: 20px;
   }
 }
+@media (min-width: 320px) and (max-width:820px ) {
+  .bgSection {
+    padding: 14% 0 14% ;
+    height: auto;
+    .container {
+      line-height: 1;
+      text-align: center;
+      .btn {
+        margin: 25px 50px 0;
+
+      }
+    }
+  }
+}
+@media (min-width: 778px) and (max-width:820px ) {
+  .bgSection {
+    padding: 10% 0 10%;
+    height: auto;
+}}
 @media (min-width: 320px) and (max-width: 767px) {
 
   .catalogSection {
@@ -170,12 +205,12 @@ body{
 @media (min-width: 320px) and (max-width: 1199px) {
   .catalogSection {
     background: linear-gradient(to right,#048aeb 0,#4fa3f0 47%,#4fa3f0 53%,#068bec 100%);
-    img{
-      display: none;
-    }
-
     .contactsForm__container__size {
       margin: 50px auto 0;
+    }
+    img {
+      margin: auto;
+      display: block;
     }
   }
 }

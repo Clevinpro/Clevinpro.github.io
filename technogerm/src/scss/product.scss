@@ -24,10 +24,11 @@
       max-width: 318px;
       max-height: 523px;
       margin: 0 auto;
-      cursor: pointer;
-      &:hover  {
-        box-shadow:0 0 0 5px $lightBlue;
-        border-color: $lightBlue;
+      &:hover {
+        border-color: transparent;
+        box-shadow: 0 0 0 8px $lightBlue;
+        transition-duration: .3s;
+        cursor: pointer;
       }
       .middle_img {
         line-height: 260px;
@@ -63,9 +64,6 @@
   }
 }
 .production__menu {
-  .productionMenu__items {
-    margin-right: 15px;
-  }
   ul {
     margin: 60px 0 0 0;
     position: relative;

@@ -67,7 +67,7 @@
     &:hover {
       transform: scale(1.01);
       cursor: pointer;
-      transition-duration:.3s;
+      transition-duration:.2s;
     }
 
     .infobox__Container__img {
@@ -96,7 +96,7 @@
     }
     span {
       position: absolute;
-      top:0;
+      top:5px;
       left:0;
       .date {
         font-weight: 700;
@@ -357,16 +357,25 @@
     width: 100%;
     margin-right: 0;
   }
+  .contactsbox .contactsForm__container_size {
+    padding: 15px;}
   .col-xs-6 {
     width: 100%;
   }
   .topInfoSection .infoBox {
-    padding: 8px;
+    padding: 8px 8px 20px 8px;
     height: auto;
     text-align: center;
     min-height: 200px;
     border: none;
     background: linear-gradient(to right, #048aeb 0, #4fa3f0 43%, #4fa3f0 57%, #068bec 100%);
+    z-index: 5;
+    &:hover {
+      transform: scale(1.0);
+    }
+    img {
+      display: none;
+    }
     * {
       color: white;
     }

@@ -153,6 +153,12 @@ header {
     }
   }
 }
+.logo_a {
+  color: black;
+  &:hover , &:visited {
+    color: black;
+  }
+}
 
 .logo {
   height: 86px;
@@ -163,6 +169,7 @@ header {
     letter-spacing: 1.9px;
   }
 }
+
 
 .call {
   text-align: right;
@@ -177,6 +184,10 @@ header {
     color: black;
     font-size: 22px;
     border-bottom: 3px dotted black;
+  }
+  a:hover {
+    color:$lightBlue ;
+    border-color:$lightBlue ;
   }
 }
 
@@ -419,11 +430,11 @@ header {
     }
 
     .navigation {
-      padding: 0;
+      padding: 0 0 0 40px;
       &>.menu-item {
         &>a {
           &::before {
-            left: 10px;
+            left: -30px;
           }
         }
       }
@@ -466,7 +477,7 @@ header {
         left: 50%;
         transform: translate(-50%, -50%);
         width: 320px;
-        height: 320px;
+        height: 280px;
 
       }
       .call {
