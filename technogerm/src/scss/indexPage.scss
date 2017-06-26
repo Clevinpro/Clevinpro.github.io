@@ -1,5 +1,12 @@
+img.headerForm {
+  position: absolute;
+  top: 0;
+}
+
 .contactsbox {
-  min-height: 490px;
+  position: relative;
+  width: 100%;
+  max-height: 490px;
   padding: 90px 0 65px 0;
   background: #048aeb;
   background: linear-gradient(to right, #048aeb 0%,#4fa3f0 43%,#4fa3f0 57%,#068bec 100%);
@@ -253,8 +260,10 @@
   .spritespinContaioner .spritespin {
     display: none;
   }
+  img.headerForm {
+    display: none;
+  }
 }
-
 
 
 @media (min-width: 480px) and  (max-width: 992px) {
@@ -266,6 +275,7 @@
   .contactsbox {
     padding: 15px 0 65px;
     height: 100%;
+    max-height: inherit;
     .contactsForm__container_size {
       .btn {
 
@@ -324,6 +334,7 @@
 }
 
 @media (min-width: 320px) and (max-width: 479px) {
+
   .advantages__infos {
     .col-xs-6 {
       width: 100%;
@@ -348,8 +359,7 @@
         }
       }
   }
-}
-@media (min-width: 320px) and  (max-width: 479px) {
+
   .topInfoSection .infoBox .infobox__Container__img {
     display: none;
   }
@@ -362,11 +372,15 @@
   .col-xs-6 {
     width: 100%;
   }
+  .catalogSection , .contactsbox {
+  .contactsForm__container input::-webkit-input-placeholder {
+    font-size: 13px;
+  }}
   .topInfoSection .infoBox {
-    padding: 8px 8px 20px 8px;
+    padding: 10px 10px 10px 25px;
     height: auto;
     text-align: center;
-    min-height: 200px;
+    min-height: 130px;
     border: none;
     background: linear-gradient(to right, #048aeb 0, #4fa3f0 43%, #4fa3f0 57%, #068bec 100%);
     z-index: 5;
@@ -405,6 +419,7 @@
   }
   .contactsbox{
     padding:15px 0 25px;
+    max-height: inherit;
   }
   .contactsbox .contactsForm__container input {
     margin-bottom: 15px;

@@ -72,7 +72,7 @@ gulp.task('scriptsRun', function() {
         	title: 'size of custom js'
         }))
         .pipe(gulp.dest('src/js/'));
-    var jsDeps = gulp.src(['src/js/*jquery*', 'src/js/*spritespin*', 'src/js/*bootstrap*', 'src/js/*slick*', '!src/js/main.js', '!src/js/ajax.js'])
+    var jsDeps = gulp.src(['src/js/*jquery*', 'src/js/*anime*', 'src/js/*spritespin*', 'src/js/*bootstrap*', 'src/js/*slick*', '!src/js/main.js', '!src/js/ajax.js'])
     	.pipe(concat('vendors.min.js'))
     	.pipe(size({
     		title: 'size of js dependencies'

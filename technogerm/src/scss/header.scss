@@ -3,6 +3,13 @@
   display: none;
 }
 
+.svgToggle {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  display: none;
+}
+
 header {
   padding: 20px 0;
   border-bottom: 4px solid #289ce7;
@@ -196,22 +203,22 @@ header {
   header {
     padding: 15px 0;
     .navigation {
-      margin: 0 73px;
-    }
-
-    .menu-item {
-      padding: 0 14px 0;
-      font-size: 15px;
-      &:nth-of-type(1) {
-        svg {
-          padding-left: 12px;
+      margin: 0 54px;
+      .menu-item {
+        padding: 0 14px 0;
+        font-size: 15px;
+        &:nth-of-type(1) {
+          svg {
+            padding-left: 12px;
+          }
         }
-      }
-      svg {
-        height: 30px;
-      }
+        svg {
+          height: 30px;
+        }
 
+      }
     }
+
 
   }
 
@@ -246,6 +253,13 @@ header {
     padding-top: 83px;
   }
 
+  .svgToggle {
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+  }
+
 
   .logo {
     height: 48px;
@@ -275,31 +289,71 @@ header {
     .navigation {
       display: block;
       margin: 0;
-      width: 320px;
-      height: 360px;
+      width: 100%;
+      height: 240px;
       overflow-y: auto;
       left: 50%;
       top: calc(50% - 220px);
-      padding: 0 0 0 50px;
+      padding: 0 0 0 35px;
       transform: translate(-50%, -50%);
       position: absolute;
       transition: .3s ease-out;
       opacity: 0;
+      & > .menu-item:nth-of-type(1) > a::before {
+        background: url("../image/menu_sprite/sprite_w.png") 0 -38px no-repeat;
+        margin: 0 0 10px calc(50% - 14px);
+      }
+      & > .menu-item:nth-of-type(1):hover > a::before {
+        background: url("../image/menu_sprite/sprite_w.png") 0 0 no-repeat;
+      }
+      & > .menu-item:nth-of-type(2) > a::before {
+        background: url("../image/menu_sprite/sprite_w.png") 0 -115px no-repeat;
+      }
+      & > .menu-item:nth-of-type(2):hover > a::before {
+        background: url("../image/menu_sprite/sprite_w.png") 0 -77px no-repeat;
+      }
+      & > .menu-item:nth-of-type(3) > a::before {
+        background: url("../image/menu_sprite/sprite_w.png") 0 -187px no-repeat;
+      }
+      & > .menu-item:nth-of-type(3):hover > a::before {
+        background: url("../image/menu_sprite/sprite_w.png") 0 -151px no-repeat;
+      }
+      & > .menu-item:nth-of-type(4) > a::before {
+        background: url("../image/menu_sprite/sprite_w.png") 0 -261px no-repeat;
+      }
+      & > .menu-item:nth-of-type(4):hover > a::before {
+        background: url("../image/menu_sprite/sprite_w.png") 0 -224px no-repeat;
+      }
+      & > .menu-item:nth-of-type(5) > a::before {
+        background: url("../image/menu_sprite/sprite_w.png") 0 -331px no-repeat;
+      }
+      & > .menu-item:nth-of-type(5):hover > a::before {
+        background: url("../image/menu_sprite/sprite_w.png") 0 -296px no-repeat;
+      }
+      & > .menu-item:nth-of-type(6) > a::before {
+        background: url("../image/menu_sprite/sprite_w.png") 0 -409px no-repeat;
+      }
+      & > .menu-item:nth-of-type(6):hover > a::before {
+        background: url("../image/menu_sprite/sprite_w.png") 0 -370px no-repeat;
+      }
       &>.menu-item {
-        padding: 0 15px 0;
+        padding: 0 35px 0 15px;
         display: block;
-        font-size: 30px;
+        font-size: 21px;
         text-align: left;
-        margin-bottom: 20px;
         font-weight: 400;
         position: relative;
 
+
         &>a {
           color: #fff;
+          padding: 10px 0;
           &::before {
             position: absolute;
             margin: 0;
-            left: -35px;
+            left: -24px;
+            top: 2px;
+            transform: scale(.6);
           }
 
         }
@@ -321,10 +375,9 @@ header {
     width: 100%;
     margin: 0;
     position: absolute;
-    top: calc(50% + 160px);
+    top: calc(50% + 80px);
     left: 50%;
     transform: translate(-50%, -50%);
-    opacity: 0;
     transition: .3s ease-out;
     span, a {
       color: #fff;
@@ -332,6 +385,10 @@ header {
     }
     span {
       font-weight: 400;
+      font-size: 24px;
+    }
+    a {
+      font-size: 18px;
     }
   }
 
@@ -346,21 +403,28 @@ header {
     cursor: pointer;
     visibility: visible;
 
+    .toggleBtn__icon {
+      display: block;
+      width: 100%;
+      height: 3px;
+      margin: 6px 0;
+      background: #000;
+    }
   }
   .toggleMenu {
     position: fixed;
     top: 0;
-    right: 0;
-    width: 100%;
+    left: -280px;
+    width: 280px;
     height: 100%;
     z-index: 11;
     visibility: hidden;
-    transition: visibility .3s linear;
-
+    transition: all .3s linear;
     &.openNav {
       visibility: visible;
       transition: none;
       background: $blue;
+      left: 0;
 
       .navClose {
         display: block;
@@ -386,26 +450,29 @@ header {
         opacity: 1;
       }
 
-      .call {
-        top: calc(50% + 140px);
-        opacity: 1;
-      }
+
 
     }
 
   }
 
   .menu-item-has-children {
+    &:hover{
+      .menu {
+        width: inherit;
+      }
+    }
     .menu {
       visibility: visible;
       position: static;
-      display: block;
-      padding: 20px 0 0px;
+      display: none;
+      padding: 0;
       li {
         visibility: visible;
         left: 0;
         padding: 10px 0;
-        font-size: 18px;
+        font-size: 15px;
+        position: relative;
       }
     }
   }
@@ -423,7 +490,7 @@ header {
 
     .menu-item {
       font-size: 22px;
-      margin-bottom: 16px;
+      margin: 0;
       svg {
         height: 22px;
       }
@@ -440,16 +507,7 @@ header {
       }
     }
   }
-  .call {
-    top: calc(50% + 200px);
-    max-width: 160px;
-    span {
-      font-size: 24px;
-    }
-    a {
-      font-size: 18px;
-    }
-  }
+
 
   .toggleBtn {
     right: 20px;
@@ -473,16 +531,16 @@ header {
     &.openNav {
 
       .navigation {
-        top: calc(50% - 30px);
+        top: calc(50% - 50px);
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 320px;
-        height: 280px;
+        width: 100%;
+        height: 240px;
 
       }
       .call {
-        top: calc(50% + 180px);
-        left: 50%;
+        top: calc(50% + 110px);
+        left: 46%;
         transform: translate(-50%, -50%);
 
       }
