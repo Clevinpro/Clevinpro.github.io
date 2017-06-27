@@ -54,6 +54,9 @@ a:hover{
   background: #eee;
   z-index: -2;
 }
+a:hover {
+  color: inherit;
+}
 
 .asideNoBgRight {
    background: #fff;
@@ -99,6 +102,7 @@ a:hover{
   &:hover {
     background: lighten($blue, 5%);
     color: #fff;
+
   }
 }
 .textAlign__Center {

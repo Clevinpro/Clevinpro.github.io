@@ -8,15 +8,16 @@
   height: 24px;
   position: absolute;
   display: none;
+  z-index: 15;
 }
 
 header {
   padding: 20px 0;
   border-bottom: 4px solid #289ce7;
   .navigation {
-    margin: 0 65px;
+    margin: 0 92px;
     .menu-item {
-      padding: 20px 23px;
+      padding: 20px 28px;
       text-align: center;
       font-size: 17px;
       font-weight: 700;
@@ -201,11 +202,48 @@ header {
 @media (min-width: 1200px) and (max-width: 1399px) {
 
   header {
-    padding: 15px 0;
+    padding: 0;
     .navigation {
-      margin: 0 54px;
-      .menu-item {
-        padding: 0 14px 0;
+      margin: 0 74px;
+      & > .menu-item:nth-of-type(1) > a::before {
+        background: url("../image/menu_sprite/sprite.png") 0 -38px no-repeat;
+        margin: 0 0 0 calc(50% - 14px);
+      }
+      & > .menu-item:nth-of-type(1):hover > a::before {
+        background: url("../image/menu_sprite/sprite.png") 0 0 no-repeat;
+      }
+      & > .menu-item:nth-of-type(2) > a::before {
+        background: url("../image/menu_sprite/sprite.png") 0 -115px no-repeat;
+      }
+      & > .menu-item:nth-of-type(2):hover > a::before {
+        background: url("../image/menu_sprite/sprite.png") 0 -77px no-repeat;
+      }
+      & > .menu-item:nth-of-type(3) > a::before {
+        background: url("../image/menu_sprite/sprite.png") 0 -187px no-repeat;
+      }
+      & > .menu-item:nth-of-type(3):hover > a::before {
+        background: url("../image/menu_sprite/sprite.png") 0 -151px no-repeat;
+      }
+      & > .menu-item:nth-of-type(4) > a::before {
+        background: url("../image/menu_sprite/sprite.png") 0 -261px no-repeat;
+      }
+      & > .menu-item:nth-of-type(4):hover > a::before {
+        background: url("../image/menu_sprite/sprite.png") 0 -224px no-repeat;
+      }
+      & > .menu-item:nth-of-type(5) > a::before {
+        background: url("../image/menu_sprite/sprite.png") 0 -331px no-repeat;
+      }
+      & > .menu-item:nth-of-type(5):hover > a::before {
+        background: url("../image/menu_sprite/sprite.png") 0 -296px no-repeat;
+      }
+      & > .menu-item:nth-of-type(6) > a::before {
+        background: url("../image/menu_sprite/sprite.png") 0 -409px no-repeat;
+      }
+      & > .menu-item:nth-of-type(6):hover > a::before {
+        background: url("../image/menu_sprite/sprite.png") 0 -370px no-repeat;
+      }
+      & > .menu-item {
+        padding: 24px 22px;
         font-size: 15px;
         &:nth-of-type(1) {
           svg {
@@ -216,7 +254,27 @@ header {
           height: 30px;
         }
 
+        &> a::before {
+          margin: 0 auto 0px;
+          transform: scale(.7);
+        }
+
       }
+    }
+
+    .menu-item-has-children {
+      .menu{
+       top: 100px;
+        .menu-item {
+          font-size: 14px;
+        }
+      }
+      &:hover {
+        .menu {
+          top: 85px;
+        }
+      }
+
     }
 
 
