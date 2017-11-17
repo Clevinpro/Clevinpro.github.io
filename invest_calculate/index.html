@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invest Calculate</title>
+    <link rel="stylesheet" href="./assets/css/calculate.min.css">
+</head>
+<body>
+<section class="invest__calc">
+    <h2 class="title">Калькулятор инвестиций</h2>
+    <div class="content__wrapper">
+        <p class="invest__calc__about">
+            Добавьте 5 любых компаний из списка в свой инвестиционный портфель, укажите обьем
+            инвестиций и узнайте, сколько Вы могли заработать в 2016 году.*
+        </p>
+        <div class="calculate__wrapper">
+            <div class="calculate__ranges">
+                <div id='volume1' class='range__slider'>
+                    <span class="caption">Объем инвестиций</span>
+                    <output class='range__slider__output cash'>$ 50 000</output>
+                    <div class='range__slider__track'>
+                        <div class='range__slider__thumb'></div>
+                        <div class='range__slider__level'></div>
+                    </div>
+                    <input class='range__slider__input cash' type='range' value='1000' step="100" min='1000' max='100000' />
+                </div>
+                <div id='volume2' class='range__slider'>
+                    <span class="caption">Срок инвестирования</span>
+                    <output class='range__slider__output month'>06 мес.</output>
+                    <div class='range__slider__track'>
+                        <div class='range__slider__thumb'></div>
+                        <div class='range__slider__level'></div>
+                    </div>
+                    <input class='range__slider__input month' type='range' value='1' min='1' max='12' />
+                </div>
+            </div>
+            <div class="check__boxes">
+                <div class="check__item">
+                    <label><input type="checkbox" data-index="0.1" class="subOption">Apple inc.</label>
+                </div>
+                <div class="check__item">
+                    <label><input type="checkbox" data-index="0.1" class="subOption">Facebook</label>
+                </div>
+                <div class="check__item">
+                    <label><input type="checkbox" data-index="-0.1" class="subOption">Google</label>
+                </div>
+                <div class="check__item">
+                    <label><input type="checkbox" data-index="0.1" class="subOption">ПАО "Сбербанк"</label>
+                </div>
+                <div class="check__item">
+                    <label><input type="checkbox" data-index="0.1" class="subOption">Microsoft</label>
+                </div>
+                <div class="check__item">
+                    <label><input type="checkbox" data-index="-0.1" class="subOption">Volvo</label>
+                </div>
+                <div class="check__item">
+                    <label><input type="checkbox" data-index="0.1" class="subOption">Whats App</label>
+                </div>
+                <div class="check__item">
+                    <label><input type="checkbox" data-index="0.1" class="subOption">JP Morgan Chace</label>
+                </div>
+                <div class="check__item">
+                    <label><input type="checkbox" data-index="-0.1" class="subOption">Toyota group</label>
+                </div>
+                <div class="check__item">
+                    <label><input type="checkbox" data-index="0.1" class="subOption">Газпром</label>
+                </div>
+                <div class="check__item">
+                    <label><input type="checkbox" data-index="-0.1" class="subOption">Роснефть</label>
+                </div>
+                <div class="check__item">
+                    <label><input type="checkbox" data-index="0.1" class="subOption">Volkswagen group</label>
+                </div>
+            </div>
+            <div class="calculate__footer">
+                <button class="calculate__button">Произвести рассчеты</button>
+                <div class="result">
+                    <span>Результат:</span>
+                    <span class="result__value"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript" src="./assets/js/calculate.js"></script>
+</body>
