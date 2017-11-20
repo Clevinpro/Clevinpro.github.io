@@ -103,7 +103,7 @@
       var then = this;
       this.checkboxes.forEach(function (element) {
 
-        element.onchange = function() {
+        element.addEventListener("change", function(){
             var notChecked = then.notChecked();
             var checked = then.checked();
             if (checked.length === then.maxChecked) {
@@ -113,7 +113,6 @@
               then.resultButton.addEventListener('click', then.calculateInvest.bind(then));
 
               then.calculateChecked = checked;
-
 
             } else {
 
@@ -125,9 +124,9 @@
               });
             }
 
-            then.clearRates();
+              then.clearRates();
 
-        };
+        });
 
       })
 
@@ -164,16 +163,15 @@
       var then = this;
       if (this.calculateChecked.length === 5) {
         this.calculateChecked.forEach(function (e) {
-          e.onchange = function (el) {
+          e.addEventListener("change", function(){
             then.calculateChecked.forEach(function (rateEl) {
               if (rateEl.parentNode.querySelector('.rate')) {
                 rateEl.parentNode.removeChild(rateEl.parentNode.querySelector('.rate'));
               }
 
             })
-          }
+          });
         });
-        this.calculateChecked = this.checked();
       }
     }
   };
