@@ -31,11 +31,11 @@ gulp.task('lint', function() {
 // подключаем наши скрипты (например первым будет всегда jquery, если он используется
 // в проекте, а уже следом все остальные скрипты)
 gulp.task('styles', function() {
-  return gulp.src(['assets/scss/calculate.scss'])
+  return gulp.src(['assets/scss/main.scss'])
     .pipe(sourcemaps.init())
     .pipe(sass({outputStyle : 'expanded'}).on('error', sass.logError))
     .pipe(autoprefixer())
-    .pipe(concat('calculate.min.css'))
+    .pipe(concat('styles.min.css'))
     .pipe(minifyCSS({
       keepBreaks: true
     }))
@@ -74,7 +74,7 @@ gulp.task('serve', function() {
     server: './'
   });
   browserSync.watch('./**/*.html').on('change', browserSync.reload);
-  browserSync.watch('./assets/css/calculate.min.css').on('change', browserSync.reload);
+  browserSync.watch('./assets/css/styles.min.css').on('change', browserSync.reload);
   browserSync.watch('./assets/js/calculate.min.js').on('change', browserSync.reload);
 });
 

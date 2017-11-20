@@ -30,7 +30,7 @@
       if (monthInput) {
         if (monthInput.value < 10) {
           calc.month = monthInput.value;
-          return '0' + monthInput.value + 'мес.';
+          return '0' + monthInput.value + ' мес.';
         }
         calc.month = monthInput.value;
         return monthInput.value + ' мес.';
@@ -81,6 +81,7 @@
   InvestCalc.prototype = {
     init: function () {
       this.maxChecked = 5;
+      this.calculated = false;
       this.checkboxes = document.querySelectorAll('.check__item input[type="checkbox"]');
       this.checked = function () {
         return document.querySelectorAll('.check__item input[type="checkbox"]:checked');
@@ -88,6 +89,7 @@
       this.notChecked = function() {
         return document.querySelectorAll('.check__item input[type="checkbox"]:not(:checked)');
       };
+      this.calculateChecked = {};
       this.resultWrapper = document.querySelector('.result__value');
       this.resultButton = document.querySelector('.calculate__button');
       this.cashValue = 50000;
@@ -99,22 +101,32 @@
 
     usedCheckbox: function () {
       var then = this;
-      this.checkboxes.forEach(function (element, id) {
+      this.checkboxes.forEach(function (element) {
 
         element.onchange = function() {
             var notChecked = then.notChecked();
             var checked = then.checked();
-            if (checked.length >= then.maxChecked) {
+            if (checked.length === then.maxChecked) {
               notChecked.forEach(function (e) {
                 e.disabled = true;
               });
               then.resultButton.addEventListener('click', then.calculateInvest.bind(then));
 
+              then.calculateChecked = checked;
+
+
             } else {
+
+              console.log('then.checked().length ', then.checked().length );
+
               notChecked.forEach(function (e) {
                 e.disabled = false;
-              })
+
+              });
             }
+
+            then.clearRates();
+
         };
 
       })
@@ -126,17 +138,42 @@
         var rate = 0;
         var checked = this.checked();
         checked.forEach(function (el) {
-          var rateWrapper = document.createElement('div');
+          var rateWrapper = document.createElement('span');
           rateWrapper.innerHTML = el.dataset.index;
           rateWrapper.className = 'rate';
           rate += parseFloat(el.dataset.index);
           var parentEl = el.parentNode;
           parentEl.appendChild(rateWrapper);
         });
-        this.resultWrapper.innerText = (rate * this.cashValue/ 5) / 12 * this.month;
+        var result = Math.round((rate * this.cashValue/ 5) / 12 * this.month).toFixed(2);
+        if (result > 0) {
+          this.resultWrapper.innerText = '+ ' + result + ' ($)';
+        } else {
+          var patt = /[-]/g;
+          this.resultWrapper.innerText = '- ' + result.toString().replace(/[-]/g, '') + ' ($)';
+        }
+        this.calculated = true;
         console.log('rate', rate);
         console.log('cash', this.cashValue);
         console.log('month', this.month);
+        console.log('this.calculateChecked.length', this.calculateChecked.length)
+        console.log('this.checked.length', this.checked().length)
+      }
+    },
+    clearRates: function () {
+      var then = this;
+      if (this.calculateChecked.length === 5) {
+        this.calculateChecked.forEach(function (e) {
+          e.onchange = function (el) {
+            then.calculateChecked.forEach(function (rateEl) {
+              if (rateEl.parentNode.querySelector('.rate')) {
+                rateEl.parentNode.removeChild(rateEl.parentNode.querySelector('.rate'));
+              }
+
+            })
+          }
+        });
+        this.calculateChecked = this.checked();
       }
     }
   };
