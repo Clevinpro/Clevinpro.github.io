@@ -102,11 +102,11 @@
     usedCheckbox: function () {
       var then = this;
       this.checkboxes.forEach(function (element) {
-
         element.addEventListener("change", function(){
             var notChecked = then.notChecked();
             var checked = then.checked();
             if (checked.length === then.maxChecked) {
+              then.calculated = false;
               notChecked.forEach(function (e) {
                 e.disabled = true;
               });
@@ -122,6 +122,7 @@
                 e.disabled = false;
 
               });
+
             }
 
               then.clearRates();
@@ -132,7 +133,7 @@
 
     },
     calculateInvest: function () {
-      if(this.checked().length === 5) {
+      if(this.checked().length === 5 && this.calculated === false) {
 
         var rate = 0;
         var checked = this.checked();
