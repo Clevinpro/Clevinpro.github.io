@@ -1,0 +1,90 @@
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 80px;
+  line-height: 70px;
+}
+
+h2 {
+  font-size: 48px;
+  line-height: 40px;
+}
+
+.caption {
+  font-size: 29px;
+
+}
+
+@media (min-width: 320px) and (max-width:  480px) {
+
+  }
+
+/* FiraSansCondensed Font */
+@font-face {
+  font-family: 'Muller';
+  src: url('../fonts/MullerBold.otf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Muller';
+  src: url('../fonts/MullerBoldItalic.otf');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Muller';
+  src: url('../fonts/MullerLight.otf');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Muller';
+  src: url('../fonts/MullerLightItalic.otf');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Muller';
+  src: url('../fonts/MullerRegular.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Muller';
+  src: url('../fonts/MullerRegularItalic.otf');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Muller';
+  src: url('../fonts/MullerMedium.otf');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Muller';
+  src: url('../fonts/MullerMediumItalic.otf');
+  font-weight: 500;
+  font-style: italic;
+}
+
+
+/* End FiraSansCondensed Font */
+
+
+* {
+  font-family: 'Muller', sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+}

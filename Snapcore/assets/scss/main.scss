@@ -1,0 +1,261 @@
+@import 'reset';
+@import 'colors';
+@import 'typografy';
+@import 'settings';
+@import 'slider';
+@import 'calculate';
+@import 'sections';
+
+body {
+  width: 100%;
+  font-size: 21.6px;
+  line-height: 30px;
+  font-weight: 400;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+.first__title {
+  font-size: 80px;
+  line-height: 70px;
+  margin-bottom: 50px;
+}
+
+.first__caption {
+  font-size: 27px;
+  line-height: 32px;
+  padding-bottom: 46px;
+}
+
+// Snapcore FX  Section
+  .reliability {
+    padding: 93px  0 ;
+    color: white;
+    background-repeat: no-repeat;
+  }
+
+  .reliability__description {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    .reliability__description__img {
+      width: 90px;
+      height: 140px;
+      margin:-20px 60px 0 60px;
+      vertical-align: middle;
+    }
+  }
+
+    .reliability__advantages {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      margin-top: 70px;
+    }
+      .reliability__advantages__adv {
+        width: 250px;
+        .adv__description {
+          display: block;
+          font-size: 18px;
+          font-weight: 400;
+        }
+        .adv__numb {
+          display: block;
+          font-size: 82px;
+          font-weight: 600;
+          margin-bottom: 20px;
+        }
+        .adv__title {
+          display: block;
+          font-weight: 600;
+          margin-bottom: 25px;
+          font-size: 24px;
+        }
+
+      }
+// recommendation  Section
+ .recommendation__section {
+   padding:93px 0 ;
+
+ }
+.securities {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+  .securities__card {
+    width: 295px;
+    height: 350px;
+    padding: 25px;
+    border-radius: 10px;
+    margin:25px 0;
+    display: flex;
+    flex-flow: row wrap;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25);
+
+
+    .securities__card__comp {
+      display: flex;
+      flex-flow: row wrap;
+      align-self: flex-start;
+
+      justify-content: space-between;
+      align-content: space-between;
+      align-items: center;
+      width: 100%;
+      img {
+        width: 35px;
+        height: 35px;
+      }
+    }
+    .securities__card__percent{
+      align-content:center;
+      justify-content: center;
+      flex-flow: row wrap;
+      align-items: center;
+      display: flex;
+      .percentage {
+        font-size: 32px;
+      }
+      p {
+        font-size: 16px;
+        width: 100%;
+        text-align: center;
+      }
+    }
+    .securities__card__coast {
+      align-self:flex-end;
+      flex-flow: row wrap;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      .coast p:first-of-type {
+        font-weight: 600;
+      }
+      .coast p:last-of-type {
+        font-size: 14px;
+      }
+      .bttn {
+        width: 100px;
+        height: 40px;
+        text-align: center;
+        background: transparent;
+        border: 3px solid black;
+        border-radius: 20px;
+        font-size: 16px;
+      }
+
+    }
+
+  }
+// news__section
+.news__section {
+  padding:95px 0;
+}
+.news__box {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+.news__card {
+  height: 350px;
+  border: 2px dotted black;
+  border-radius: 20px;
+  width: 30%;
+  padding: 10px;
+  margin:20px 0;
+  img {
+    height: 188px;
+    width: 100%;
+    border-top-right-radius:15px;
+    border-top-left-radius:15px;
+    object-fit: cover;
+  }
+  .news__card__date {
+    font-size: 14px;
+    color: #999999;
+    margin:10px 0;
+    display: block;
+  }
+  .news__card__title {
+    font-size: 16px;
+    line-height: 1.2;
+  }
+  .news__card__link {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  .news__text {
+    margin:0 0 0 15px;
+  }
+}
+.news__card.full {
+  flex-flow: row wrap;
+  align-items: center;
+  display: flex;
+  width: 65%;
+  img {
+    height: 100%;
+    width: 260px;
+    display: inline-block;
+  }
+  .news__text {
+    display: inline-block;
+    width:calc(100% - 300px);
+    height: 100%;
+  }
+  .news__card__title {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .news__card__description {
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  .news__card__link {
+    text-decoration: none;
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 5px 20px;
+    text-align: center;
+
+  }
+}
+//Team Section
+.team__section {
+  padding:95px 0;
+  height: 580px;
+}
+  .team {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin: 100px 0 0 0 ;
+  }
+  .person {
+    width: 150px;
+    color: white;
+    .person__ava {
+      width:125px;
+      height: 125px;
+      border-radius: 50%;
+      border: 6px solid #44b8f1;
+      margin:0 0 30px 0;
+    }
+    .person__name {
+      font-weight: 600;
+      width: 50%;
+      margin:0 0 20px 30px;
+      white-space: pre-line;
+    }
+    .person__description {
+      font-weight: 400;
+      width: 50%;
+      margin:0 0 0 30px;
+      white-space: pre-line;
+      font-size: 16px;
+    }
+
+  }

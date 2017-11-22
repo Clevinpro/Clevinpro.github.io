@@ -1,0 +1,177 @@
+@import "colors";
+
+.content__wrapper, .title {
+  max-width: 954px;
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+input:not([type="checkbox"]) {
+  box-sizing: border-box;
+  width: 100%;
+  line-height: 1;
+  color: #818181;
+}
+input[type="submit"] {
+  width: initial;
+}
+
+input[type="checkbox"]::-webkit-input-placeholder { /* WebKit browsers */
+  color: green;
+}
+
+input::-webkit-input-placeholder { /* WebKit browsers */
+  color: #818181;
+}
+
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: #818181;
+}
+
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: #818181;
+}
+
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: #818181;
+}
+
+input::placeholder { /* safari */
+  color: green;
+}
+
+a:hover {
+  text-decoration: none;
+  color: inherit;
+
+}
+
+
+form {
+  span.wpcf7-not-valid-tip {
+    position: absolute;
+    width: 340px;
+    top: -37px;
+    font-size: 18px;
+    color: $orange;
+
+  }
+  div.wpcf7-validation-errors, div.wpcf7-mail-sent-ok {
+    visibility: hidden;
+    position: absolute;
+  }
+}
+
+
+
+.container {
+  max-width: 1156px;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+.btn, .wpcf7-submit {
+  display: inline-block;
+  text-align: center;
+  background: none;
+  height: 49px;
+  padding: 0 35px;
+  border-radius: 25px;
+  border: none;
+  vertical-align: middle;
+  line-height: 52px;
+  cursor: pointer;
+  color: #000;
+  font-weight: 300;
+  transition: all .2s linear;
+  &:hover {
+    border-color: #b2b0b0;
+    color: #b2b0b0;
+  }
+}
+
+.wpcf7-submit {
+  border-color: #000;
+  color: #000;
+}
+
+
+
+// Bar windows
+
+.barOpen, .barClose {
+  visibility: hidden;
+  display: none;
+  cursor: pointer;
+}
+
+.barOpen {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  width: 35px;
+  height: 35px;
+  z-index: 100;
+  transition: .5s .3s ease-out;
+  path {
+    fill: $orange;
+  }
+
+}
+
+.barClose {
+  position: fixed;
+  right: 350px;
+  top: 50%;
+  width: 35px;
+  height: 35px;
+  transition: none;
+
+  path {
+    fill: #fff;
+  }
+}
+
+
+
+@media (min-width: 320px) and (max-width: 1199px) {
+
+}
+
+@media (min-width: 1200px) and (max-width: 1599px) {
+
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+@media (min-width: 320px) and (max-width: 1199px) {
+
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+}
