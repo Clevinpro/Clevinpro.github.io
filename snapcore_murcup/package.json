@@ -1,0 +1,32 @@
+{
+  "name": "invest-calculate",
+  "version": "1.0.0",
+  "description": "bootstrap-only-grid, scss, responsive, bem",
+  "main": "main.js",
+  "scripts": {},
+  "author": "Clevin.pro",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.18.12",
+    "event-stream": "^3.3.4",
+    "gm": "^1.23.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-cache": "^0.4.6",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-gm": "0.0.8",
+    "gulp-imagemin": "^3.2.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-livereload": "^3.8.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-size": "^2.1.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
+    "jshint": "^2.9.4"
+  }
+}
