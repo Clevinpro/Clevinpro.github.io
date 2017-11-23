@@ -29,6 +29,23 @@ body {
   padding-bottom: 46px;
 }
 
+// Header Navigation
+
+header {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 175px;
+}
+
+.rate__a {
+  width: 604px;
+}
+
 // Snapcore FX  Section
   .reliability {
     padding: 93px  0 ;
