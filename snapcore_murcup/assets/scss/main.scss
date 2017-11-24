@@ -32,10 +32,13 @@ body {
 // Header Navigation
 
 header {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  align-items: center;
+  .content__full{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 107px;
+  }
 }
 
 .logo {
@@ -44,6 +47,261 @@ header {
 
 .rate__a {
   width: 604px;
+  position: relative;
+  height: 80px;
+  .rate__title {
+    max-width: 240px;
+
+  }
+}
+
+.rate__b {
+  width: 240px;
+  position: relative;
+  height: 80px;
+  .rate__title {
+    max-width: 170px;
+  }
+}
+
+.rate__title {
+  position: absolute;
+  font-size: 14px;
+  color: #bdbdbd;
+  margin: 0 auto;
+  background: #fff;
+  left: 0;
+  right: 0;
+  top: 0;
+  padding-top: 8px;
+  z-index: 1;
+}
+
+
+.rates {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 900px;
+}
+
+.language {
+  display: inline-block;
+  span {
+    vertical-align: middle;
+    padding-top: 8px;
+    display: inline-block;
+    font-size: 18px;
+  }
+  a {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border: 2px solid #fff;
+    vertical-align: middle;
+  }
+}
+
+.nav__button {
+  width: 37px;
+  height: 37px;
+  top: 13px;
+  right: 0;
+  transform: rotate(0deg);
+  transition: .5s ease-in-out;
+  cursor: pointer;
+  z-index: 13;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 23px;
+
+  &:hover {
+    span:nth-child(1) {
+      top: 28px;
+    }
+    span:nth-child(4) {
+      top: 0;
+    }
+  }
+  span {
+    display: block;
+    position: absolute;
+    height: 5px;
+    width: 100%;
+    background: #000;
+    border-radius: 3px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: all .25s ease-in-out;
+  }
+
+  span:nth-child(1) {
+    top: 0;
+  }
+
+  span:nth-child(2), span:nth-child(3) {
+    top: 14px;
+  }
+
+  span:nth-child(4) {
+    top: 28px;
+  }
+
+  &.active {
+    span {
+      background: #000;
+      left: -4px;
+      width: 44px;
+    }
+
+    span:nth-child(1) {
+      top: 18px;
+      width: 0%;
+      left: 50%;
+
+    }
+    span:nth-child(2), span:nth-child(3) {
+      top: 16px;
+    }
+
+    span:nth-child(2) {
+      transform: rotate(45deg);
+    }
+    span:nth-child(3) {
+      transform: rotate(-45deg);
+    }
+
+    span:nth-child(4) {
+      top: 18px;
+      width: 0%;
+      left: 50%;
+    }
+
+  }
+}
+
+.nav__close {
+  width: 37px;
+  height: 37px;
+  top: 28px;
+  right: 31px;
+  transform: rotate(0deg);
+  transition: .5s ease-in-out;
+  cursor: pointer;
+  z-index: 13;
+  display: inline-block;
+  vertical-align: middle;
+  position: absolute;
+  &:hover {
+    span {
+      transform: rotate(0);
+    }
+  }
+  span {
+    display: block;
+    position: absolute;
+    height: 5px;
+    width: 100%;
+    background: #fff;
+    border-radius: 3px;
+    opacity: 1;
+    left: 0;
+    top: 16px;
+    transform: rotate(0deg);
+    transition: all .25s ease-in-out;
+    &:nth-of-type(1) {
+      transform: rotate(45deg);
+    }
+    &:nth-of-type(2) {
+      transform: rotate(-45deg);
+    }
+  }
+
+}
+
+
+.toggle__navigation {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .75);
+  color: #fff;
+  z-index: 111;
+  &.opened {
+    display: block;
+  }
+  .toggle__navigation__wrapper {
+    max-width: 1060px;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+}
+
+.nav__info {
+  max-width: 394px;
+}
+
+.navs {
+  max-width: 450px;
+  .nav {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 45px;
+    display: block;
+  }
+}
+
+
+.nav__contacts {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.nav__contacts__item {
+  max-width: 170px;
+  &:last-of-type {
+    margin-top: 40px;
+  }
+  h4 {
+    margin: 0 0 15px;
+    font-size: 16px;
+  }
+  p {
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 300;
+  }
+}
+
+.nav__socials {
+  a {
+    margin-right: 22px;
+  }
+}
+
+.toggle__navigation__content {
+  background: $themeBlue;
+  position: absolute;
+  max-width: 1326px;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 49px 47px 27px;
+}
+
+.gmap {
+  width: 100%;
+  height: 229px;
+  background: url('../images/gmap.jpg');
+  margin-bottom: 37px;
 }
 
 // Snapcore FX  Section

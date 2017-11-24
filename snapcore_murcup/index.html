@@ -7,13 +7,76 @@
 </head>
 <body>
 <header>
-    <div class="logo">
-        <img src="./assets/images/logo.png" alt="">
-    </div>
-    <div class="rate__a">
-        <iframe style="width:720px;border:0;overflow:hidden;background-color:transparent;height:110px" scrolling="no" src="https://fortrader.org/informers/getInformer?st=17&cat=14&title=undefined&mult=0.83&showGetBtn=0&w=720&colors=titleTextColor%3Dffffff%2CtitleBackgroundColor%3Dfff%2CsymbolTextColor%3D444%2CtableTextColor%3D444%2CborderTdColor%3Dffffff%2CtableBorderColor%3Dffffff%2CtrBackgroundColor%3Dfff%2CitemImgBg%3Dffffff%2CprofitTextColor%3D89bb50%2CprofitBackgroundColor%3Deaf7e1%2ClossTextColor%3Dff1616%2ClossBackgroundColor%3Df6e1e1%2CinformerLinkTextColor%3Dffffff%2CinformerLinkBackgroundColor%3Dfff&items=126%2C130%2C25463%2C25462%2C25464&columns="></iframe>
+    <div class="content__full">
+        <div class="logo">
+            <img src="./assets/images/logo.png" alt="">
+        </div>
+        <div class="rates">
+            <div class="rate__a">
+                <p class="rate__title">Котировки популярных акций, usd</p>
+                <iframe style="width:100%;border:0;overflow:hidden;background-color:transparent;height:80px;position: absolute;top: -12px;" scrolling="no" src="https://fortrader.org/informers/getInformer?st=17&cat=14&title=undefined&mult=0.76&showGetBtn=0&w=0&colors=titleTextColor%3D454545%2CtitleBackgroundColor%3Dfff%2CsymbolTextColor%3D444%2CtableTextColor%3D444%2CborderTdColor%3Dffffff%2CtableBorderColor%3Dffffff%2CtrBackgroundColor%3Dfff%2CitemImgBg%3DF1F1F1%2CprofitTextColor%3D89bb50%2CprofitBackgroundColor%3Deaf7e1%2ClossTextColor%3Dff1616%2ClossBackgroundColor%3Df6e1e1%2CinformerLinkTextColor%3D454242%2CinformerLinkBackgroundColor%3Dfff&items=126%2C130%2C25463%2C25462%2C25464&columns="></iframe>
+            </div>
+            <div class="rate__b">
+                <p class="rate__title">Курс валют ЦБ РФ, rub</p>
+                <iframe style="width:100%;border:0;overflow:hidden;background-color:transparent;height:80px;position: absolute;top: -12px;" scrolling="no" src="https://fortrader.org/informers/getInformer?st=17&cat=7&mult=0.75&showGetBtn=0&w=0&codes=1&colors=titleTextColor%3D454545%2CtitleBackgroundColor%3Dfff%2CsymbolTextColor%3D444%2CtableTextColor%3D444%2CborderTdColor%3Dffffff%2CtableBorderColor%3Dffffff%2CtrBackgroundColor%3Dfff%2CitemImgBg%3DF1F1F1%2CprofitTextColor%3D89bb50%2CprofitBackgroundColor%3Deaf7e1%2ClossTextColor%3Dff1616%2ClossBackgroundColor%3Df6e1e1%2CinformerLinkTextColor%3D454242%2CinformerLinkBackgroundColor%3Dfff&items=2%2C21&columns=&toCur=11111"></iframe>
+            </div>
+        </div>
+        <div class="navigation">
+            <div class="language">
+                <span>RU</span>
+                <a href=""><img src="./assets/images/rus.png" alt=""></a>
+            </div>
+            <div class="nav__button" id="nav__button">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
     </div>
 </header>
+<div class="toggle__navigation">
+    <div class="toggle__navigation__content">
+        <div class="toggle__navigation__wrapper">
+            <div class="nav__info">
+                <div class="gmap"></div>
+                <div class="nav__contacts">
+                    <div class="nav__contacts__item local">
+                        <h4>Snapcore FX</h4>
+                        <p>Москва, Пресненская набережная, дом 12, этаж 28.</p>
+                    </div>
+                    <div class="nav__contacts__item contact">
+                        <h4>Контакты:</h4>
+                        <p>+7 495 912 36 16</p>
+                        <p>+8 (800) 911 45 36</p>
+                        <p>info@snapcore-fx.com</p>
+                    </div>
+                    <div class="nav__contacts__item nav__socials">
+                        <h4>Присоединяйтесь:</h4>
+                        <a href=""><img src="./assets/images/vk.png" alt=""></a>
+                        <a href=""><img src="./assets/images/ins.png" alt=""></a>
+                        <a href=""><img src="./assets/images/fb.png" alt=""></a>
+                    </div>
+                </div>
+
+            </div>
+            <nav class="navs">
+                <a href="" class="nav">Главная</a>
+                <a href="" class="nav">Покупка и продажа акций</a>
+                <a href="" class="nav">Доверительное управление активами</a>
+                <a href="" class="nav">Новости и статьи</a>
+                <a href="" class="nav">О Компании</a>
+                <a href="" class="nav">Вопросы и ответы</a>
+                <a href="" class="nav">Документы</a>
+            </nav>
+        </div>
+        <div class="nav__close">
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>
 <div class="slider" id="main-slider"><!-- outermost container element -->
     <div class="slider-wrapper"><!-- innermost wrapper element -->
         <div class="slide"><!-- slides -->
