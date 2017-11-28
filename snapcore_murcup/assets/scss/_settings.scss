@@ -18,38 +18,42 @@ img {
   object-fit: contain;
 }
 
-input:not([type="checkbox"]) {
+input {
   box-sizing: border-box;
   width: 100%;
+  max-width: 320px;
   line-height: 1;
-  color: #818181;
+  color: #a1a1a1;
+  height: 49px;
+  padding-left: 32px;
+  border-radius: 25px;
 }
 input[type="submit"] {
   width: initial;
 }
 
 input[type="checkbox"]::-webkit-input-placeholder { /* WebKit browsers */
-  color: green;
+  color: #a1a1a1;
 }
 
 input::-webkit-input-placeholder { /* WebKit browsers */
-  color: #818181;
+  color: #a1a1a1;
 }
 
 input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-  color: #818181;
+  color: #a1a1a1;
 }
 
 input::-moz-placeholder { /* Mozilla Firefox 19+ */
-  color: #818181;
+  color: #a1a1a1;
 }
 
 input:-ms-input-placeholder { /* Internet Explorer 10+ */
-  color: #818181;
+  color: #a1a1a1;
 }
 
 input::placeholder { /* safari */
-  color: green;
+  color: #a1a1a1;
 }
 
 a:hover {
@@ -98,14 +102,12 @@ form {
   font-weight: 300;
   transition: all .2s linear;
   &:hover {
-    border-color: #b2b0b0;
     color: #b2b0b0;
   }
 }
 
 .wpcf7-submit {
-  border-color: #000;
-  color: #000;
+  color: #fff;
 }
 
 

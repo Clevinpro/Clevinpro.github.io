@@ -655,6 +655,38 @@ header {
   }
 }
 
+// Video section
+
+.video__section {
+  padding: 92px 0 85px;
+}
+
+// Contact Form Section
+
+.contact__form {
+  padding: 76px 0 92px;
+  color: #fff;
+  .content__wrapper {
+    padding: 50px 40px;
+    background: $themeBlack;
+    border-radius: 20px;
+  }
+  .form__caption {
+    margin-bottom: 30px;
+  }
+  form {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    p {
+      display: inline-block;
+    }
+    p:last-of-type {
+      margin-left: 22px;
+    }
+  }
+}
+
 
 // Footer Section
 footer {
