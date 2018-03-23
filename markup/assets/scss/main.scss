@@ -1,0 +1,400 @@
+@import "reset";
+@import "typography";
+@import "colors";
+@import "settings";
+@import "./bs/bootstrap.scss";
+
+body {
+  margin: 0;
+  font-family: $primaryFont;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+// font-family: 'Roboto', sans-serif;
+// font-family: 'Montserrat', sans-serif;
+// font-family: 'Kaushan Script', cursive;
+
+// Header 
+.header {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 17px;
+  z-index: 1;
+  .container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+}
+
+.header_logo {
+  font-size: 30px;
+  font-weight: 700;
+  display: block;
+  color: #fff;
+  &:hover {
+    color: #fff;
+  }
+}
+
+.navigation {
+  width: 100%;
+  flex-basis: 620px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.navigation_items {
+  display: inline-flex;
+  flex-flow: row-wrap;
+  justify-content: space-between;
+  flex-basis: 490px;
+  width: 100%;
+}
+
+.navigation_item {
+  color: #fff;
+  transition: .3s ease-out;
+  position: relative;
+  padding: 5px 0px;
+  &:hover { 
+    color: $orangeLight;
+    text-decoration: none;
+    &::after {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(-5px);
+    }
+  }
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: $orangeLight;
+    bottom: -15px;
+    left: 0;
+    opacity: .5;
+    visibility: hidden;
+    transition: .3s ease-out;
+  }
+}
+
+.command_items {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  flex-basis: 72px;
+  width: 100%;
+}
+
+.command_item {
+  background: none;
+  svg {
+    width: 18px;
+    fill: #fff;
+  }
+}
+
+
+// About Section
+
+.about {
+  position: relative;
+  &::before { 
+    content: '';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to top, rgba(252, 227, 138, 0.9) 0%, rgba(243, 129, 129, 0.9) 100%);
+  }
+
+  .top_caption {
+    margin-bottom: 25px;
+  }
+  
+}
+
+.about_bg{
+  width: 100%; 
+  height: 100%;
+  min-height: 1000px;
+  object-fit: cover;
+  display: block;
+}
+
+.about_content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  max-width: 1000px;
+  padding: 0 15px;
+  margin: 0 auto;
+  text-align: center;
+  color: #fff;
+  top: 49%;
+  transform: translateY(-50%);
+}
+
+// Services 
+
+.services {
+  padding: 38px 0 0;
+  .title {
+    margin: 11px auto 59px;
+  }
+}
+
+.services_item {
+  cursor: pointer;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin: 42px 0;
+  p {
+    text-transform: uppercase;
+  }
+  
+  svg {
+    fill: $cyan;
+    width: 32px;
+    margin-right: 29px;
+  }
+  &:hover {
+    svg {
+      fill: $orange;
+      display: inline-block;
+    }
+  }
+}
+
+.services_item_content {
+  display: inline-block;
+  flex-basis: calc(100% - 62px);
+  p {
+    font-weight: 700;
+  }
+}
+
+// Team Section
+
+.team {
+  padding: 35px 0 152px;
+  .title {
+    margin: 10px auto 80px;
+  }
+}
+
+.team_caption {
+  display: block;
+  max-width: 984px;
+  padding: 0 15px;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 92px;
+}
+
+.team_item {
+  position: relative;
+  
+  figure {
+    margin: 0;
+  }
+  
+  &:hover {
+    .team_item_wrapper{
+      transform: translate(-10px, -10px);
+      &::before {
+        transform: translate(10px, 10px);
+      }
+    }
+    .team_item_hover {
+      visibility: visible;
+      opacity: 1;
+      // transition: .5s ease-out;
+    }
+
+    .socials {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    
+  }
+}
+
+.team_item_hover {
+  position: absolute;
+  visibility: hidden;
+  text-align: center;
+  opacity: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: .5s ease-out;
+  background-image: linear-gradient(to top, rgba(252, 227, 138, 0.9) 0%, rgba(243, 129, 129, 0.9) 100%);
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 100%;
+    vertical-align: middle;
+  }
+}
+
+.socials {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 0;
+  opacity: 0;
+  transition: .3s ease-out .5s;
+  transform: translateY(10px);
+  svg {
+    height: 26px;
+    display: inline-block;
+    vertical-align: middle;
+    fill: $orange;
+  }
+}
+
+.social {
+  height: 56px;
+  width: 56px;
+  display: inline-block;
+  background: $orangeLight;
+  transition: .3s ease-out;
+  &:not(:first-of-type) {
+    margin-left: 2px;
+  }
+  &:hover {
+    text-decoration: none;
+    background: $orange;
+    svg {
+      fill: #fff;
+    }
+  }
+  &::before {
+    content: '';
+    width: 0;
+    height: 100%;
+    vertical-align: middle;
+    display: inline-block; 
+  }
+}
+
+.team_item_wrapper {
+  position: relative;
+  transition: .5s ease-out;
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: $cyan;
+    z-index: -1;
+    transition: .5s ease-out;
+  }
+}
+
+.team_item_caption {
+  position: absolute;
+  bottom: -74px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.team_item_name {
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0 0 5px;
+}
+
+.team_item_position {
+  font-size: 15px;
+  font-family: $contentFont;
+  line-height: 24px;
+  color: #999;
+  font-style: italic;
+}
+
+// Footer Section
+
+.footer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: 10px 15px;
+  position: relative;
+  &::before {
+    content: '';
+    width: calc(100% - 30px);
+    display: block;
+    height: 1px;
+    position: absolute;
+    top: -1px;
+    background: #e5e5e5;
+  }
+}
+
+.copyright {
+  flex-basis: 310px;
+  font-weight: 500;
+  &::before {
+    content: '';
+    width: 0;
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  p {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+  }
+  a {
+    color: $orange;
+    display: inline-block;
+  }
+}
+
+.form_wrapper { 
+  flex-basis: 380px;
+  font-size: 0;
+  form {
+    display: inline-block;
+    width: 229px;
+    font-size: 15px;
+    font-family: $contentFont;
+    input {
+      width: 100%;
+      line-height: 1;
+      padding: 12px 34px 12px;
+      border: 1px solid #e7e7e7;
+      border-right-width: 0;
+
+    }
+  }
+  button {
+    display: inline-block;
+    font-weight: 700;
+    padding: 15px 34px 14px;
+    line-height: 1;
+    background: $cyan;
+    color: #fff;
+    font-size: 14px;
+  }
+
+
+}

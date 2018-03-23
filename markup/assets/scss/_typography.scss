@@ -1,0 +1,67 @@
+@import 'colors';
+
+$primaryFont: 'Montserrat', sans-serif;
+$captionFont: 'Kaushan Script', cursive;
+$contentFont: 'Roboto', sans-serif;;
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+.title_caption {
+  font-family: $captionFont;
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center;
+  margin: 0;
+  &.top_caption {
+    font-size: 72px;
+  }
+}
+
+.title {
+  font-size: 30px;
+  margin: 20px auto 60px;
+  max-width: 1200px;
+  padding: 0 15px;
+  display: block;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  position: relative;
+  &::before {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: $orange;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: -39px;
+  }
+}
+
+.top_title {
+  font-size: 150px;
+  line-height: 140px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 100px;
+}
+
+.caption {
+  font-family: $contentFont;
+  color: #999999;
+  font-size: 15px;
+  line-height: 24px;
+}
+
+.titleOfSection {
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 48;
+  text-align: center;
+}
+
