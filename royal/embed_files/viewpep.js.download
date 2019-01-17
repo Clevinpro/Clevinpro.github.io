@@ -1,0 +1,46 @@
+$(function () {
+
+    var id = App.meeting_id;
+    //var video = 'https://123streaming.ru:4443/vod/_definst_/91/196/amlst:58a30f6708f9558a30f6709385/playlist.m3u8';
+
+
+    var timerId = setInterval(function () {
+        console.log(id);
+        if (id !== null) {
+            checkStream(id);
+        }
+    }, 10000);
+
+    function checkStream(id) {
+
+        $.ajax('/meetings/checkStream/' + id, {
+            type: 'POST',
+            dataType: 'json',
+            async: true,
+            success: function(response) {
+                console.log(response.result);
+
+                if(response.result) {
+                    console.log(response.file);
+                    clearInterval(timerId);
+                    setTimeout(function() {
+                        playTrailer(response.file, response.image);
+                    }, 60000);
+                }
+
+            }
+        });
+    }
+
+    function playTrailer(video, image) {
+        console.log('source: ' + video, ' poster: ' + image);
+
+        jwplayer("mediaplayer").load([{
+                "file": video,
+                "image": image,
+                "controlbar": "bottom"
+            }]);
+
+        jwplayer("mediaplayer").play();
+    }
+});

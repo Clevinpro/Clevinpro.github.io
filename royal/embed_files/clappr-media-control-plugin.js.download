@@ -1,0 +1,3490 @@
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory(require("Clappr"));
+	else if(typeof define === 'function' && define.amd)
+		define(["Clappr"], factory);
+	else if(typeof exports === 'object')
+		exports["MediaControlPlugin"] = factory(require("Clappr"));
+	else
+		root["MediaControlPlugin"] = factory(root["Clappr"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_2__) {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _Clappr = __webpack_require__(2);
+
+	var _vendor = __webpack_require__(3);
+
+	var _lodash = __webpack_require__(5);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
+
+	var _mediaControl = __webpack_require__(7);
+
+	var _mediaControl2 = _interopRequireDefault(_mediaControl);
+
+	var _mediaControl3 = __webpack_require__(10);
+
+	var _mediaControl4 = _interopRequireDefault(_mediaControl3);
+
+	var _play = __webpack_require__(11);
+
+	var _play2 = _interopRequireDefault(_play);
+
+	var _pause = __webpack_require__(12);
+
+	var _pause2 = _interopRequireDefault(_pause);
+
+	var _stop = __webpack_require__(13);
+
+	var _stop2 = _interopRequireDefault(_stop);
+
+	var _volumeHigh = __webpack_require__(14);
+
+	var _volumeHigh2 = _interopRequireDefault(_volumeHigh);
+
+	var _volumeMute = __webpack_require__(15);
+
+	var _volumeMute2 = _interopRequireDefault(_volumeMute);
+
+	var _expand = __webpack_require__(16);
+
+	var _expand2 = _interopRequireDefault(_expand);
+
+	var _shrink = __webpack_require__(17);
+
+	var _shrink2 = _interopRequireDefault(_shrink);
+
+	var _hd = __webpack_require__(18);
+
+	var _hd2 = _interopRequireDefault(_hd);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // Copyright 2014 Globo.com Player authors. All rights reserved.
+	// Use of this source code is governed by a BSD-style
+	// license that can be found in the LICENSE file.
+
+	/**
+	 * The MediaControl is responsible for displaying the Player controls.
+	 */
+
+	var Config = _Clappr.Utils.Config,
+	    Fullscreen = _Clappr.Utils.Fullscreen,
+	    formatTime = _Clappr.Utils.formatTime,
+	    extend = _Clappr.Utils.extend,
+	    removeArrayItem = _Clappr.Utils.removeArrayItem;
+
+	var MediaControl = function (_UIObject) {
+	    _inherits(MediaControl, _UIObject);
+
+	    _createClass(MediaControl, [{
+	        key: 'name',
+	        get: function get() {
+	            return 'MediaControl';
+	        }
+	    }, {
+	        key: 'disabled',
+	        get: function get() {
+	            return this.userDisabled || this.container && this.container.getPlaybackType() === _Clappr.Playback.NO_OP;
+	        }
+	    }, {
+	        key: 'attributes',
+	        get: function get() {
+	            return {
+	                'class': 'media-control media-control-123streaming',
+	                'data-media-control': ''
+	            };
+	        }
+	    }, {
+	        key: 'events',
+	        get: function get() {
+	            return {
+	                'click [data-play]': 'play',
+	                'click [data-pause]': 'pause',
+	                'click [data-playpause]': 'togglePlayPause',
+	                'click [data-stop]': 'stop',
+	                'click [data-playstop]': 'togglePlayStop',
+	                'click [data-fullscreen]': 'toggleFullscreen',
+	                'click .bar-container[data-seekbar]': 'seek',
+	                'click .bar-container[data-volume]': 'onVolumeClick',
+	                'click .drawer-icon[data-volume]': 'toggleMute',
+	                'mouseenter .drawer-container[data-volume]': 'showVolumeBar',
+	                'mouseleave .drawer-container[data-volume]': 'hideVolumeBar',
+	                'mousedown .bar-container[data-volume]': 'startVolumeDrag',
+	                'mousemove .bar-container[data-volume]': 'mousemoveOnVolumeBar',
+	                'mousedown .bar-scrubber[data-seekbar]': 'startSeekDrag',
+	                'mousemove .bar-container[data-seekbar]': 'mousemoveOnSeekBar',
+	                'mouseleave .bar-container[data-seekbar]': 'mouseleaveOnSeekBar',
+	                'mouseenter .media-control-layer[data-controls]': 'setUserKeepVisible',
+	                'mouseleave .media-control-layer[data-controls]': 'resetUserKeepVisible'
+	            };
+	        }
+	    }, {
+	        key: 'template',
+	        get: function get() {
+	            return (0, _Clappr.template)(_mediaControl4.default);
+	        }
+	    }, {
+	        key: 'stylesheet',
+	        get: function get() {
+	            return _Clappr.Styler.getStyleFor(_mediaControl2.default, { baseUrl: this.options.baseUrl });
+	        }
+	    }, {
+	        key: 'volume',
+	        get: function get() {
+	            return this.container && this.container.isReady ? this.container.volume : this.intendedVolume;
+	        }
+	    }, {
+	        key: 'muted',
+	        get: function get() {
+	            return this.volume === 0;
+	        }
+	    }]);
+
+	    function MediaControl(options) {
+	        _classCallCheck(this, MediaControl);
+
+	        var _this = _possibleConstructorReturn(this, _UIObject.call(this, options));
+
+	        _this.persistConfig = _this.options.persistConfig;
+	        _this.container = options.container;
+	        _this.currentPositionValue = null;
+	        _this.currentDurationValue = null;
+	        var initialVolume = _this.persistConfig ? Config.restore('volume') : 100;
+	        _this.setVolume(_this.options.mute ? 0 : initialVolume);
+	        _this.keepVisible = false;
+	        _this.fullScreenOnVideoTagSupported = null; // unknown
+	        _this.addEventListeners();
+
+	        // this.settings = {
+	        //     default: ['position', 'seekbar', 'duration'],
+	        //     left: ['play', 'stop', 'pause'],
+	        //     right: ['volume'],
+	        // };
+
+	        // this.settings = {default: ['seekbar']};
+	        // this.settings.left = ['playpause', 'position', 'duration'];
+	        // this.settings.right = ['fullscreen', 'volume', 'cc-button', 'hd-indicator'];
+
+	        // console.log('constructor options, this', options, this);
+
+	        if (_this.container) {
+	            if (!_Clappr.$.isEmptyObject(_this.container.settings)) {
+	                _this.settings = _Clappr.$.extend({}, _this.container.settings);
+	            }
+	        } else {
+	            _this.settings = {};
+	        }
+
+	        _this.userDisabled = false;
+	        if (_this.container && _this.container.mediaControlDisabled || _this.options.chromeless) {
+	            _this.disable();
+	        }
+	        _this.stopDragHandler = function (event) {
+	            return _this.stopDrag(event);
+	        };
+	        _this.updateDragHandler = function (event) {
+	            return _this.updateDrag(event);
+	        };
+	        (0, _Clappr.$)(document).bind('mouseup', _this.stopDragHandler);
+	        (0, _Clappr.$)(document).bind('mousemove', _this.updateDragHandler);
+	        return _this;
+	    }
+
+	    MediaControl.prototype.addEventListeners = function addEventListeners() {
+	        if (this.container) {
+	            _Clappr.Mediator.on(this.options.playerId + ':' + _Clappr.Events.PLAYER_RESIZE, this.playerResize, this);
+	            this.listenTo(this.container, _Clappr.Events.CONTAINER_PLAY, this.changeTogglePlay);
+	            this.listenTo(this.container, _Clappr.Events.CONTAINER_PAUSE, this.changeTogglePlay);
+	            this.listenTo(this.container, _Clappr.Events.CONTAINER_DBLCLICK, this.toggleFullscreen);
+	            this.listenTo(this.container, _Clappr.Events.CONTAINER_TIMEUPDATE, this.onTimeUpdate);
+	            this.listenTo(this.container, _Clappr.Events.CONTAINER_PROGRESS, this.updateProgressBar);
+	            this.listenTo(this.container, _Clappr.Events.CONTAINER_SETTINGSUPDATE, this.settingsUpdate);
+	            this.listenTo(this.container, _Clappr.Events.CONTAINER_PLAYBACKDVRSTATECHANGED, this.settingsUpdate);
+	            this.listenTo(this.container, _Clappr.Events.CONTAINER_HIGHDEFINITIONUPDATE, this.highDefinitionUpdate);
+	            this.listenTo(this.container, _Clappr.Events.CONTAINER_MEDIACONTROL_DISABLE, this.disable);
+	            this.listenTo(this.container, _Clappr.Events.CONTAINER_MEDIACONTROL_ENABLE, this.enable);
+	            this.listenTo(this.container, _Clappr.Events.CONTAINER_ENDED, this.ended);
+	            this.listenTo(this.container, _Clappr.Events.CONTAINER_VOLUME, this.onVolumeChanged);
+	            if (this.container.playback.el.nodeName.toLowerCase() === 'video') {
+	                // wait until the metadata has loaded and then check if fullscreen on video tag is supported
+	                this.listenToOnce(this.container, _Clappr.Events.CONTAINER_LOADEDMETADATA, this.onLoadedMetadataOnVideoTag);
+	            }
+	        }
+	    };
+
+	    MediaControl.prototype.playbackError = function playbackError(error, name) {
+	        // console.log('playbackError', error, name);
+	    };
+
+	    MediaControl.prototype.disable = function disable() {
+	        this.userDisabled = true;
+	        this.hide();
+	        this.$el.hide();
+	    };
+
+	    MediaControl.prototype.enable = function enable() {
+	        if (this.options.chromeless) return;
+	        this.userDisabled = false;
+	        this.show();
+	    };
+
+	    MediaControl.prototype.play = function play() {
+	        this.container.play();
+	    };
+
+	    MediaControl.prototype.pause = function pause() {
+	        this.container.pause();
+	    };
+
+	    MediaControl.prototype.stop = function stop() {
+	        this.container.stop();
+	    };
+
+	    MediaControl.prototype.onVolumeChanged = function onVolumeChanged() {
+	        this.updateVolumeUI();
+	    };
+
+	    MediaControl.prototype.onLoadedMetadataOnVideoTag = function onLoadedMetadataOnVideoTag(metadata) {
+	        // console.log('onLoadedMetadataOnVideoTag', metadata, this);
+
+	        var video = this.container.playback.el;
+
+	        // metadata.srcElement
+
+	        //TODO
+	        this.container.settings.seekEnabled = false;
+
+	        // video.webkitSupportsFullscreen is deprecated but iOS appears to only use this
+	        // see https://github.com/clappr/clappr/issues/1127
+	        if (!Fullscreen.fullscreenEnabled() && video.webkitSupportsFullscreen) {
+	            this.fullScreenOnVideoTagSupported = true;
+	            this.settingsUpdate();
+	        }
+	    };
+
+	    MediaControl.prototype.updateVolumeUI = function updateVolumeUI() {
+	        if (!this.rendered) {
+	            // this will be called after a render
+	            return;
+	        }
+	        // update volume bar scrubber/fill on bar mode
+	        this.$volumeBarContainer.find('.bar-fill-2').css({});
+	        var containerWidth = this.$volumeBarContainer.width();
+	        var barWidth = this.$volumeBarBackground.width();
+	        var offset = (containerWidth - barWidth) / 2.0;
+	        var pos = barWidth * this.volume / 100.0 + offset;
+	        this.$volumeBarFill.css({ width: this.volume + '%' });
+	        this.$volumeBarScrubber.css({ left: pos });
+
+	        // update volume bar segments on segmented bar mode
+	        this.$volumeBarContainer.find('.segmented-bar-element').removeClass('fill');
+	        var item = Math.ceil(this.volume / 10.0);
+	        this.$volumeBarContainer.find('.segmented-bar-element').slice(0, item).addClass('fill');
+	        this.$volumeIcon.html('');
+	        this.$volumeIcon.removeClass('muted');
+	        if (!this.muted) {
+	            this.$volumeIcon.append(_volumeHigh2.default);
+	        } else {
+	            this.$volumeIcon.append(_volumeMute2.default);
+	            this.$volumeIcon.addClass('muted');
+	        }
+	        this.applyButtonStyle(this.$volumeIcon);
+	    };
+
+	    MediaControl.prototype.changeTogglePlay = function changeTogglePlay() {
+	        this.$playPauseToggle.html('');
+	        this.$playStopToggle.html('');
+	        if (this.container && this.container.isPlaying()) {
+	            this.$playPauseToggle.append(_pause2.default);
+	            this.$playStopToggle.append(_stop2.default);
+	            this.trigger(_Clappr.Events.MEDIACONTROL_PLAYING);
+	        } else {
+	            this.$playPauseToggle.append(_play2.default);
+	            this.$playStopToggle.append(_play2.default);
+	            this.trigger(_Clappr.Events.MEDIACONTROL_NOTPLAYING);
+	            if (_Clappr.Browser.isMobile) {
+	                this.show();
+	            }
+	        }
+	        this.applyButtonStyle(this.$playPauseToggle);
+	        this.applyButtonStyle(this.$playStopToggle);
+	    };
+
+	    MediaControl.prototype.mousemoveOnSeekBar = function mousemoveOnSeekBar(event) {
+	        if (this.settings.seekEnabled) {
+	            var offsetX = event.pageX - this.$seekBarContainer.offset().left - this.$seekBarHover.width() / 2;
+	            this.$seekBarHover.css({ left: offsetX });
+	        }
+	        this.trigger(_Clappr.Events.MEDIACONTROL_MOUSEMOVE_SEEKBAR, event);
+	    };
+
+	    MediaControl.prototype.mouseleaveOnSeekBar = function mouseleaveOnSeekBar(event) {
+	        this.trigger(_Clappr.Events.MEDIACONTROL_MOUSELEAVE_SEEKBAR, event);
+	    };
+
+	    MediaControl.prototype.onVolumeClick = function onVolumeClick(event) {
+	        this.setVolume(this.getVolumeFromUIEvent(event));
+	    };
+
+	    MediaControl.prototype.mousemoveOnVolumeBar = function mousemoveOnVolumeBar(event) {
+	        if (this.draggingVolumeBar) {
+	            this.setVolume(this.getVolumeFromUIEvent(event));
+	        }
+	    };
+
+	    MediaControl.prototype.playerResize = function playerResize(size) {
+	        this.$fullscreenToggle.html('');
+	        if (Fullscreen.isFullscreen()) {
+	            this.$fullscreenToggle.append(_shrink2.default);
+	        } else {
+	            this.$fullscreenToggle.append(_expand2.default);
+	        }
+	        this.applyButtonStyle(this.$fullscreenToggle);
+	        this.$el.removeClass('w320');
+	        if (size.width <= 320 || this.options.hideVolumeBar) {
+	            this.$el.addClass('w320');
+	        }
+	    };
+
+	    MediaControl.prototype.togglePlayPause = function togglePlayPause() {
+	        if (this.container.isPlaying()) {
+	            this.container.pause();
+	        } else {
+	            this.container.play();
+	        }
+	        return false;
+	    };
+
+	    MediaControl.prototype.togglePlayStop = function togglePlayStop() {
+	        if (this.container.isPlaying()) {
+	            this.container.stop();
+	        } else {
+	            this.container.play();
+	        }
+	    };
+
+	    MediaControl.prototype.startSeekDrag = function startSeekDrag(event) {
+	        if (!this.settings.seekEnabled) return;
+	        this.draggingSeekBar = true;
+	        this.$el.addClass('dragging');
+	        this.$seekBarLoaded.addClass('media-control-notransition');
+	        this.$seekBarPosition.addClass('media-control-notransition');
+	        this.$seekBarScrubber.addClass('media-control-notransition');
+	        if (event) {
+	            event.preventDefault();
+	        }
+	    };
+
+	    MediaControl.prototype.startVolumeDrag = function startVolumeDrag(event) {
+	        this.draggingVolumeBar = true;
+	        this.$el.addClass('dragging');
+	        if (event) {
+	            event.preventDefault();
+	        }
+	    };
+
+	    MediaControl.prototype.stopDrag = function stopDrag(event) {
+	        if (this.draggingSeekBar) {
+	            this.seek(event);
+	        }
+	        this.$el.removeClass('dragging');
+	        this.$seekBarLoaded.removeClass('media-control-notransition');
+	        this.$seekBarPosition.removeClass('media-control-notransition');
+	        this.$seekBarScrubber.removeClass('media-control-notransition dragging');
+	        this.draggingSeekBar = false;
+	        this.draggingVolumeBar = false;
+	    };
+
+	    MediaControl.prototype.updateDrag = function updateDrag(event) {
+	        if (this.draggingSeekBar) {
+	            event.preventDefault();
+	            var offsetX = event.pageX - this.$seekBarContainer.offset().left;
+	            var pos = offsetX / this.$seekBarContainer.width() * 100;
+	            pos = Math.min(100, Math.max(pos, 0));
+	            this.setSeekPercentage(pos);
+	        } else if (this.draggingVolumeBar) {
+	            event.preventDefault();
+	            this.setVolume(this.getVolumeFromUIEvent(event));
+	        }
+	    };
+
+	    MediaControl.prototype.getVolumeFromUIEvent = function getVolumeFromUIEvent(event) {
+	        var offsetY = Math.abs(event.pageY - (this.$volumeBarContainer.offset().top + this.$volumeBarContainer.height()));
+	        var volumeFromUI = offsetY / this.$volumeBarContainer.height() * 100;
+	        return volumeFromUI;
+	    };
+
+	    MediaControl.prototype.toggleMute = function toggleMute() {
+	        this.setVolume(this.muted ? 100 : 0);
+	    };
+
+	    MediaControl.prototype.setVolume = function setVolume(value) {
+	        var _this2 = this;
+
+	        value = Math.min(100, Math.max(value, 0));
+	        // this will hold the intended volume
+	        // it may not actually get set to this straight away
+	        // if the container is not ready etc
+	        this.intendedVolume = value;
+	        this.persistConfig && Config.persist('volume', value);
+	        var setWhenContainerReady = function setWhenContainerReady() {
+	            if (_this2.container.isReady) {
+	                _this2.container.setVolume(value);
+	            } else {
+	                _this2.listenToOnce(_this2.container, _Clappr.Events.CONTAINER_READY, function () {
+	                    _this2.container.setVolume(value);
+	                });
+	            }
+	        };
+
+	        if (!this.container) {
+	            this.listenToOnce(this, _Clappr.Events.MEDIACONTROL_CONTAINERCHANGED, function () {
+	                setWhenContainerReady();
+	            });
+	        } else {
+	            setWhenContainerReady();
+	        }
+	    };
+
+	    MediaControl.prototype.toggleFullscreen = function toggleFullscreen() {
+	        this.trigger(_Clappr.Events.MEDIACONTROL_FULLSCREEN, this.name);
+	        this.container.fullscreen();
+	        this.resetUserKeepVisible();
+	    };
+
+	    MediaControl.prototype.setContainer = function setContainer(container) {
+	        if (this.container) {
+	            this.stopListening(this.container);
+	            this.fullScreenOnVideoTagSupported = null;
+	        }
+	        _Clappr.Mediator.off(this.options.playerId + ':' + _Clappr.Events.PLAYER_RESIZE, this.playerResize, this);
+	        this.container = container;
+	        // set the new container to match the volume of the last one
+	        this.setVolume(this.intendedVolume);
+	        this.changeTogglePlay();
+	        this.addEventListeners();
+	        this.settingsUpdate();
+	        this.container.trigger(_Clappr.Events.CONTAINER_PLAYBACKDVRSTATECHANGED, this.container.isDvrInUse());
+	        if (this.container.mediaControlDisabled) {
+	            this.disable();
+	        }
+	        this.trigger(_Clappr.Events.MEDIACONTROL_CONTAINERCHANGED);
+	    };
+
+	    MediaControl.prototype.showVolumeBar = function showVolumeBar() {
+	        if (this.hideVolumeId) {
+	            clearTimeout(this.hideVolumeId);
+	        }
+	        this.$volumeBarContainer.removeClass('volume-bar-hide');
+	    };
+
+	    MediaControl.prototype.hideVolumeBar = function hideVolumeBar() {
+	        var _this3 = this;
+
+	        var timeout = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 400;
+
+	        if (!this.$volumeBarContainer) return;
+	        if (this.draggingVolumeBar) {
+	            this.hideVolumeId = setTimeout(function () {
+	                return _this3.hideVolumeBar();
+	            }, timeout);
+	        } else {
+	            if (this.hideVolumeId) {
+	                clearTimeout(this.hideVolumeId);
+	            }
+	            this.hideVolumeId = setTimeout(function () {
+	                return _this3.$volumeBarContainer.addClass('volume-bar-hide');
+	            }, timeout);
+	        }
+	    };
+
+	    MediaControl.prototype.ended = function ended() {
+	        this.changeTogglePlay();
+	    };
+
+	    MediaControl.prototype.updateProgressBar = function updateProgressBar(progress) {
+	        var loadedStart = progress.start / progress.total * 100;
+	        var loadedEnd = progress.current / progress.total * 100;
+	        this.$seekBarLoaded.css({ left: loadedStart + '%', width: loadedEnd - loadedStart + '%' });
+	    };
+
+	    MediaControl.prototype.onTimeUpdate = function onTimeUpdate(timeProgress) {
+	        if (this.draggingSeekBar) return;
+	        // TODO why should current time ever be negative?
+	        var position = timeProgress.current < 0 ? timeProgress.total : timeProgress.current;
+
+	        this.currentPositionValue = position;
+	        this.currentDurationValue = timeProgress.total;
+	        this.renderSeekBar();
+	    };
+
+	    MediaControl.prototype.renderSeekBar = function renderSeekBar() {
+	        if (this.currentPositionValue === null || this.currentDurationValue === null) {
+	            // this will be triggered as soon as these beocome available
+	            return;
+	        }
+
+	        // default to 100%
+	        this.currentSeekBarPercentage = 100;
+	        if (this.container.getPlaybackType() !== _Clappr.Playback.LIVE || this.container.isDvrInUse()) {
+	            this.currentSeekBarPercentage = this.currentPositionValue / this.currentDurationValue * 100;
+	        }
+	        this.setSeekPercentage(this.currentSeekBarPercentage);
+
+	        var newPosition = formatTime(this.currentPositionValue);
+	        var newDuration = formatTime(this.currentDurationValue);
+	        if (newPosition !== this.displayedPosition) {
+	            this.$position.text(newPosition);
+	            this.displayedPosition = newPosition;
+	        }
+	        if (newDuration !== this.displayedDuration) {
+	            this.$duration.text(newDuration);
+	            this.displayedDuration = newDuration;
+	        }
+	    };
+
+	    MediaControl.prototype.seek = function seek(event) {
+	        if (!this.settings.seekEnabled) return;
+	        var offsetX = event.pageX - this.$seekBarContainer.offset().left;
+	        var pos = offsetX / this.$seekBarContainer.width() * 100;
+	        pos = Math.min(100, Math.max(pos, 0));
+	        this.container.seekPercentage(pos);
+	        this.setSeekPercentage(pos);
+	        return false;
+	    };
+
+	    MediaControl.prototype.setKeepVisible = function setKeepVisible() {
+	        this.keepVisible = true;
+	    };
+
+	    MediaControl.prototype.resetKeepVisible = function resetKeepVisible() {
+	        this.keepVisible = false;
+	    };
+
+	    MediaControl.prototype.setUserKeepVisible = function setUserKeepVisible() {
+	        this.userKeepVisible = true;
+	    };
+
+	    MediaControl.prototype.resetUserKeepVisible = function resetUserKeepVisible() {
+	        this.userKeepVisible = false;
+	    };
+
+	    MediaControl.prototype.isVisible = function isVisible() {
+	        return !this.$el.hasClass('media-control-hide');
+	    };
+
+	    MediaControl.prototype.show = function show(event) {
+	        var _this4 = this;
+
+	        if (this.disabled) {
+	            return;
+	        }
+	        var timeout = 2000;
+	        if (!event || event.clientX !== this.lastMouseX && event.clientY !== this.lastMouseY || navigator.userAgent.match(/firefox/i)) {
+	            clearTimeout(this.hideId);
+	            this.$el.show();
+	            this.trigger(_Clappr.Events.MEDIACONTROL_SHOW, this.name);
+	            this.$el.removeClass('media-control-hide');
+	            this.hideId = setTimeout(function () {
+	                return _this4.hide();
+	            }, timeout);
+	            if (event) {
+	                this.lastMouseX = event.clientX;
+	                this.lastMouseY = event.clientY;
+	            }
+	        }
+	    };
+
+	    MediaControl.prototype.hide = function hide() {
+	        var _this5 = this;
+
+	        var delay = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+
+	        if (!this.isVisible() || _Clappr.Browser.isMobile && !this.container.isPlaying()) {
+	            return;
+	        }
+	        var timeout = delay || 2000;
+	        clearTimeout(this.hideId);
+	        if (!this.disabled && this.options.hideMediaControl === false) {
+	            return;
+	        }
+	        if (!this.disabled && (delay || this.userKeepVisible || this.keepVisible || this.draggingSeekBar || this.draggingVolumeBar)) {
+	            this.hideId = setTimeout(function () {
+	                return _this5.hide();
+	            }, timeout);
+	        } else {
+	            this.trigger(_Clappr.Events.MEDIACONTROL_HIDE, this.name);
+	            this.$el.addClass('media-control-hide');
+	            this.hideVolumeBar(0);
+	        }
+	    };
+
+	    MediaControl.prototype.settingsUpdate = function settingsUpdate() {
+
+	        var newSettings = this.getSettings();
+	        // console.log('settingsUpdate newSettings, this.settings', newSettings, this.settings);
+	        if (newSettings && !this.fullScreenOnVideoTagSupported && !Fullscreen.fullscreenEnabled()) {
+	            // remove fullscreen from settings if it is present
+	            newSettings.default && removeArrayItem(newSettings.default, 'fullscreen');
+	            newSettings.left && removeArrayItem(newSettings.left, 'fullscreen');
+	            newSettings.right && removeArrayItem(newSettings.right, 'fullscreen');
+	        }
+	        var settingsChanged = JSON.stringify(this.settings) !== JSON.stringify(newSettings);
+	        if (settingsChanged) {
+	            this.settings = newSettings;
+	            this.render();
+	        }
+	    };
+
+	    MediaControl.prototype.getSettings = function getSettings() {
+	        return (0, _lodash2.default)({}, this.container.settings);
+	    };
+
+	    MediaControl.prototype.highDefinitionUpdate = function highDefinitionUpdate(isHD) {
+	        var method = isHD ? 'addClass' : 'removeClass';
+	        this.$hdIndicator[method]('enabled');
+	    };
+
+	    MediaControl.prototype.createCachedElements = function createCachedElements() {
+	        var $layer = this.$el.find('.media-control-layer');
+	        this.$duration = $layer.find('.media-control-indicator[data-duration]');
+	        this.$fullscreenToggle = $layer.find('button.media-control-button[data-fullscreen]');
+	        this.$playPauseToggle = $layer.find('button.media-control-button[data-playpause]');
+	        this.$playStopToggle = $layer.find('button.media-control-button[data-playstop]');
+	        this.$position = $layer.find('.media-control-indicator[data-position]');
+	        this.$seekBarContainer = $layer.find('.bar-container[data-seekbar]');
+	        this.$seekBarHover = $layer.find('.bar-hover[data-seekbar]');
+	        this.$seekBarLoaded = $layer.find('.bar-fill-1[data-seekbar]');
+	        this.$seekBarPosition = $layer.find('.bar-fill-2[data-seekbar]');
+	        this.$seekBarScrubber = $layer.find('.bar-scrubber[data-seekbar]');
+	        this.$volumeBarContainer = $layer.find('.bar-container[data-volume]');
+	        this.$volumeContainer = $layer.find('.drawer-container[data-volume]');
+	        this.$volumeIcon = $layer.find('.drawer-icon[data-volume]');
+	        this.$volumeBarBackground = this.$el.find('.bar-background[data-volume]');
+	        this.$volumeBarFill = this.$el.find('.bar-fill-1[data-volume]');
+	        this.$volumeBarScrubber = this.$el.find('.bar-scrubber[data-volume]');
+	        this.$hdIndicator = this.$el.find('button.media-control-button[data-hd-indicator]');
+	        this.resetIndicators();
+	        this.initializeIcons();
+	    };
+
+	    MediaControl.prototype.resetIndicators = function resetIndicators() {
+	        this.displayedPosition = this.$position.text();
+	        this.displayedDuration = this.$duration.text();
+	    };
+
+	    MediaControl.prototype.initializeIcons = function initializeIcons() {
+	        var $layer = this.$el.find('.media-control-layer');
+	        $layer.find('button.media-control-button[data-play]').append(_play2.default);
+	        $layer.find('button.media-control-button[data-pause]').append(_pause2.default);
+	        $layer.find('button.media-control-button[data-stop]').append(_stop2.default);
+	        this.$playPauseToggle.append(_play2.default);
+	        this.$playStopToggle.append(_play2.default);
+	        this.$volumeIcon.append(_volumeHigh2.default);
+	        this.$fullscreenToggle.append(_expand2.default);
+	        this.$hdIndicator.append(_hd2.default);
+	    };
+
+	    MediaControl.prototype.setSeekPercentage = function setSeekPercentage(value) {
+	        value = Math.max(Math.min(value, 100.0), 0);
+	        if (this.displayedSeekBarPercentage === value) {
+	            // not changed since last update
+	            return;
+	        }
+	        this.displayedSeekBarPercentage = value;
+
+	        this.$seekBarPosition.removeClass('media-control-notransition');
+	        this.$seekBarScrubber.removeClass('media-control-notransition');
+	        this.$seekBarPosition.css({ width: value + '%' });
+	        this.$seekBarScrubber.css({ left: value + '%' });
+	    };
+
+	    MediaControl.prototype.seekRelative = function seekRelative(delta) {
+	        // console.log('seekRelative', delta);
+	        if (!this.settings.seekEnabled) return;
+	        var currentTime = this.container.getCurrentTime();
+	        var duration = this.container.getDuration();
+	        var position = Math.min(Math.max(currentTime + delta, 0), duration);
+	        position = Math.min(position * 100 / duration, 100);
+	        this.container.seekPercentage(position);
+	    };
+
+	    MediaControl.prototype.bindKeyEvents = function bindKeyEvents() {
+	        var _this6 = this;
+
+	        this.unbindKeyEvents();
+	        this.kibo = new _vendor.Kibo(this.options.focusElement);
+	        this.kibo.down(['space'], function () {
+	            return _this6.togglePlayPause();
+	        });
+	        this.kibo.down(['left'], function () {
+	            return _this6.seekRelative(-15);
+	        });
+	        this.kibo.down(['right'], function () {
+	            return _this6.seekRelative(15);
+	        });
+	        var keys = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+	        keys.forEach(function (i) {
+	            _this6.kibo.down(i.toString(), function () {
+	                return _this6.settings.seekEnabled && _this6.container.seekPercentage(i * 10);
+	            });
+	        });
+	    };
+
+	    MediaControl.prototype.unbindKeyEvents = function unbindKeyEvents() {
+	        if (this.kibo) {
+	            this.kibo.off('space');
+	            this.kibo.off('left');
+	            this.kibo.off('right');
+	            this.kibo.off([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
+	        }
+	    };
+
+	    MediaControl.prototype.parseColors = function parseColors() {
+	        if (this.options.mediacontrol) {
+	            this.buttonsColor = this.options.mediacontrol.buttons;
+	            var seekbarColor = this.options.mediacontrol.seekbar;
+	            this.$el.find('.bar-fill-2[data-seekbar]').css('background-color', seekbarColor);
+	            this.$el.find('.media-control-icon svg path').css('fill', this.buttonsColor);
+	            this.$el.find('.segmented-bar-element[data-volume]').css('boxShadow', 'inset 2px 0 0 ' + this.buttonsColor);
+	        }
+	    };
+
+	    MediaControl.prototype.applyButtonStyle = function applyButtonStyle(element) {
+	        if (this.buttonsColor && element) {
+	            //TODO
+	            (0, _Clappr.$)(element).find('svg path').css('fill', this.buttonsColor);
+	        }
+	    };
+
+	    MediaControl.prototype.destroy = function destroy() {
+	        this.remove();
+	        (0, _Clappr.$)(document).unbind('mouseup', this.stopDragHandler);
+	        (0, _Clappr.$)(document).unbind('mousemove', this.updateDragHandler);
+	        this.unbindKeyEvents();
+	    };
+
+	    MediaControl.prototype.render = function render() {
+	        var _this7 = this;
+
+	        // console.log('media control render', this.settings);
+
+	        var timeout = 1000;
+	        this.$el.html(this.template({ settings: this.settings }));
+	        this.$el.append(this.stylesheet);
+	        this.createCachedElements();
+	        this.$playPauseToggle.addClass('paused');
+	        this.$playStopToggle.addClass('stopped');
+
+	        this.changeTogglePlay();
+	        this.hideId = setTimeout(function () {
+	            return _this7.hide();
+	        }, timeout);
+	        if (this.disabled) {
+	            this.hide();
+	        }
+
+	        if (_Clappr.Browser.isSafari && _Clappr.Browser.isMobile) {
+	            this.$volumeContainer.css('display', 'none');
+	            // this.$hdIndicator.
+	            //TODO
+	        }
+
+	        this.$seekBarScrubber.addClass('media-control-notransition');
+
+	        var previousSeekPercentage = 0;
+	        if (this.displayedSeekBarPercentage) {
+	            previousSeekPercentage = this.displayedSeekBarPercentage;
+	        }
+	        this.displayedSeekBarPercentage = null;
+	        this.setSeekPercentage(previousSeekPercentage);
+
+	        process.nextTick(function () {
+
+	            // console.log('process.nextTick this.settings', this.settings);
+
+	            if (!_this7.settings.seekEnabled) {
+	                _this7.$seekBarContainer.addClass('seek-disabled');
+	            }
+	            if (!_this7.options.disableKeyboardShortcuts) {
+	                _this7.bindKeyEvents();
+	            }
+	            _this7.playerResize({ width: _this7.options.width, height: _this7.options.height });
+	            _this7.hideVolumeBar(0);
+	        });
+
+	        this.parseColors();
+	        this.highDefinitionUpdate();
+
+	        this.rendered = true;
+	        this.updateVolumeUI();
+	        this.trigger(_Clappr.Events.MEDIACONTROL_RENDERED);
+	        return this;
+	    };
+
+	    return MediaControl;
+	}(_Clappr.UIObject);
+
+	exports.default = MediaControl;
+
+
+	MediaControl.extend = function (properties) {
+	    return extend(MediaControl, properties);
+	};
+	module.exports = exports['default'];
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	// shim for using process in browser
+	var process = module.exports = {};
+
+	// cached from whatever global is present so that test runners that stub it
+	// don't break things.  But we need to wrap it in a try catch in case it is
+	// wrapped in strict mode code which doesn't define any globals.  It's inside a
+	// function because try/catches deoptimize in certain engines.
+
+	var cachedSetTimeout;
+	var cachedClearTimeout;
+
+	function defaultSetTimout() {
+	    throw new Error('setTimeout has not been defined');
+	}
+	function defaultClearTimeout() {
+	    throw new Error('clearTimeout has not been defined');
+	}
+	(function () {
+	    try {
+	        if (typeof setTimeout === 'function') {
+	            cachedSetTimeout = setTimeout;
+	        } else {
+	            cachedSetTimeout = defaultSetTimout;
+	        }
+	    } catch (e) {
+	        cachedSetTimeout = defaultSetTimout;
+	    }
+	    try {
+	        if (typeof clearTimeout === 'function') {
+	            cachedClearTimeout = clearTimeout;
+	        } else {
+	            cachedClearTimeout = defaultClearTimeout;
+	        }
+	    } catch (e) {
+	        cachedClearTimeout = defaultClearTimeout;
+	    }
+	})();
+	function runTimeout(fun) {
+	    if (cachedSetTimeout === setTimeout) {
+	        //normal enviroments in sane situations
+	        return setTimeout(fun, 0);
+	    }
+	    // if setTimeout wasn't available but was latter defined
+	    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+	        cachedSetTimeout = setTimeout;
+	        return setTimeout(fun, 0);
+	    }
+	    try {
+	        // when when somebody has screwed with setTimeout but no I.E. maddness
+	        return cachedSetTimeout(fun, 0);
+	    } catch (e) {
+	        try {
+	            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+	            return cachedSetTimeout.call(null, fun, 0);
+	        } catch (e) {
+	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+	            return cachedSetTimeout.call(this, fun, 0);
+	        }
+	    }
+	}
+	function runClearTimeout(marker) {
+	    if (cachedClearTimeout === clearTimeout) {
+	        //normal enviroments in sane situations
+	        return clearTimeout(marker);
+	    }
+	    // if clearTimeout wasn't available but was latter defined
+	    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+	        cachedClearTimeout = clearTimeout;
+	        return clearTimeout(marker);
+	    }
+	    try {
+	        // when when somebody has screwed with setTimeout but no I.E. maddness
+	        return cachedClearTimeout(marker);
+	    } catch (e) {
+	        try {
+	            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+	            return cachedClearTimeout.call(null, marker);
+	        } catch (e) {
+	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+	            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+	            return cachedClearTimeout.call(this, marker);
+	        }
+	    }
+	}
+	var queue = [];
+	var draining = false;
+	var currentQueue;
+	var queueIndex = -1;
+
+	function cleanUpNextTick() {
+	    if (!draining || !currentQueue) {
+	        return;
+	    }
+	    draining = false;
+	    if (currentQueue.length) {
+	        queue = currentQueue.concat(queue);
+	    } else {
+	        queueIndex = -1;
+	    }
+	    if (queue.length) {
+	        drainQueue();
+	    }
+	}
+
+	function drainQueue() {
+	    if (draining) {
+	        return;
+	    }
+	    var timeout = runTimeout(cleanUpNextTick);
+	    draining = true;
+
+	    var len = queue.length;
+	    while (len) {
+	        currentQueue = queue;
+	        queue = [];
+	        while (++queueIndex < len) {
+	            if (currentQueue) {
+	                currentQueue[queueIndex].run();
+	            }
+	        }
+	        queueIndex = -1;
+	        len = queue.length;
+	    }
+	    currentQueue = null;
+	    draining = false;
+	    runClearTimeout(timeout);
+	}
+
+	process.nextTick = function (fun) {
+	    var args = new Array(arguments.length - 1);
+	    if (arguments.length > 1) {
+	        for (var i = 1; i < arguments.length; i++) {
+	            args[i - 1] = arguments[i];
+	        }
+	    }
+	    queue.push(new Item(fun, args));
+	    if (queue.length === 1 && !draining) {
+	        runTimeout(drainQueue);
+	    }
+	};
+
+	// v8 likes predictible objects
+	function Item(fun, array) {
+	    this.fun = fun;
+	    this.array = array;
+	}
+	Item.prototype.run = function () {
+	    this.fun.apply(null, this.array);
+	};
+	process.title = 'browser';
+	process.browser = true;
+	process.env = {};
+	process.argv = [];
+	process.version = ''; // empty string to avoid regexp issues
+	process.versions = {};
+
+	function noop() {}
+
+	process.on = noop;
+	process.addListener = noop;
+	process.once = noop;
+	process.off = noop;
+	process.removeListener = noop;
+	process.removeAllListeners = noop;
+	process.emit = noop;
+	process.prependListener = noop;
+	process.prependOnceListener = noop;
+
+	process.listeners = function (name) {
+	    return [];
+	};
+
+	process.binding = function (name) {
+	    throw new Error('process.binding is not supported');
+	};
+
+	process.cwd = function () {
+	    return '/';
+	};
+	process.chdir = function (dir) {
+	    throw new Error('process.chdir is not supported');
+	};
+	process.umask = function () {
+	    return 0;
+	};
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _kibo = __webpack_require__(4);
+
+	var _kibo2 = _interopRequireDefault(_kibo);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = { Kibo: _kibo2.default };
+	module.exports = exports['default'];
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	/* eslint-disable */
+	// Kibo is released under the MIT License. Copyright (c) 2013 marquete.
+	// see https://github.com/marquete/kibo
+
+	var Kibo = function Kibo(element) {
+	  this.element = element || window.document;
+	  this.initialize();
+	};
+
+	Kibo.KEY_NAMES_BY_CODE = {
+	  8: 'backspace', 9: 'tab', 13: 'enter',
+	  16: 'shift', 17: 'ctrl', 18: 'alt',
+	  20: 'caps_lock',
+	  27: 'esc',
+	  32: 'space',
+	  37: 'left', 38: 'up', 39: 'right', 40: 'down',
+	  48: '0', 49: '1', 50: '2', 51: '3', 52: '4', 53: '5', 54: '6', 55: '7', 56: '8', 57: '9',
+	  65: 'a', 66: 'b', 67: 'c', 68: 'd', 69: 'e', 70: 'f', 71: 'g', 72: 'h', 73: 'i', 74: 'j',
+	  75: 'k', 76: 'l', 77: 'm', 78: 'n', 79: 'o', 80: 'p', 81: 'q', 82: 'r', 83: 's', 84: 't',
+	  85: 'u', 86: 'v', 87: 'w', 88: 'x', 89: 'y', 90: 'z', 112: 'f1', 113: 'f2', 114: 'f3',
+	  115: 'f4', 116: 'f5', 117: 'f6', 118: 'f7', 119: 'f8', 120: 'f9', 121: 'f10', 122: 'f11', 123: 'f12'
+	};
+
+	Kibo.KEY_CODES_BY_NAME = {};
+	(function () {
+	  for (var key in Kibo.KEY_NAMES_BY_CODE) {
+	    if (Object.prototype.hasOwnProperty.call(Kibo.KEY_NAMES_BY_CODE, key)) {
+	      Kibo.KEY_CODES_BY_NAME[Kibo.KEY_NAMES_BY_CODE[key]] = +key;
+	    }
+	  }
+	})();
+
+	Kibo.MODIFIERS = ['shift', 'ctrl', 'alt'];
+
+	Kibo.registerEvent = function () {
+	  if (document.addEventListener) {
+	    return function (element, eventName, func) {
+	      element.addEventListener(eventName, func, false);
+	    };
+	  } else if (document.attachEvent) {
+	    return function (element, eventName, func) {
+	      element.attachEvent('on' + eventName, func);
+	    };
+	  }
+	}();
+
+	Kibo.unregisterEvent = function () {
+	  if (document.removeEventListener) {
+	    return function (element, eventName, func) {
+	      element.removeEventListener(eventName, func, false);
+	    };
+	  } else if (document.detachEvent) {
+	    return function (element, eventName, func) {
+	      element.detachEvent('on' + eventName, func);
+	    };
+	  }
+	}();
+
+	Kibo.stringContains = function (string, substring) {
+	  return string.indexOf(substring) !== -1;
+	};
+
+	Kibo.neatString = function (string) {
+	  return string.replace(/^\s+|\s+$/g, '').replace(/\s+/g, ' ');
+	};
+
+	Kibo.capitalize = function (string) {
+	  return string.toLowerCase().replace(/^./, function (match) {
+	    return match.toUpperCase();
+	  });
+	};
+
+	Kibo.isString = function (what) {
+	  return Kibo.stringContains(Object.prototype.toString.call(what), 'String');
+	};
+
+	Kibo.arrayIncludes = function () {
+	  if (Array.prototype.indexOf) {
+	    return function (haystack, needle) {
+	      return haystack.indexOf(needle) !== -1;
+	    };
+	  } else {
+	    return function (haystack, needle) {
+	      for (var i = 0; i < haystack.length; i++) {
+	        if (haystack[i] === needle) {
+	          return true;
+	        }
+	      }
+	      return false;
+	    };
+	  }
+	}();
+
+	Kibo.extractModifiers = function (keyCombination) {
+	  var modifiers, i;
+	  modifiers = [];
+	  for (i = 0; i < Kibo.MODIFIERS.length; i++) {
+	    if (Kibo.stringContains(keyCombination, Kibo.MODIFIERS[i])) {
+	      modifiers.push(Kibo.MODIFIERS[i]);
+	    }
+	  }
+	  return modifiers;
+	};
+
+	Kibo.extractKey = function (keyCombination) {
+	  var keys, i;
+	  keys = Kibo.neatString(keyCombination).split(' ');
+	  for (i = 0; i < keys.length; i++) {
+	    if (!Kibo.arrayIncludes(Kibo.MODIFIERS, keys[i])) {
+	      return keys[i];
+	    }
+	  }
+	};
+
+	Kibo.modifiersAndKey = function (keyCombination) {
+	  var result, key;
+
+	  if (Kibo.stringContains(keyCombination, 'any')) {
+	    return Kibo.neatString(keyCombination).split(' ').slice(0, 2).join(' ');
+	  }
+
+	  result = Kibo.extractModifiers(keyCombination);
+
+	  key = Kibo.extractKey(keyCombination);
+	  if (key && !Kibo.arrayIncludes(Kibo.MODIFIERS, key)) {
+	    result.push(key);
+	  }
+
+	  return result.join(' ');
+	};
+
+	Kibo.keyName = function (keyCode) {
+	  return Kibo.KEY_NAMES_BY_CODE[keyCode + ''];
+	};
+
+	Kibo.keyCode = function (keyName) {
+	  return +Kibo.KEY_CODES_BY_NAME[keyName];
+	};
+
+	Kibo.prototype.initialize = function () {
+	  var i,
+	      that = this;
+
+	  this.lastKeyCode = -1;
+	  this.lastModifiers = {};
+	  for (i = 0; i < Kibo.MODIFIERS.length; i++) {
+	    this.lastModifiers[Kibo.MODIFIERS[i]] = false;
+	  }
+
+	  this.keysDown = { any: [] };
+	  this.keysUp = { any: [] };
+	  this.downHandler = this.handler('down');
+	  this.upHandler = this.handler('up');
+
+	  Kibo.registerEvent(this.element, 'keydown', this.downHandler);
+	  Kibo.registerEvent(this.element, 'keyup', this.upHandler);
+	  Kibo.registerEvent(window, 'unload', function unloader() {
+	    Kibo.unregisterEvent(that.element, 'keydown', that.downHandler);
+	    Kibo.unregisterEvent(that.element, 'keyup', that.upHandler);
+	    Kibo.unregisterEvent(window, 'unload', unloader);
+	  });
+	};
+
+	Kibo.prototype.handler = function (upOrDown) {
+	  var that = this;
+	  return function (e) {
+	    var i, registeredKeys, lastModifiersAndKey;
+
+	    e = e || window.event;
+
+	    that.lastKeyCode = e.keyCode;
+	    for (i = 0; i < Kibo.MODIFIERS.length; i++) {
+	      that.lastModifiers[Kibo.MODIFIERS[i]] = e[Kibo.MODIFIERS[i] + 'Key'];
+	    }
+	    if (Kibo.arrayIncludes(Kibo.MODIFIERS, Kibo.keyName(that.lastKeyCode))) {
+	      that.lastModifiers[Kibo.keyName(that.lastKeyCode)] = true;
+	    }
+
+	    registeredKeys = that['keys' + Kibo.capitalize(upOrDown)];
+
+	    for (i = 0; i < registeredKeys.any.length; i++) {
+	      if (registeredKeys.any[i](e) === false && e.preventDefault) {
+	        e.preventDefault();
+	      }
+	    }
+
+	    lastModifiersAndKey = that.lastModifiersAndKey();
+	    if (registeredKeys[lastModifiersAndKey]) {
+	      for (i = 0; i < registeredKeys[lastModifiersAndKey].length; i++) {
+	        if (registeredKeys[lastModifiersAndKey][i](e) === false && e.preventDefault) {
+	          e.preventDefault();
+	        }
+	      }
+	    }
+	  };
+	};
+
+	Kibo.prototype.registerKeys = function (upOrDown, newKeys, func) {
+	  var i,
+	      keys,
+	      registeredKeys = this['keys' + Kibo.capitalize(upOrDown)];
+
+	  if (Kibo.isString(newKeys)) {
+	    newKeys = [newKeys];
+	  }
+
+	  for (i = 0; i < newKeys.length; i++) {
+	    keys = newKeys[i];
+	    keys = Kibo.modifiersAndKey(keys + '');
+
+	    if (registeredKeys[keys]) {
+	      registeredKeys[keys].push(func);
+	    } else {
+	      registeredKeys[keys] = [func];
+	    }
+	  }
+
+	  return this;
+	};
+
+	// jshint maxdepth:5
+	Kibo.prototype.unregisterKeys = function (upOrDown, newKeys, func) {
+	  var i,
+	      j,
+	      keys,
+	      registeredKeys = this['keys' + Kibo.capitalize(upOrDown)];
+
+	  if (Kibo.isString(newKeys)) {
+	    newKeys = [newKeys];
+	  }
+
+	  for (i = 0; i < newKeys.length; i++) {
+	    keys = newKeys[i];
+	    keys = Kibo.modifiersAndKey(keys + '');
+
+	    if (func === null) {
+	      delete registeredKeys[keys];
+	    } else {
+	      if (registeredKeys[keys]) {
+	        for (j = 0; j < registeredKeys[keys].length; j++) {
+	          if (String(registeredKeys[keys][j]) === String(func)) {
+	            registeredKeys[keys].splice(j, 1);
+	            break;
+	          }
+	        }
+	      }
+	    }
+	  }
+
+	  return this;
+	};
+
+	Kibo.prototype.off = function (keys) {
+	  return this.unregisterKeys('down', keys, null);
+	};
+
+	Kibo.prototype.delegate = function (upOrDown, keys, func) {
+	  return func !== null || func !== undefined ? this.registerKeys(upOrDown, keys, func) : this.unregisterKeys(upOrDown, keys, func);
+	};
+
+	Kibo.prototype.down = function (keys, func) {
+	  return this.delegate('down', keys, func);
+	};
+
+	Kibo.prototype.up = function (keys, func) {
+	  return this.delegate('up', keys, func);
+	};
+
+	Kibo.prototype.lastKey = function (modifier) {
+	  if (!modifier) {
+	    return Kibo.keyName(this.lastKeyCode);
+	  }
+
+	  return this.lastModifiers[modifier];
+	};
+
+	Kibo.prototype.lastModifiersAndKey = function () {
+	  var result, i;
+
+	  result = [];
+	  for (i = 0; i < Kibo.MODIFIERS.length; i++) {
+	    if (this.lastKey(Kibo.MODIFIERS[i])) {
+	      result.push(Kibo.MODIFIERS[i]);
+	    }
+	  }
+
+	  if (!Kibo.arrayIncludes(result, this.lastKey())) {
+	    result.push(this.lastKey());
+	  }
+
+	  return result.join(' ');
+	};
+
+	exports.default = Kibo;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global, module) {'use strict';
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+	/**
+	 * Lodash (Custom Build) <https://lodash.com/>
+	 * Build: `lodash modularize exports="npm" -o ./`
+	 * Copyright JS Foundation and other contributors <https://js.foundation/>
+	 * Released under MIT license <https://lodash.com/license>
+	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+	 * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+	 */
+
+	/** Used as the size to enable large array optimizations. */
+	var LARGE_ARRAY_SIZE = 200;
+
+	/** Used to stand-in for `undefined` hash values. */
+	var HASH_UNDEFINED = '__lodash_hash_undefined__';
+
+	/** Used to detect hot functions by number of calls within a span of milliseconds. */
+	var HOT_COUNT = 800,
+	    HOT_SPAN = 16;
+
+	/** Used as references for various `Number` constants. */
+	var MAX_SAFE_INTEGER = 9007199254740991;
+
+	/** `Object#toString` result references. */
+	var argsTag = '[object Arguments]',
+	    arrayTag = '[object Array]',
+	    asyncTag = '[object AsyncFunction]',
+	    boolTag = '[object Boolean]',
+	    dateTag = '[object Date]',
+	    errorTag = '[object Error]',
+	    funcTag = '[object Function]',
+	    genTag = '[object GeneratorFunction]',
+	    mapTag = '[object Map]',
+	    numberTag = '[object Number]',
+	    nullTag = '[object Null]',
+	    objectTag = '[object Object]',
+	    proxyTag = '[object Proxy]',
+	    regexpTag = '[object RegExp]',
+	    setTag = '[object Set]',
+	    stringTag = '[object String]',
+	    undefinedTag = '[object Undefined]',
+	    weakMapTag = '[object WeakMap]';
+
+	var arrayBufferTag = '[object ArrayBuffer]',
+	    dataViewTag = '[object DataView]',
+	    float32Tag = '[object Float32Array]',
+	    float64Tag = '[object Float64Array]',
+	    int8Tag = '[object Int8Array]',
+	    int16Tag = '[object Int16Array]',
+	    int32Tag = '[object Int32Array]',
+	    uint8Tag = '[object Uint8Array]',
+	    uint8ClampedTag = '[object Uint8ClampedArray]',
+	    uint16Tag = '[object Uint16Array]',
+	    uint32Tag = '[object Uint32Array]';
+
+	/**
+	 * Used to match `RegExp`
+	 * [syntax characters](http://ecma-international.org/ecma-262/7.0/#sec-patterns).
+	 */
+	var reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
+
+	/** Used to detect host constructors (Safari). */
+	var reIsHostCtor = /^\[object .+?Constructor\]$/;
+
+	/** Used to detect unsigned integer values. */
+	var reIsUint = /^(?:0|[1-9]\d*)$/;
+
+	/** Used to identify `toStringTag` values of typed arrays. */
+	var typedArrayTags = {};
+	typedArrayTags[float32Tag] = typedArrayTags[float64Tag] = typedArrayTags[int8Tag] = typedArrayTags[int16Tag] = typedArrayTags[int32Tag] = typedArrayTags[uint8Tag] = typedArrayTags[uint8ClampedTag] = typedArrayTags[uint16Tag] = typedArrayTags[uint32Tag] = true;
+	typedArrayTags[argsTag] = typedArrayTags[arrayTag] = typedArrayTags[arrayBufferTag] = typedArrayTags[boolTag] = typedArrayTags[dataViewTag] = typedArrayTags[dateTag] = typedArrayTags[errorTag] = typedArrayTags[funcTag] = typedArrayTags[mapTag] = typedArrayTags[numberTag] = typedArrayTags[objectTag] = typedArrayTags[regexpTag] = typedArrayTags[setTag] = typedArrayTags[stringTag] = typedArrayTags[weakMapTag] = false;
+
+	/** Detect free variable `global` from Node.js. */
+	var freeGlobal = (typeof global === 'undefined' ? 'undefined' : _typeof(global)) == 'object' && global && global.Object === Object && global;
+
+	/** Detect free variable `self`. */
+	var freeSelf = (typeof self === 'undefined' ? 'undefined' : _typeof(self)) == 'object' && self && self.Object === Object && self;
+
+	/** Used as a reference to the global object. */
+	var root = freeGlobal || freeSelf || Function('return this')();
+
+	/** Detect free variable `exports`. */
+	var freeExports = ( false ? 'undefined' : _typeof(exports)) == 'object' && exports && !exports.nodeType && exports;
+
+	/** Detect free variable `module`. */
+	var freeModule = freeExports && ( false ? 'undefined' : _typeof(module)) == 'object' && module && !module.nodeType && module;
+
+	/** Detect the popular CommonJS extension `module.exports`. */
+	var moduleExports = freeModule && freeModule.exports === freeExports;
+
+	/** Detect free variable `process` from Node.js. */
+	var freeProcess = moduleExports && freeGlobal.process;
+
+	/** Used to access faster Node.js helpers. */
+	var nodeUtil = function () {
+	  try {
+	    return freeProcess && freeProcess.binding && freeProcess.binding('util');
+	  } catch (e) {}
+	}();
+
+	/* Node.js helper references. */
+	var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
+
+	/**
+	 * A faster alternative to `Function#apply`, this function invokes `func`
+	 * with the `this` binding of `thisArg` and the arguments of `args`.
+	 *
+	 * @private
+	 * @param {Function} func The function to invoke.
+	 * @param {*} thisArg The `this` binding of `func`.
+	 * @param {Array} args The arguments to invoke `func` with.
+	 * @returns {*} Returns the result of `func`.
+	 */
+	function apply(func, thisArg, args) {
+	  switch (args.length) {
+	    case 0:
+	      return func.call(thisArg);
+	    case 1:
+	      return func.call(thisArg, args[0]);
+	    case 2:
+	      return func.call(thisArg, args[0], args[1]);
+	    case 3:
+	      return func.call(thisArg, args[0], args[1], args[2]);
+	  }
+	  return func.apply(thisArg, args);
+	}
+
+	/**
+	 * The base implementation of `_.times` without support for iteratee shorthands
+	 * or max array length checks.
+	 *
+	 * @private
+	 * @param {number} n The number of times to invoke `iteratee`.
+	 * @param {Function} iteratee The function invoked per iteration.
+	 * @returns {Array} Returns the array of results.
+	 */
+	function baseTimes(n, iteratee) {
+	  var index = -1,
+	      result = Array(n);
+
+	  while (++index < n) {
+	    result[index] = iteratee(index);
+	  }
+	  return result;
+	}
+
+	/**
+	 * The base implementation of `_.unary` without support for storing metadata.
+	 *
+	 * @private
+	 * @param {Function} func The function to cap arguments for.
+	 * @returns {Function} Returns the new capped function.
+	 */
+	function baseUnary(func) {
+	  return function (value) {
+	    return func(value);
+	  };
+	}
+
+	/**
+	 * Gets the value at `key` of `object`.
+	 *
+	 * @private
+	 * @param {Object} [object] The object to query.
+	 * @param {string} key The key of the property to get.
+	 * @returns {*} Returns the property value.
+	 */
+	function getValue(object, key) {
+	  return object == null ? undefined : object[key];
+	}
+
+	/**
+	 * Creates a unary function that invokes `func` with its argument transformed.
+	 *
+	 * @private
+	 * @param {Function} func The function to wrap.
+	 * @param {Function} transform The argument transform.
+	 * @returns {Function} Returns the new function.
+	 */
+	function overArg(func, transform) {
+	  return function (arg) {
+	    return func(transform(arg));
+	  };
+	}
+
+	/**
+	 * Gets the value at `key`, unless `key` is "__proto__".
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @param {string} key The key of the property to get.
+	 * @returns {*} Returns the property value.
+	 */
+	function safeGet(object, key) {
+	  return key == '__proto__' ? undefined : object[key];
+	}
+
+	/** Used for built-in method references. */
+	var arrayProto = Array.prototype,
+	    funcProto = Function.prototype,
+	    objectProto = Object.prototype;
+
+	/** Used to detect overreaching core-js shims. */
+	var coreJsData = root['__core-js_shared__'];
+
+	/** Used to resolve the decompiled source of functions. */
+	var funcToString = funcProto.toString;
+
+	/** Used to check objects for own properties. */
+	var hasOwnProperty = objectProto.hasOwnProperty;
+
+	/** Used to detect methods masquerading as native. */
+	var maskSrcKey = function () {
+	  var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || '');
+	  return uid ? 'Symbol(src)_1.' + uid : '';
+	}();
+
+	/**
+	 * Used to resolve the
+	 * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var nativeObjectToString = objectProto.toString;
+
+	/** Used to infer the `Object` constructor. */
+	var objectCtorString = funcToString.call(Object);
+
+	/** Used to detect if a method is native. */
+	var reIsNative = RegExp('^' + funcToString.call(hasOwnProperty).replace(reRegExpChar, '\\$&').replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$');
+
+	/** Built-in value references. */
+	var Buffer = moduleExports ? root.Buffer : undefined,
+	    _Symbol = root.Symbol,
+	    Uint8Array = root.Uint8Array,
+	    allocUnsafe = Buffer ? Buffer.allocUnsafe : undefined,
+	    getPrototype = overArg(Object.getPrototypeOf, Object),
+	    objectCreate = Object.create,
+	    propertyIsEnumerable = objectProto.propertyIsEnumerable,
+	    splice = arrayProto.splice,
+	    symToStringTag = _Symbol ? _Symbol.toStringTag : undefined;
+
+	var defineProperty = function () {
+	  try {
+	    var func = getNative(Object, 'defineProperty');
+	    func({}, '', {});
+	    return func;
+	  } catch (e) {}
+	}();
+
+	/* Built-in method references for those with the same name as other `lodash` methods. */
+	var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined,
+	    nativeMax = Math.max,
+	    nativeNow = Date.now;
+
+	/* Built-in method references that are verified to be native. */
+	var Map = getNative(root, 'Map'),
+	    nativeCreate = getNative(Object, 'create');
+
+	/**
+	 * The base implementation of `_.create` without support for assigning
+	 * properties to the created object.
+	 *
+	 * @private
+	 * @param {Object} proto The object to inherit from.
+	 * @returns {Object} Returns the new object.
+	 */
+	var baseCreate = function () {
+	  function object() {}
+	  return function (proto) {
+	    if (!isObject(proto)) {
+	      return {};
+	    }
+	    if (objectCreate) {
+	      return objectCreate(proto);
+	    }
+	    object.prototype = proto;
+	    var result = new object();
+	    object.prototype = undefined;
+	    return result;
+	  };
+	}();
+
+	/**
+	 * Creates a hash object.
+	 *
+	 * @private
+	 * @constructor
+	 * @param {Array} [entries] The key-value pairs to cache.
+	 */
+	function Hash(entries) {
+	  var index = -1,
+	      length = entries == null ? 0 : entries.length;
+
+	  this.clear();
+	  while (++index < length) {
+	    var entry = entries[index];
+	    this.set(entry[0], entry[1]);
+	  }
+	}
+
+	/**
+	 * Removes all key-value entries from the hash.
+	 *
+	 * @private
+	 * @name clear
+	 * @memberOf Hash
+	 */
+	function hashClear() {
+	  this.__data__ = nativeCreate ? nativeCreate(null) : {};
+	  this.size = 0;
+	}
+
+	/**
+	 * Removes `key` and its value from the hash.
+	 *
+	 * @private
+	 * @name delete
+	 * @memberOf Hash
+	 * @param {Object} hash The hash to modify.
+	 * @param {string} key The key of the value to remove.
+	 * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+	 */
+	function hashDelete(key) {
+	  var result = this.has(key) && delete this.__data__[key];
+	  this.size -= result ? 1 : 0;
+	  return result;
+	}
+
+	/**
+	 * Gets the hash value for `key`.
+	 *
+	 * @private
+	 * @name get
+	 * @memberOf Hash
+	 * @param {string} key The key of the value to get.
+	 * @returns {*} Returns the entry value.
+	 */
+	function hashGet(key) {
+	  var data = this.__data__;
+	  if (nativeCreate) {
+	    var result = data[key];
+	    return result === HASH_UNDEFINED ? undefined : result;
+	  }
+	  return hasOwnProperty.call(data, key) ? data[key] : undefined;
+	}
+
+	/**
+	 * Checks if a hash value for `key` exists.
+	 *
+	 * @private
+	 * @name has
+	 * @memberOf Hash
+	 * @param {string} key The key of the entry to check.
+	 * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+	 */
+	function hashHas(key) {
+	  var data = this.__data__;
+	  return nativeCreate ? data[key] !== undefined : hasOwnProperty.call(data, key);
+	}
+
+	/**
+	 * Sets the hash `key` to `value`.
+	 *
+	 * @private
+	 * @name set
+	 * @memberOf Hash
+	 * @param {string} key The key of the value to set.
+	 * @param {*} value The value to set.
+	 * @returns {Object} Returns the hash instance.
+	 */
+	function hashSet(key, value) {
+	  var data = this.__data__;
+	  this.size += this.has(key) ? 0 : 1;
+	  data[key] = nativeCreate && value === undefined ? HASH_UNDEFINED : value;
+	  return this;
+	}
+
+	// Add methods to `Hash`.
+	Hash.prototype.clear = hashClear;
+	Hash.prototype['delete'] = hashDelete;
+	Hash.prototype.get = hashGet;
+	Hash.prototype.has = hashHas;
+	Hash.prototype.set = hashSet;
+
+	/**
+	 * Creates an list cache object.
+	 *
+	 * @private
+	 * @constructor
+	 * @param {Array} [entries] The key-value pairs to cache.
+	 */
+	function ListCache(entries) {
+	  var index = -1,
+	      length = entries == null ? 0 : entries.length;
+
+	  this.clear();
+	  while (++index < length) {
+	    var entry = entries[index];
+	    this.set(entry[0], entry[1]);
+	  }
+	}
+
+	/**
+	 * Removes all key-value entries from the list cache.
+	 *
+	 * @private
+	 * @name clear
+	 * @memberOf ListCache
+	 */
+	function listCacheClear() {
+	  this.__data__ = [];
+	  this.size = 0;
+	}
+
+	/**
+	 * Removes `key` and its value from the list cache.
+	 *
+	 * @private
+	 * @name delete
+	 * @memberOf ListCache
+	 * @param {string} key The key of the value to remove.
+	 * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+	 */
+	function listCacheDelete(key) {
+	  var data = this.__data__,
+	      index = assocIndexOf(data, key);
+
+	  if (index < 0) {
+	    return false;
+	  }
+	  var lastIndex = data.length - 1;
+	  if (index == lastIndex) {
+	    data.pop();
+	  } else {
+	    splice.call(data, index, 1);
+	  }
+	  --this.size;
+	  return true;
+	}
+
+	/**
+	 * Gets the list cache value for `key`.
+	 *
+	 * @private
+	 * @name get
+	 * @memberOf ListCache
+	 * @param {string} key The key of the value to get.
+	 * @returns {*} Returns the entry value.
+	 */
+	function listCacheGet(key) {
+	  var data = this.__data__,
+	      index = assocIndexOf(data, key);
+
+	  return index < 0 ? undefined : data[index][1];
+	}
+
+	/**
+	 * Checks if a list cache value for `key` exists.
+	 *
+	 * @private
+	 * @name has
+	 * @memberOf ListCache
+	 * @param {string} key The key of the entry to check.
+	 * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+	 */
+	function listCacheHas(key) {
+	  return assocIndexOf(this.__data__, key) > -1;
+	}
+
+	/**
+	 * Sets the list cache `key` to `value`.
+	 *
+	 * @private
+	 * @name set
+	 * @memberOf ListCache
+	 * @param {string} key The key of the value to set.
+	 * @param {*} value The value to set.
+	 * @returns {Object} Returns the list cache instance.
+	 */
+	function listCacheSet(key, value) {
+	  var data = this.__data__,
+	      index = assocIndexOf(data, key);
+
+	  if (index < 0) {
+	    ++this.size;
+	    data.push([key, value]);
+	  } else {
+	    data[index][1] = value;
+	  }
+	  return this;
+	}
+
+	// Add methods to `ListCache`.
+	ListCache.prototype.clear = listCacheClear;
+	ListCache.prototype['delete'] = listCacheDelete;
+	ListCache.prototype.get = listCacheGet;
+	ListCache.prototype.has = listCacheHas;
+	ListCache.prototype.set = listCacheSet;
+
+	/**
+	 * Creates a map cache object to store key-value pairs.
+	 *
+	 * @private
+	 * @constructor
+	 * @param {Array} [entries] The key-value pairs to cache.
+	 */
+	function MapCache(entries) {
+	  var index = -1,
+	      length = entries == null ? 0 : entries.length;
+
+	  this.clear();
+	  while (++index < length) {
+	    var entry = entries[index];
+	    this.set(entry[0], entry[1]);
+	  }
+	}
+
+	/**
+	 * Removes all key-value entries from the map.
+	 *
+	 * @private
+	 * @name clear
+	 * @memberOf MapCache
+	 */
+	function mapCacheClear() {
+	  this.size = 0;
+	  this.__data__ = {
+	    'hash': new Hash(),
+	    'map': new (Map || ListCache)(),
+	    'string': new Hash()
+	  };
+	}
+
+	/**
+	 * Removes `key` and its value from the map.
+	 *
+	 * @private
+	 * @name delete
+	 * @memberOf MapCache
+	 * @param {string} key The key of the value to remove.
+	 * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+	 */
+	function mapCacheDelete(key) {
+	  var result = getMapData(this, key)['delete'](key);
+	  this.size -= result ? 1 : 0;
+	  return result;
+	}
+
+	/**
+	 * Gets the map value for `key`.
+	 *
+	 * @private
+	 * @name get
+	 * @memberOf MapCache
+	 * @param {string} key The key of the value to get.
+	 * @returns {*} Returns the entry value.
+	 */
+	function mapCacheGet(key) {
+	  return getMapData(this, key).get(key);
+	}
+
+	/**
+	 * Checks if a map value for `key` exists.
+	 *
+	 * @private
+	 * @name has
+	 * @memberOf MapCache
+	 * @param {string} key The key of the entry to check.
+	 * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+	 */
+	function mapCacheHas(key) {
+	  return getMapData(this, key).has(key);
+	}
+
+	/**
+	 * Sets the map `key` to `value`.
+	 *
+	 * @private
+	 * @name set
+	 * @memberOf MapCache
+	 * @param {string} key The key of the value to set.
+	 * @param {*} value The value to set.
+	 * @returns {Object} Returns the map cache instance.
+	 */
+	function mapCacheSet(key, value) {
+	  var data = getMapData(this, key),
+	      size = data.size;
+
+	  data.set(key, value);
+	  this.size += data.size == size ? 0 : 1;
+	  return this;
+	}
+
+	// Add methods to `MapCache`.
+	MapCache.prototype.clear = mapCacheClear;
+	MapCache.prototype['delete'] = mapCacheDelete;
+	MapCache.prototype.get = mapCacheGet;
+	MapCache.prototype.has = mapCacheHas;
+	MapCache.prototype.set = mapCacheSet;
+
+	/**
+	 * Creates a stack cache object to store key-value pairs.
+	 *
+	 * @private
+	 * @constructor
+	 * @param {Array} [entries] The key-value pairs to cache.
+	 */
+	function Stack(entries) {
+	  var data = this.__data__ = new ListCache(entries);
+	  this.size = data.size;
+	}
+
+	/**
+	 * Removes all key-value entries from the stack.
+	 *
+	 * @private
+	 * @name clear
+	 * @memberOf Stack
+	 */
+	function stackClear() {
+	  this.__data__ = new ListCache();
+	  this.size = 0;
+	}
+
+	/**
+	 * Removes `key` and its value from the stack.
+	 *
+	 * @private
+	 * @name delete
+	 * @memberOf Stack
+	 * @param {string} key The key of the value to remove.
+	 * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+	 */
+	function stackDelete(key) {
+	  var data = this.__data__,
+	      result = data['delete'](key);
+
+	  this.size = data.size;
+	  return result;
+	}
+
+	/**
+	 * Gets the stack value for `key`.
+	 *
+	 * @private
+	 * @name get
+	 * @memberOf Stack
+	 * @param {string} key The key of the value to get.
+	 * @returns {*} Returns the entry value.
+	 */
+	function stackGet(key) {
+	  return this.__data__.get(key);
+	}
+
+	/**
+	 * Checks if a stack value for `key` exists.
+	 *
+	 * @private
+	 * @name has
+	 * @memberOf Stack
+	 * @param {string} key The key of the entry to check.
+	 * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+	 */
+	function stackHas(key) {
+	  return this.__data__.has(key);
+	}
+
+	/**
+	 * Sets the stack `key` to `value`.
+	 *
+	 * @private
+	 * @name set
+	 * @memberOf Stack
+	 * @param {string} key The key of the value to set.
+	 * @param {*} value The value to set.
+	 * @returns {Object} Returns the stack cache instance.
+	 */
+	function stackSet(key, value) {
+	  var data = this.__data__;
+	  if (data instanceof ListCache) {
+	    var pairs = data.__data__;
+	    if (!Map || pairs.length < LARGE_ARRAY_SIZE - 1) {
+	      pairs.push([key, value]);
+	      this.size = ++data.size;
+	      return this;
+	    }
+	    data = this.__data__ = new MapCache(pairs);
+	  }
+	  data.set(key, value);
+	  this.size = data.size;
+	  return this;
+	}
+
+	// Add methods to `Stack`.
+	Stack.prototype.clear = stackClear;
+	Stack.prototype['delete'] = stackDelete;
+	Stack.prototype.get = stackGet;
+	Stack.prototype.has = stackHas;
+	Stack.prototype.set = stackSet;
+
+	/**
+	 * Creates an array of the enumerable property names of the array-like `value`.
+	 *
+	 * @private
+	 * @param {*} value The value to query.
+	 * @param {boolean} inherited Specify returning inherited property names.
+	 * @returns {Array} Returns the array of property names.
+	 */
+	function arrayLikeKeys(value, inherited) {
+	  var isArr = isArray(value),
+	      isArg = !isArr && isArguments(value),
+	      isBuff = !isArr && !isArg && isBuffer(value),
+	      isType = !isArr && !isArg && !isBuff && isTypedArray(value),
+	      skipIndexes = isArr || isArg || isBuff || isType,
+	      result = skipIndexes ? baseTimes(value.length, String) : [],
+	      length = result.length;
+
+	  for (var key in value) {
+	    if ((inherited || hasOwnProperty.call(value, key)) && !(skipIndexes && (
+	    // Safari 9 has enumerable `arguments.length` in strict mode.
+	    key == 'length' ||
+	    // Node.js 0.10 has enumerable non-index properties on buffers.
+	    isBuff && (key == 'offset' || key == 'parent') ||
+	    // PhantomJS 2 has enumerable non-index properties on typed arrays.
+	    isType && (key == 'buffer' || key == 'byteLength' || key == 'byteOffset') ||
+	    // Skip index properties.
+	    isIndex(key, length)))) {
+	      result.push(key);
+	    }
+	  }
+	  return result;
+	}
+
+	/**
+	 * This function is like `assignValue` except that it doesn't assign
+	 * `undefined` values.
+	 *
+	 * @private
+	 * @param {Object} object The object to modify.
+	 * @param {string} key The key of the property to assign.
+	 * @param {*} value The value to assign.
+	 */
+	function assignMergeValue(object, key, value) {
+	  if (value !== undefined && !eq(object[key], value) || value === undefined && !(key in object)) {
+	    baseAssignValue(object, key, value);
+	  }
+	}
+
+	/**
+	 * Assigns `value` to `key` of `object` if the existing value is not equivalent
+	 * using [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+	 * for equality comparisons.
+	 *
+	 * @private
+	 * @param {Object} object The object to modify.
+	 * @param {string} key The key of the property to assign.
+	 * @param {*} value The value to assign.
+	 */
+	function assignValue(object, key, value) {
+	  var objValue = object[key];
+	  if (!(hasOwnProperty.call(object, key) && eq(objValue, value)) || value === undefined && !(key in object)) {
+	    baseAssignValue(object, key, value);
+	  }
+	}
+
+	/**
+	 * Gets the index at which the `key` is found in `array` of key-value pairs.
+	 *
+	 * @private
+	 * @param {Array} array The array to inspect.
+	 * @param {*} key The key to search for.
+	 * @returns {number} Returns the index of the matched value, else `-1`.
+	 */
+	function assocIndexOf(array, key) {
+	  var length = array.length;
+	  while (length--) {
+	    if (eq(array[length][0], key)) {
+	      return length;
+	    }
+	  }
+	  return -1;
+	}
+
+	/**
+	 * The base implementation of `assignValue` and `assignMergeValue` without
+	 * value checks.
+	 *
+	 * @private
+	 * @param {Object} object The object to modify.
+	 * @param {string} key The key of the property to assign.
+	 * @param {*} value The value to assign.
+	 */
+	function baseAssignValue(object, key, value) {
+	  if (key == '__proto__' && defineProperty) {
+	    defineProperty(object, key, {
+	      'configurable': true,
+	      'enumerable': true,
+	      'value': value,
+	      'writable': true
+	    });
+	  } else {
+	    object[key] = value;
+	  }
+	}
+
+	/**
+	 * The base implementation of `baseForOwn` which iterates over `object`
+	 * properties returned by `keysFunc` and invokes `iteratee` for each property.
+	 * Iteratee functions may exit iteration early by explicitly returning `false`.
+	 *
+	 * @private
+	 * @param {Object} object The object to iterate over.
+	 * @param {Function} iteratee The function invoked per iteration.
+	 * @param {Function} keysFunc The function to get the keys of `object`.
+	 * @returns {Object} Returns `object`.
+	 */
+	var baseFor = createBaseFor();
+
+	/**
+	 * The base implementation of `getTag` without fallbacks for buggy environments.
+	 *
+	 * @private
+	 * @param {*} value The value to query.
+	 * @returns {string} Returns the `toStringTag`.
+	 */
+	function baseGetTag(value) {
+	  if (value == null) {
+	    return value === undefined ? undefinedTag : nullTag;
+	  }
+	  return symToStringTag && symToStringTag in Object(value) ? getRawTag(value) : objectToString(value);
+	}
+
+	/**
+	 * The base implementation of `_.isArguments`.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an `arguments` object,
+	 */
+	function baseIsArguments(value) {
+	  return isObjectLike(value) && baseGetTag(value) == argsTag;
+	}
+
+	/**
+	 * The base implementation of `_.isNative` without bad shim checks.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a native function,
+	 *  else `false`.
+	 */
+	function baseIsNative(value) {
+	  if (!isObject(value) || isMasked(value)) {
+	    return false;
+	  }
+	  var pattern = isFunction(value) ? reIsNative : reIsHostCtor;
+	  return pattern.test(toSource(value));
+	}
+
+	/**
+	 * The base implementation of `_.isTypedArray` without Node.js optimizations.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
+	 */
+	function baseIsTypedArray(value) {
+	  return isObjectLike(value) && isLength(value.length) && !!typedArrayTags[baseGetTag(value)];
+	}
+
+	/**
+	 * The base implementation of `_.keysIn` which doesn't treat sparse arrays as dense.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of property names.
+	 */
+	function baseKeysIn(object) {
+	  if (!isObject(object)) {
+	    return nativeKeysIn(object);
+	  }
+	  var isProto = isPrototype(object),
+	      result = [];
+
+	  for (var key in object) {
+	    if (!(key == 'constructor' && (isProto || !hasOwnProperty.call(object, key)))) {
+	      result.push(key);
+	    }
+	  }
+	  return result;
+	}
+
+	/**
+	 * The base implementation of `_.merge` without support for multiple sources.
+	 *
+	 * @private
+	 * @param {Object} object The destination object.
+	 * @param {Object} source The source object.
+	 * @param {number} srcIndex The index of `source`.
+	 * @param {Function} [customizer] The function to customize merged values.
+	 * @param {Object} [stack] Tracks traversed source values and their merged
+	 *  counterparts.
+	 */
+	function baseMerge(object, source, srcIndex, customizer, stack) {
+	  if (object === source) {
+	    return;
+	  }
+	  baseFor(source, function (srcValue, key) {
+	    if (isObject(srcValue)) {
+	      stack || (stack = new Stack());
+	      baseMergeDeep(object, source, key, srcIndex, baseMerge, customizer, stack);
+	    } else {
+	      var newValue = customizer ? customizer(safeGet(object, key), srcValue, key + '', object, source, stack) : undefined;
+
+	      if (newValue === undefined) {
+	        newValue = srcValue;
+	      }
+	      assignMergeValue(object, key, newValue);
+	    }
+	  }, keysIn);
+	}
+
+	/**
+	 * A specialized version of `baseMerge` for arrays and objects which performs
+	 * deep merges and tracks traversed objects enabling objects with circular
+	 * references to be merged.
+	 *
+	 * @private
+	 * @param {Object} object The destination object.
+	 * @param {Object} source The source object.
+	 * @param {string} key The key of the value to merge.
+	 * @param {number} srcIndex The index of `source`.
+	 * @param {Function} mergeFunc The function to merge values.
+	 * @param {Function} [customizer] The function to customize assigned values.
+	 * @param {Object} [stack] Tracks traversed source values and their merged
+	 *  counterparts.
+	 */
+	function baseMergeDeep(object, source, key, srcIndex, mergeFunc, customizer, stack) {
+	  var objValue = safeGet(object, key),
+	      srcValue = safeGet(source, key),
+	      stacked = stack.get(srcValue);
+
+	  if (stacked) {
+	    assignMergeValue(object, key, stacked);
+	    return;
+	  }
+	  var newValue = customizer ? customizer(objValue, srcValue, key + '', object, source, stack) : undefined;
+
+	  var isCommon = newValue === undefined;
+
+	  if (isCommon) {
+	    var isArr = isArray(srcValue),
+	        isBuff = !isArr && isBuffer(srcValue),
+	        isTyped = !isArr && !isBuff && isTypedArray(srcValue);
+
+	    newValue = srcValue;
+	    if (isArr || isBuff || isTyped) {
+	      if (isArray(objValue)) {
+	        newValue = objValue;
+	      } else if (isArrayLikeObject(objValue)) {
+	        newValue = copyArray(objValue);
+	      } else if (isBuff) {
+	        isCommon = false;
+	        newValue = cloneBuffer(srcValue, true);
+	      } else if (isTyped) {
+	        isCommon = false;
+	        newValue = cloneTypedArray(srcValue, true);
+	      } else {
+	        newValue = [];
+	      }
+	    } else if (isPlainObject(srcValue) || isArguments(srcValue)) {
+	      newValue = objValue;
+	      if (isArguments(objValue)) {
+	        newValue = toPlainObject(objValue);
+	      } else if (!isObject(objValue) || srcIndex && isFunction(objValue)) {
+	        newValue = initCloneObject(srcValue);
+	      }
+	    } else {
+	      isCommon = false;
+	    }
+	  }
+	  if (isCommon) {
+	    // Recursively merge objects and arrays (susceptible to call stack limits).
+	    stack.set(srcValue, newValue);
+	    mergeFunc(newValue, srcValue, srcIndex, customizer, stack);
+	    stack['delete'](srcValue);
+	  }
+	  assignMergeValue(object, key, newValue);
+	}
+
+	/**
+	 * The base implementation of `_.rest` which doesn't validate or coerce arguments.
+	 *
+	 * @private
+	 * @param {Function} func The function to apply a rest parameter to.
+	 * @param {number} [start=func.length-1] The start position of the rest parameter.
+	 * @returns {Function} Returns the new function.
+	 */
+	function baseRest(func, start) {
+	  return setToString(overRest(func, start, identity), func + '');
+	}
+
+	/**
+	 * The base implementation of `setToString` without support for hot loop shorting.
+	 *
+	 * @private
+	 * @param {Function} func The function to modify.
+	 * @param {Function} string The `toString` result.
+	 * @returns {Function} Returns `func`.
+	 */
+	var baseSetToString = !defineProperty ? identity : function (func, string) {
+	  return defineProperty(func, 'toString', {
+	    'configurable': true,
+	    'enumerable': false,
+	    'value': constant(string),
+	    'writable': true
+	  });
+	};
+
+	/**
+	 * Creates a clone of  `buffer`.
+	 *
+	 * @private
+	 * @param {Buffer} buffer The buffer to clone.
+	 * @param {boolean} [isDeep] Specify a deep clone.
+	 * @returns {Buffer} Returns the cloned buffer.
+	 */
+	function cloneBuffer(buffer, isDeep) {
+	  if (isDeep) {
+	    return buffer.slice();
+	  }
+	  var length = buffer.length,
+	      result = allocUnsafe ? allocUnsafe(length) : new buffer.constructor(length);
+
+	  buffer.copy(result);
+	  return result;
+	}
+
+	/**
+	 * Creates a clone of `arrayBuffer`.
+	 *
+	 * @private
+	 * @param {ArrayBuffer} arrayBuffer The array buffer to clone.
+	 * @returns {ArrayBuffer} Returns the cloned array buffer.
+	 */
+	function cloneArrayBuffer(arrayBuffer) {
+	  var result = new arrayBuffer.constructor(arrayBuffer.byteLength);
+	  new Uint8Array(result).set(new Uint8Array(arrayBuffer));
+	  return result;
+	}
+
+	/**
+	 * Creates a clone of `typedArray`.
+	 *
+	 * @private
+	 * @param {Object} typedArray The typed array to clone.
+	 * @param {boolean} [isDeep] Specify a deep clone.
+	 * @returns {Object} Returns the cloned typed array.
+	 */
+	function cloneTypedArray(typedArray, isDeep) {
+	  var buffer = isDeep ? cloneArrayBuffer(typedArray.buffer) : typedArray.buffer;
+	  return new typedArray.constructor(buffer, typedArray.byteOffset, typedArray.length);
+	}
+
+	/**
+	 * Copies the values of `source` to `array`.
+	 *
+	 * @private
+	 * @param {Array} source The array to copy values from.
+	 * @param {Array} [array=[]] The array to copy values to.
+	 * @returns {Array} Returns `array`.
+	 */
+	function copyArray(source, array) {
+	  var index = -1,
+	      length = source.length;
+
+	  array || (array = Array(length));
+	  while (++index < length) {
+	    array[index] = source[index];
+	  }
+	  return array;
+	}
+
+	/**
+	 * Copies properties of `source` to `object`.
+	 *
+	 * @private
+	 * @param {Object} source The object to copy properties from.
+	 * @param {Array} props The property identifiers to copy.
+	 * @param {Object} [object={}] The object to copy properties to.
+	 * @param {Function} [customizer] The function to customize copied values.
+	 * @returns {Object} Returns `object`.
+	 */
+	function copyObject(source, props, object, customizer) {
+	  var isNew = !object;
+	  object || (object = {});
+
+	  var index = -1,
+	      length = props.length;
+
+	  while (++index < length) {
+	    var key = props[index];
+
+	    var newValue = customizer ? customizer(object[key], source[key], key, object, source) : undefined;
+
+	    if (newValue === undefined) {
+	      newValue = source[key];
+	    }
+	    if (isNew) {
+	      baseAssignValue(object, key, newValue);
+	    } else {
+	      assignValue(object, key, newValue);
+	    }
+	  }
+	  return object;
+	}
+
+	/**
+	 * Creates a function like `_.assign`.
+	 *
+	 * @private
+	 * @param {Function} assigner The function to assign values.
+	 * @returns {Function} Returns the new assigner function.
+	 */
+	function createAssigner(assigner) {
+	  return baseRest(function (object, sources) {
+	    var index = -1,
+	        length = sources.length,
+	        customizer = length > 1 ? sources[length - 1] : undefined,
+	        guard = length > 2 ? sources[2] : undefined;
+
+	    customizer = assigner.length > 3 && typeof customizer == 'function' ? (length--, customizer) : undefined;
+
+	    if (guard && isIterateeCall(sources[0], sources[1], guard)) {
+	      customizer = length < 3 ? undefined : customizer;
+	      length = 1;
+	    }
+	    object = Object(object);
+	    while (++index < length) {
+	      var source = sources[index];
+	      if (source) {
+	        assigner(object, source, index, customizer);
+	      }
+	    }
+	    return object;
+	  });
+	}
+
+	/**
+	 * Creates a base function for methods like `_.forIn` and `_.forOwn`.
+	 *
+	 * @private
+	 * @param {boolean} [fromRight] Specify iterating from right to left.
+	 * @returns {Function} Returns the new base function.
+	 */
+	function createBaseFor(fromRight) {
+	  return function (object, iteratee, keysFunc) {
+	    var index = -1,
+	        iterable = Object(object),
+	        props = keysFunc(object),
+	        length = props.length;
+
+	    while (length--) {
+	      var key = props[fromRight ? length : ++index];
+	      if (iteratee(iterable[key], key, iterable) === false) {
+	        break;
+	      }
+	    }
+	    return object;
+	  };
+	}
+
+	/**
+	 * Gets the data for `map`.
+	 *
+	 * @private
+	 * @param {Object} map The map to query.
+	 * @param {string} key The reference key.
+	 * @returns {*} Returns the map data.
+	 */
+	function getMapData(map, key) {
+	  var data = map.__data__;
+	  return isKeyable(key) ? data[typeof key == 'string' ? 'string' : 'hash'] : data.map;
+	}
+
+	/**
+	 * Gets the native function at `key` of `object`.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @param {string} key The key of the method to get.
+	 * @returns {*} Returns the function if it's native, else `undefined`.
+	 */
+	function getNative(object, key) {
+	  var value = getValue(object, key);
+	  return baseIsNative(value) ? value : undefined;
+	}
+
+	/**
+	 * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
+	 *
+	 * @private
+	 * @param {*} value The value to query.
+	 * @returns {string} Returns the raw `toStringTag`.
+	 */
+	function getRawTag(value) {
+	  var isOwn = hasOwnProperty.call(value, symToStringTag),
+	      tag = value[symToStringTag];
+
+	  try {
+	    value[symToStringTag] = undefined;
+	    var unmasked = true;
+	  } catch (e) {}
+
+	  var result = nativeObjectToString.call(value);
+	  if (unmasked) {
+	    if (isOwn) {
+	      value[symToStringTag] = tag;
+	    } else {
+	      delete value[symToStringTag];
+	    }
+	  }
+	  return result;
+	}
+
+	/**
+	 * Initializes an object clone.
+	 *
+	 * @private
+	 * @param {Object} object The object to clone.
+	 * @returns {Object} Returns the initialized clone.
+	 */
+	function initCloneObject(object) {
+	  return typeof object.constructor == 'function' && !isPrototype(object) ? baseCreate(getPrototype(object)) : {};
+	}
+
+	/**
+	 * Checks if `value` is a valid array-like index.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
+	 * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
+	 */
+	function isIndex(value, length) {
+	  var type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
+	  length = length == null ? MAX_SAFE_INTEGER : length;
+
+	  return !!length && (type == 'number' || type != 'symbol' && reIsUint.test(value)) && value > -1 && value % 1 == 0 && value < length;
+	}
+
+	/**
+	 * Checks if the given arguments are from an iteratee call.
+	 *
+	 * @private
+	 * @param {*} value The potential iteratee value argument.
+	 * @param {*} index The potential iteratee index or key argument.
+	 * @param {*} object The potential iteratee object argument.
+	 * @returns {boolean} Returns `true` if the arguments are from an iteratee call,
+	 *  else `false`.
+	 */
+	function isIterateeCall(value, index, object) {
+	  if (!isObject(object)) {
+	    return false;
+	  }
+	  var type = typeof index === 'undefined' ? 'undefined' : _typeof(index);
+	  if (type == 'number' ? isArrayLike(object) && isIndex(index, object.length) : type == 'string' && index in object) {
+	    return eq(object[index], value);
+	  }
+	  return false;
+	}
+
+	/**
+	 * Checks if `value` is suitable for use as unique object key.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is suitable, else `false`.
+	 */
+	function isKeyable(value) {
+	  var type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
+	  return type == 'string' || type == 'number' || type == 'symbol' || type == 'boolean' ? value !== '__proto__' : value === null;
+	}
+
+	/**
+	 * Checks if `func` has its source masked.
+	 *
+	 * @private
+	 * @param {Function} func The function to check.
+	 * @returns {boolean} Returns `true` if `func` is masked, else `false`.
+	 */
+	function isMasked(func) {
+	  return !!maskSrcKey && maskSrcKey in func;
+	}
+
+	/**
+	 * Checks if `value` is likely a prototype object.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a prototype, else `false`.
+	 */
+	function isPrototype(value) {
+	  var Ctor = value && value.constructor,
+	      proto = typeof Ctor == 'function' && Ctor.prototype || objectProto;
+
+	  return value === proto;
+	}
+
+	/**
+	 * This function is like
+	 * [`Object.keys`](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
+	 * except that it includes inherited enumerable properties.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of property names.
+	 */
+	function nativeKeysIn(object) {
+	  var result = [];
+	  if (object != null) {
+	    for (var key in Object(object)) {
+	      result.push(key);
+	    }
+	  }
+	  return result;
+	}
+
+	/**
+	 * Converts `value` to a string using `Object.prototype.toString`.
+	 *
+	 * @private
+	 * @param {*} value The value to convert.
+	 * @returns {string} Returns the converted string.
+	 */
+	function objectToString(value) {
+	  return nativeObjectToString.call(value);
+	}
+
+	/**
+	 * A specialized version of `baseRest` which transforms the rest array.
+	 *
+	 * @private
+	 * @param {Function} func The function to apply a rest parameter to.
+	 * @param {number} [start=func.length-1] The start position of the rest parameter.
+	 * @param {Function} transform The rest array transform.
+	 * @returns {Function} Returns the new function.
+	 */
+	function overRest(func, start, transform) {
+	  start = nativeMax(start === undefined ? func.length - 1 : start, 0);
+	  return function () {
+	    var args = arguments,
+	        index = -1,
+	        length = nativeMax(args.length - start, 0),
+	        array = Array(length);
+
+	    while (++index < length) {
+	      array[index] = args[start + index];
+	    }
+	    index = -1;
+	    var otherArgs = Array(start + 1);
+	    while (++index < start) {
+	      otherArgs[index] = args[index];
+	    }
+	    otherArgs[start] = transform(array);
+	    return apply(func, this, otherArgs);
+	  };
+	}
+
+	/**
+	 * Sets the `toString` method of `func` to return `string`.
+	 *
+	 * @private
+	 * @param {Function} func The function to modify.
+	 * @param {Function} string The `toString` result.
+	 * @returns {Function} Returns `func`.
+	 */
+	var setToString = shortOut(baseSetToString);
+
+	/**
+	 * Creates a function that'll short out and invoke `identity` instead
+	 * of `func` when it's called `HOT_COUNT` or more times in `HOT_SPAN`
+	 * milliseconds.
+	 *
+	 * @private
+	 * @param {Function} func The function to restrict.
+	 * @returns {Function} Returns the new shortable function.
+	 */
+	function shortOut(func) {
+	  var count = 0,
+	      lastCalled = 0;
+
+	  return function () {
+	    var stamp = nativeNow(),
+	        remaining = HOT_SPAN - (stamp - lastCalled);
+
+	    lastCalled = stamp;
+	    if (remaining > 0) {
+	      if (++count >= HOT_COUNT) {
+	        return arguments[0];
+	      }
+	    } else {
+	      count = 0;
+	    }
+	    return func.apply(undefined, arguments);
+	  };
+	}
+
+	/**
+	 * Converts `func` to its source code.
+	 *
+	 * @private
+	 * @param {Function} func The function to convert.
+	 * @returns {string} Returns the source code.
+	 */
+	function toSource(func) {
+	  if (func != null) {
+	    try {
+	      return funcToString.call(func);
+	    } catch (e) {}
+	    try {
+	      return func + '';
+	    } catch (e) {}
+	  }
+	  return '';
+	}
+
+	/**
+	 * Performs a
+	 * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+	 * comparison between two values to determine if they are equivalent.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to compare.
+	 * @param {*} other The other value to compare.
+	 * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+	 * @example
+	 *
+	 * var object = { 'a': 1 };
+	 * var other = { 'a': 1 };
+	 *
+	 * _.eq(object, object);
+	 * // => true
+	 *
+	 * _.eq(object, other);
+	 * // => false
+	 *
+	 * _.eq('a', 'a');
+	 * // => true
+	 *
+	 * _.eq('a', Object('a'));
+	 * // => false
+	 *
+	 * _.eq(NaN, NaN);
+	 * // => true
+	 */
+	function eq(value, other) {
+	  return value === other || value !== value && other !== other;
+	}
+
+	/**
+	 * Checks if `value` is likely an `arguments` object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.1.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an `arguments` object,
+	 *  else `false`.
+	 * @example
+	 *
+	 * _.isArguments(function() { return arguments; }());
+	 * // => true
+	 *
+	 * _.isArguments([1, 2, 3]);
+	 * // => false
+	 */
+	var isArguments = baseIsArguments(function () {
+	  return arguments;
+	}()) ? baseIsArguments : function (value) {
+	  return isObjectLike(value) && hasOwnProperty.call(value, 'callee') && !propertyIsEnumerable.call(value, 'callee');
+	};
+
+	/**
+	 * Checks if `value` is classified as an `Array` object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.1.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an array, else `false`.
+	 * @example
+	 *
+	 * _.isArray([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isArray(document.body.children);
+	 * // => false
+	 *
+	 * _.isArray('abc');
+	 * // => false
+	 *
+	 * _.isArray(_.noop);
+	 * // => false
+	 */
+	var isArray = Array.isArray;
+
+	/**
+	 * Checks if `value` is array-like. A value is considered array-like if it's
+	 * not a function and has a `value.length` that's an integer greater than or
+	 * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
+	 * @example
+	 *
+	 * _.isArrayLike([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isArrayLike(document.body.children);
+	 * // => true
+	 *
+	 * _.isArrayLike('abc');
+	 * // => true
+	 *
+	 * _.isArrayLike(_.noop);
+	 * // => false
+	 */
+	function isArrayLike(value) {
+	  return value != null && isLength(value.length) && !isFunction(value);
+	}
+
+	/**
+	 * This method is like `_.isArrayLike` except that it also checks if `value`
+	 * is an object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an array-like object,
+	 *  else `false`.
+	 * @example
+	 *
+	 * _.isArrayLikeObject([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isArrayLikeObject(document.body.children);
+	 * // => true
+	 *
+	 * _.isArrayLikeObject('abc');
+	 * // => false
+	 *
+	 * _.isArrayLikeObject(_.noop);
+	 * // => false
+	 */
+	function isArrayLikeObject(value) {
+	  return isObjectLike(value) && isArrayLike(value);
+	}
+
+	/**
+	 * Checks if `value` is a buffer.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.3.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a buffer, else `false`.
+	 * @example
+	 *
+	 * _.isBuffer(new Buffer(2));
+	 * // => true
+	 *
+	 * _.isBuffer(new Uint8Array(2));
+	 * // => false
+	 */
+	var isBuffer = nativeIsBuffer || stubFalse;
+
+	/**
+	 * Checks if `value` is classified as a `Function` object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.1.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a function, else `false`.
+	 * @example
+	 *
+	 * _.isFunction(_);
+	 * // => true
+	 *
+	 * _.isFunction(/abc/);
+	 * // => false
+	 */
+	function isFunction(value) {
+	  if (!isObject(value)) {
+	    return false;
+	  }
+	  // The use of `Object#toString` avoids issues with the `typeof` operator
+	  // in Safari 9 which returns 'object' for typed arrays and other constructors.
+	  var tag = baseGetTag(value);
+	  return tag == funcTag || tag == genTag || tag == asyncTag || tag == proxyTag;
+	}
+
+	/**
+	 * Checks if `value` is a valid array-like length.
+	 *
+	 * **Note:** This method is loosely based on
+	 * [`ToLength`](http://ecma-international.org/ecma-262/7.0/#sec-tolength).
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
+	 * @example
+	 *
+	 * _.isLength(3);
+	 * // => true
+	 *
+	 * _.isLength(Number.MIN_VALUE);
+	 * // => false
+	 *
+	 * _.isLength(Infinity);
+	 * // => false
+	 *
+	 * _.isLength('3');
+	 * // => false
+	 */
+	function isLength(value) {
+	  return typeof value == 'number' && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+	}
+
+	/**
+	 * Checks if `value` is the
+	 * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+	 * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.1.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+	 * @example
+	 *
+	 * _.isObject({});
+	 * // => true
+	 *
+	 * _.isObject([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isObject(_.noop);
+	 * // => true
+	 *
+	 * _.isObject(null);
+	 * // => false
+	 */
+	function isObject(value) {
+	  var type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
+	  return value != null && (type == 'object' || type == 'function');
+	}
+
+	/**
+	 * Checks if `value` is object-like. A value is object-like if it's not `null`
+	 * and has a `typeof` result of "object".
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+	 * @example
+	 *
+	 * _.isObjectLike({});
+	 * // => true
+	 *
+	 * _.isObjectLike([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isObjectLike(_.noop);
+	 * // => false
+	 *
+	 * _.isObjectLike(null);
+	 * // => false
+	 */
+	function isObjectLike(value) {
+	  return value != null && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) == 'object';
+	}
+
+	/**
+	 * Checks if `value` is a plain object, that is, an object created by the
+	 * `Object` constructor or one with a `[[Prototype]]` of `null`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.8.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a plain object, else `false`.
+	 * @example
+	 *
+	 * function Foo() {
+	 *   this.a = 1;
+	 * }
+	 *
+	 * _.isPlainObject(new Foo);
+	 * // => false
+	 *
+	 * _.isPlainObject([1, 2, 3]);
+	 * // => false
+	 *
+	 * _.isPlainObject({ 'x': 0, 'y': 0 });
+	 * // => true
+	 *
+	 * _.isPlainObject(Object.create(null));
+	 * // => true
+	 */
+	function isPlainObject(value) {
+	  if (!isObjectLike(value) || baseGetTag(value) != objectTag) {
+	    return false;
+	  }
+	  var proto = getPrototype(value);
+	  if (proto === null) {
+	    return true;
+	  }
+	  var Ctor = hasOwnProperty.call(proto, 'constructor') && proto.constructor;
+	  return typeof Ctor == 'function' && Ctor instanceof Ctor && funcToString.call(Ctor) == objectCtorString;
+	}
+
+	/**
+	 * Checks if `value` is classified as a typed array.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 3.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
+	 * @example
+	 *
+	 * _.isTypedArray(new Uint8Array);
+	 * // => true
+	 *
+	 * _.isTypedArray([]);
+	 * // => false
+	 */
+	var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedArray;
+
+	/**
+	 * Converts `value` to a plain object flattening inherited enumerable string
+	 * keyed properties of `value` to own properties of the plain object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 3.0.0
+	 * @category Lang
+	 * @param {*} value The value to convert.
+	 * @returns {Object} Returns the converted plain object.
+	 * @example
+	 *
+	 * function Foo() {
+	 *   this.b = 2;
+	 * }
+	 *
+	 * Foo.prototype.c = 3;
+	 *
+	 * _.assign({ 'a': 1 }, new Foo);
+	 * // => { 'a': 1, 'b': 2 }
+	 *
+	 * _.assign({ 'a': 1 }, _.toPlainObject(new Foo));
+	 * // => { 'a': 1, 'b': 2, 'c': 3 }
+	 */
+	function toPlainObject(value) {
+	  return copyObject(value, keysIn(value));
+	}
+
+	/**
+	 * Creates an array of the own and inherited enumerable property names of `object`.
+	 *
+	 * **Note:** Non-object values are coerced to objects.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 3.0.0
+	 * @category Object
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of property names.
+	 * @example
+	 *
+	 * function Foo() {
+	 *   this.a = 1;
+	 *   this.b = 2;
+	 * }
+	 *
+	 * Foo.prototype.c = 3;
+	 *
+	 * _.keysIn(new Foo);
+	 * // => ['a', 'b', 'c'] (iteration order is not guaranteed)
+	 */
+	function keysIn(object) {
+	  return isArrayLike(object) ? arrayLikeKeys(object, true) : baseKeysIn(object);
+	}
+
+	/**
+	 * This method is like `_.assign` except that it recursively merges own and
+	 * inherited enumerable string keyed properties of source objects into the
+	 * destination object. Source properties that resolve to `undefined` are
+	 * skipped if a destination value exists. Array and plain object properties
+	 * are merged recursively. Other objects and value types are overridden by
+	 * assignment. Source objects are applied from left to right. Subsequent
+	 * sources overwrite property assignments of previous sources.
+	 *
+	 * **Note:** This method mutates `object`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.5.0
+	 * @category Object
+	 * @param {Object} object The destination object.
+	 * @param {...Object} [sources] The source objects.
+	 * @returns {Object} Returns `object`.
+	 * @example
+	 *
+	 * var object = {
+	 *   'a': [{ 'b': 2 }, { 'd': 4 }]
+	 * };
+	 *
+	 * var other = {
+	 *   'a': [{ 'c': 3 }, { 'e': 5 }]
+	 * };
+	 *
+	 * _.merge(object, other);
+	 * // => { 'a': [{ 'b': 2, 'c': 3 }, { 'd': 4, 'e': 5 }] }
+	 */
+	var merge = createAssigner(function (object, source, srcIndex) {
+	  baseMerge(object, source, srcIndex);
+	});
+
+	/**
+	 * Creates a function that returns `value`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 2.4.0
+	 * @category Util
+	 * @param {*} value The value to return from the new function.
+	 * @returns {Function} Returns the new constant function.
+	 * @example
+	 *
+	 * var objects = _.times(2, _.constant({ 'a': 1 }));
+	 *
+	 * console.log(objects);
+	 * // => [{ 'a': 1 }, { 'a': 1 }]
+	 *
+	 * console.log(objects[0] === objects[1]);
+	 * // => true
+	 */
+	function constant(value) {
+	  return function () {
+	    return value;
+	  };
+	}
+
+	/**
+	 * This method returns the first argument it receives.
+	 *
+	 * @static
+	 * @since 0.1.0
+	 * @memberOf _
+	 * @category Util
+	 * @param {*} value Any value.
+	 * @returns {*} Returns `value`.
+	 * @example
+	 *
+	 * var object = { 'a': 1 };
+	 *
+	 * console.log(_.identity(object) === object);
+	 * // => true
+	 */
+	function identity(value) {
+	  return value;
+	}
+
+	/**
+	 * This method returns `false`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.13.0
+	 * @category Util
+	 * @returns {boolean} Returns `false`.
+	 * @example
+	 *
+	 * _.times(2, _.stubFalse);
+	 * // => [false, false]
+	 */
+	function stubFalse() {
+	  return false;
+	}
+
+	module.exports = merge;
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(6)(module)))
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+	"use strict";
+
+	module.exports = function (module) {
+		if (!module.webpackPolyfill) {
+			module.deprecate = function () {};
+			module.paths = [];
+			// module.parent = undefined by default
+			module.children = [];
+			module.webpackPolyfill = 1;
+		}
+		return module;
+	};
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(8)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".media-control-notransition {\n  -webkit-transition: none !important;\n  -moz-transition: none !important;\n  transition: none !important; }\n\n.player-poster[data-poster] .play-wrapper[data-poster] svg path {\n  fill: #ff6c0c !important; }\n\n.media-control[data-media-control].media-control-123streaming {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  z-index: 9999;\n  pointer-events: none; }\n  .media-control[data-media-control].media-control-123streaming.live [data-seekbar] {\n    display: none; }\n  .media-control[data-media-control].media-control-123streaming.dragging {\n    pointer-events: auto;\n    cursor: -webkit-grabbing !important;\n    cursor: grabbing !important;\n    cursor: url(" + __webpack_require__(9) + "), move; }\n    .media-control[data-media-control].media-control-123streaming.dragging * {\n      cursor: -webkit-grabbing !important;\n      cursor: grabbing !important;\n      cursor: url(" + __webpack_require__(9) + "), move; }\n  .media-control[data-media-control].media-control-123streaming .seek-time[data-seek-time] [data-seek-time] {\n    font-size: 14px !important; }\n  .media-control[data-media-control].media-control-123streaming .audio-selector[data-audio-selector] button,\n  .media-control[data-media-control].media-control-123streaming .level-selector[data-level-selector] button {\n    color: #ff6c0c;\n    height: 100%;\n    font-weight: bold;\n    cursor: pointer;\n    text-transform: capitalize; }\n  .media-control[data-media-control].media-control-123streaming .audio-selector[data-audio-selector] > ul,\n  .media-control[data-media-control].media-control-123streaming .level-selector[data-level-selector] > ul {\n    background: black; }\n    .media-control[data-media-control].media-control-123streaming .audio-selector[data-audio-selector] > ul li[data-title],\n    .media-control[data-media-control].media-control-123streaming .level-selector[data-level-selector] > ul li[data-title] {\n      background: #ffffff; }\n    .media-control[data-media-control].media-control-123streaming .audio-selector[data-audio-selector] > ul li a,\n    .media-control[data-media-control].media-control-123streaming .level-selector[data-level-selector] > ul li a {\n      padding: 10px 20px;\n      color: white;\n      text-transform: capitalize; }\n    .media-control[data-media-control].media-control-123streaming .audio-selector[data-audio-selector] > ul li.current a,\n    .media-control[data-media-control].media-control-123streaming .level-selector[data-level-selector] > ul li.current a {\n      color: #ff6c0c; }\n  .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] {\n    background: black;\n    bottom: 0 !important;\n    height: 42px !important; }\n  .media-control[data-media-control].media-control-123streaming .bar-fill-2 {\n    background-color: #ff6c0c !important; }\n  .media-control[data-media-control].media-control-123streaming .media-control-background[data-background] {\n    position: absolute;\n    height: 40%;\n    width: 100%;\n    bottom: 0;\n    background: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.9));\n    background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));\n    -webkit-transition: opacity 0.6s ease-out;\n    -moz-transition: opacity 0.6s ease-out;\n    transition: opacity 0.6s ease-out; }\n  .media-control[data-media-control].media-control-123streaming .media-control-icon {\n    line-height: 0;\n    letter-spacing: 0;\n    speak: none;\n    color: #ff6c0c;\n    opacity: 1;\n    vertical-align: middle;\n    text-align: left;\n    -webkit-transition: all 0.1s ease;\n    -moz-transition: all 0.1s ease;\n    transition: all 0.1s ease; }\n  .media-control[data-media-control].media-control-123streaming .media-control-icon:hover {\n    color: white;\n    text-shadow: rgba(255, 255, 255, 0.8) 0 0 5px; }\n  .media-control[data-media-control].media-control-123streaming.media-control-hide .media-control-background[data-background] {\n    opacity: 0; }\n  .media-control[data-media-control].media-control-123streaming.media-control-hide .media-control-layer[data-controls] {\n    bottom: -50px; }\n    .media-control[data-media-control].media-control-123streaming.media-control-hide .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-scrubber[data-seekbar] {\n      opacity: 0; }\n  .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] {\n    position: absolute;\n    bottom: 7px;\n    width: 100%;\n    height: 42px;\n    font-size: 0;\n    vertical-align: middle;\n    pointer-events: auto;\n    -webkit-transition: bottom 0.4s ease-out;\n    -moz-transition: bottom 0.4s ease-out;\n    transition: bottom 0.4s ease-out; }\n    .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .media-control-left-panel[data-media-control] {\n      position: absolute;\n      top: 0;\n      left: 4px;\n      height: 100%; }\n      .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .media-control-left-panel[data-media-control] [data-dvr-controls] {\n        font-size: 14px;\n        line-height: 44px; }\n        .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .media-control-left-panel[data-media-control] [data-dvr-controls] .live-info:before {\n          width: 11px;\n          height: 11px;\n          border-radius: 5px;\n          margin-right: 5px; }\n    .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .media-control-center-panel[data-media-control] {\n      height: 100%;\n      text-align: center;\n      line-height: 42px;\n      left: 10rem;\n      right: 20rem;\n      position: absolute; }\n    .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .media-control-right-panel[data-media-control] {\n      position: absolute;\n      top: 0;\n      right: 4px;\n      height: 100%; }\n    .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] button.media-control-button {\n      background-color: transparent;\n      border: 0;\n      margin: 0 6px;\n      padding: 0;\n      cursor: pointer;\n      display: inline-block;\n      width: 42px;\n      height: 100%; }\n      .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] button.media-control-button svg {\n        width: 100%;\n        height: 22px; }\n        .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] button.media-control-button svg path {\n          fill: #ff6c0c !important; }\n      .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] button.media-control-button:focus {\n        outline: none; }\n      .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] button.media-control-button[data-play] {\n        float: left;\n        height: 100%; }\n      .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] button.media-control-button[data-pause] {\n        float: left;\n        height: 100%; }\n      .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] button.media-control-button[data-stop] {\n        float: left;\n        height: 100%; }\n      .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] button.media-control-button[data-fullscreen] {\n        float: right;\n        background-color: transparent;\n        border: 0;\n        height: 100%; }\n      .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] button.media-control-button[data-hd-indicator] {\n        cursor: default;\n        float: right;\n        background-color: transparent;\n        border: 0;\n        height: 100%;\n        display: none; }\n        .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] button.media-control-button[data-hd-indicator].enabled {\n          opacity: 1.0;\n          display: block; }\n          .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] button.media-control-button[data-hd-indicator].enabled:hover {\n            opacity: 1.0;\n            text-shadow: none; }\n      .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] button.media-control-button[data-playpause] {\n        float: left; }\n      .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] button.media-control-button[data-playstop] {\n        float: left; }\n    .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .media-control-indicator[data-position], .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .media-control-indicator[data-duration] {\n      display: inline-block;\n      font-size: 13px;\n      color: white;\n      cursor: default;\n      line-height: 42px;\n      position: relative; }\n    .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .media-control-indicator[data-position] {\n      margin: 0 6px 0 7px; }\n    .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .media-control-indicator[data-duration] {\n      color: #747466;\n      margin-right: 6px; }\n    .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .bar-container[data-seekbar] {\n      position: absolute;\n      top: 0;\n      display: inline-block;\n      vertical-align: middle;\n      width: 100%;\n      height: 42px;\n      cursor: pointer; }\n      .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-background[data-seekbar] {\n        top: 15px;\n        width: 100%;\n        height: 10px !important;\n        position: relative;\n        background-color: #666666; }\n        .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-background[data-seekbar] .bar-fill-1[data-seekbar] {\n          position: absolute;\n          top: 0;\n          left: 0;\n          width: 0;\n          height: 100%;\n          background-color: #c2c2c2;\n          -webkit-transition: all 0.1s ease-out;\n          -moz-transition: all 0.1s ease-out;\n          transition: all 0.1s ease-out; }\n        .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-background[data-seekbar] .bar-fill-2[data-seekbar] {\n          position: absolute;\n          top: 0;\n          left: 0;\n          width: 0;\n          height: 100%;\n          background-color: #ff6c0c;\n          -webkit-transition: all 0.1s ease-out;\n          -moz-transition: all 0.1s ease-out;\n          transition: all 0.1s ease-out; }\n        .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-background[data-seekbar] .bar-hover[data-seekbar] {\n          opacity: 0;\n          position: absolute;\n          top: -3px;\n          width: 5px;\n          height: 7px;\n          background-color: rgba(255, 255, 255, 0.5);\n          -webkit-transition: opacity 0.1s ease;\n          -moz-transition: opacity 0.1s ease;\n          transition: opacity 0.1s ease; }\n      .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .bar-container[data-seekbar]:hover .bar-background[data-seekbar] .bar-hover[data-seekbar] {\n        opacity: 1; }\n      .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .bar-container[data-seekbar].seek-disabled {\n        cursor: default; }\n        .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .bar-container[data-seekbar].seek-disabled:hover .bar-background[data-seekbar] .bar-hover[data-seekbar] {\n          opacity: 0; }\n      .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-scrubber[data-seekbar] {\n        position: absolute;\n        -webkit-transform: translateX(-50%);\n        -moz-transform: translateX(-50%);\n        -ms-transform: translateX(-50%);\n        -o-transform: translateX(-50%);\n        transform: translateX(-50%);\n        top: 2px;\n        left: 0;\n        width: 20px;\n        height: 20px;\n        opacity: 1;\n        -webkit-transition: all 0.1s ease-out;\n        -moz-transition: all 0.1s ease-out;\n        transition: all 0.1s ease-out; }\n        .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-scrubber[data-seekbar] .bar-scrubber-icon[data-seekbar] {\n          display: none;\n          position: absolute;\n          left: 6px;\n          top: 6px;\n          width: 8px;\n          height: 8px;\n          border-radius: 10px;\n          box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.2);\n          background-color: white; }\n    .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .drawer-container[data-volume] {\n      float: right;\n      display: inline-block;\n      height: 42px;\n      cursor: pointer;\n      margin: 0;\n      box-sizing: border-box; }\n      .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .drawer-container[data-volume] .drawer-icon-container[data-volume] {\n        float: left;\n        bottom: 0; }\n        .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .drawer-container[data-volume] .drawer-icon-container[data-volume] .drawer-icon[data-volume] {\n          opacity: 1;\n          background-color: transparent;\n          border: 0;\n          box-sizing: content-box;\n          width: 42px;\n          height: 42px;\n          text-align: center; }\n          .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .drawer-container[data-volume] .drawer-icon-container[data-volume] .drawer-icon[data-volume] svg {\n            height: 26px;\n            position: relative;\n            top: 8px; }\n            .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .drawer-container[data-volume] .drawer-icon-container[data-volume] .drawer-icon[data-volume] svg path {\n              fill: #ff6c0c !important; }\n          .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .drawer-container[data-volume] .drawer-icon-container[data-volume] .drawer-icon[data-volume].muted svg {\n            margin-left: 2px; }\n      .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] {\n        float: left;\n        position: absolute;\n        overflow: hidden;\n        top: -64px;\n        width: 88px;\n        height: 40px;\n        padding: 4px;\n        margin-left: -24px;\n        transform: rotate(270deg);\n        background-color: #eeeeee;\n        -webkit-transition: width 0.2s ease-out;\n        -moz-transition: width 0.2s ease-out;\n        transition: width 0.2s ease-out;\n        -webkit-transition: none;\n        -moz-transition: none;\n        transition: none; }\n        .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .bar-background[data-volume] {\n          height: 1px;\n          position: relative;\n          top: 7px;\n          margin: 0 3px;\n          background-color: #2a2a2a; }\n          .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .bar-background[data-volume] .bar-fill-1[data-volume] {\n            position: absolute;\n            top: 0;\n            left: 0;\n            width: 0;\n            height: 100%;\n            background-color: #c2c2c2;\n            -webkit-transition: all 0.1s ease-out;\n            -moz-transition: all 0.1s ease-out;\n            transition: all 0.1s ease-out; }\n          .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .bar-background[data-volume] .bar-fill-2[data-volume] {\n            position: absolute;\n            top: 0;\n            left: 0;\n            width: 0;\n            height: 100%;\n            background-color: #ff6c0c;\n            -webkit-transition: all 0.1s ease-out;\n            -moz-transition: all 0.1s ease-out;\n            transition: all 0.1s ease-out; }\n          .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .bar-background[data-volume] .bar-hover[data-volume] {\n            opacity: 0;\n            position: absolute;\n            top: -3px;\n            width: 5px;\n            height: 7px;\n            background-color: rgba(255, 255, 255, 0.5);\n            -webkit-transition: opacity 0.1s ease;\n            -moz-transition: opacity 0.1s ease;\n            transition: opacity 0.1s ease; }\n        .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .bar-scrubber[data-volume] {\n          position: absolute;\n          -webkit-transform: translateX(-50%);\n          -moz-transform: translateX(-50%);\n          -ms-transform: translateX(-50%);\n          -o-transform: translateX(-50%);\n          transform: translateX(-50%);\n          top: 0px;\n          left: 0;\n          width: 20px;\n          height: 20px;\n          opacity: 1;\n          -webkit-transition: all 0.1s ease-out;\n          -moz-transition: all 0.1s ease-out;\n          transition: all 0.1s ease-out; }\n          .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .bar-scrubber[data-volume] .bar-scrubber-icon[data-volume] {\n            position: absolute;\n            left: 6px;\n            top: 6px;\n            width: 8px;\n            height: 8px;\n            border-radius: 10px;\n            box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.2);\n            background-color: white; }\n        .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .segmented-bar-element[data-volume] {\n          float: left;\n          width: 8px;\n          padding-left: 2px;\n          height: 32px;\n          opacity: 0.5;\n          box-shadow: inset 6px 0 0 white;\n          -webkit-transition: -webkit-transform 0.2s ease-out;\n          -moz-transition: -moz-transform 0.2s ease-out;\n          transition: transform 0.2s ease-out; }\n          .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .segmented-bar-element[data-volume].fill {\n            box-shadow: inset 6px 0 0 #ff6c0c;\n            opacity: 1; }\n          .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .segmented-bar-element[data-volume]:nth-of-type(1) {\n            padding-left: 0; }\n          .media-control[data-media-control].media-control-123streaming .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume] .segmented-bar-element[data-volume]:hover {\n            -webkit-transform: scaleY(1.5);\n            -moz-transform: scaleY(1.5);\n            -ms-transform: scaleY(1.5);\n            -o-transform: scaleY(1.5);\n            transform: scaleY(1.5); }\n  .media-control[data-media-control].media-control-123streaming.w320 .media-control-layer[data-controls] .drawer-container[data-volume] .bar-container[data-volume].volume-bar-hide {\n    width: 0;\n    height: 12px;\n    top: 9px;\n    padding: 0; }\n", ""]);
+
+	// exports
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+	"use strict";
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function () {
+		var list = [];
+
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for (var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if (item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+
+		// import a list of modules into the list
+		list.i = function (modules, mediaQuery) {
+			if (typeof modules === "string") modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for (var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if (typeof id === "number") alreadyImportedModules[id] = true;
+			}
+			for (i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if (typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if (mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if (mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "a8c874b93b3d848f39a71260c57e3863.cur";
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports) {
+
+	module.exports = "<!--<div class=\"media-control-background\" data-background></div>-->\r\n<div class=\"media-control-layer\" data-controls>\r\n  <%  var renderBar = function(name) { %>\r\n      <div class=\"bar-container\" data-<%= name %>>\r\n        <div class=\"bar-background\" data-<%= name %>>\r\n          <div class=\"bar-fill-1\" data-<%= name %>></div>\r\n          <div class=\"bar-fill-2\" data-<%= name %>></div>\r\n          <div class=\"bar-hover\" data-<%= name %>></div>\r\n        </div>\r\n        <div class=\"bar-scrubber\" data-<%= name %>>\r\n          <div class=\"bar-scrubber-icon\" data-<%= name %>></div>\r\n        </div>\r\n      </div>\r\n  <%  }; %>\r\n  <%  var renderSegmentedBar = function(name, segments) {\r\n      segments = segments || 10; %>\r\n    <div class=\"bar-container\" data-<%= name %>>\r\n    <% for (var i = 0; i < segments; i++) { %>\r\n      <div class=\"segmented-bar-element\" data-<%= name %>></div>\r\n    <% } %>\r\n    </div>\r\n  <% }; %>\r\n  <% var renderDrawer = function(name, renderContent) { %>\r\n      <div class=\"drawer-container\" data-<%= name %>>\r\n        <div class=\"drawer-icon-container\" data-<%= name %>>\r\n          <div class=\"drawer-icon media-control-icon\" data-<%= name %>></div>\r\n          <span class=\"drawer-text\" data-<%= name %>></span>\r\n        </div>\r\n        <% renderContent(name); %>\r\n      </div>\r\n  <% }; %>\r\n  <% var renderIndicator = function(name) { %>\r\n      <div class=\"media-control-indicator\" data-<%= name %>></div>\r\n  <% }; %>\r\n  <% var renderButton = function(name) { %>\r\n    <button type=\"button\" class=\"media-control-button media-control-icon\" data-<%= name %> aria-label=\"<%= name %>\"></button>\r\n  <% }; %>\r\n  <%  var templates = {\r\n        bar: renderBar,\r\n        segmentedBar: renderSegmentedBar,\r\n      };\r\n      var render = function(settingsList) {\r\n        settingsList.forEach(function(setting) {\r\n          if(setting === \"seekbar\") {\r\n            renderBar(setting);\r\n          } else if (setting === \"volume\") {\r\n            renderDrawer(setting, settings.volumeBarTemplate ? templates[settings.volumeBarTemplate] : function(name) { return renderSegmentedBar(name); });\r\n          } else if (setting === \"duration\" || setting === \"position\") {\r\n            renderIndicator(setting);\r\n          } else {\r\n            renderButton(setting);\r\n          }\r\n        });\r\n      }; %>\r\n  <% if (settings.default && settings.default.length) { %>\r\n  <div class=\"media-control-center-panel\" data-media-control>\r\n    <% render(settings.default); %>\r\n  </div>\r\n  <% } %>\r\n  <% if (settings.left && settings.left.length) { %>\r\n  <div class=\"media-control-left-panel\" data-media-control>\r\n    <% render(settings.left); %>\r\n  </div>\r\n  <% } %>\r\n  <% if (settings.right && settings.right.length) { %>\r\n  <div class=\"media-control-right-panel\" data-media-control>\r\n    <% render(settings.right); %>\r\n  </div>\r\n  <% } %>\r\n</div>\r\n";
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+	module.exports = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\"><path fill=\"#010101\" d=\"M1.425.35L14.575 8l-13.15 7.65V.35z\"></path></svg>"
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports) {
+
+	module.exports = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" fill=\"#010101\" d=\"M1.712 14.76H6.43V1.24H1.71v13.52zm7.86-13.52v13.52h4.716V1.24H9.573z\"></path></svg>"
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports) {
+
+	module.exports = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" fill=\"#010101\" d=\"M1.712 1.24h12.6v13.52h-12.6z\"></path></svg>"
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports) {
+
+	module.exports = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><path d=\"M64 192v128h85.334L256 431.543V80.458L149.334 192H64zm288 64c0-38.399-21.333-72.407-53.333-88.863v176.636C330.667 328.408 352 294.4 352 256zM298.667 64v44.978C360.531 127.632 405.334 186.882 405.334 256c0 69.119-44.803 128.369-106.667 147.022V448C384 428.254 448 349.257 448 256c0-93.256-64-172.254-149.333-192z\"></path></svg>"
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports) {
+
+	module.exports = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><path d=\"M64 192v128h85.334L256 431.543V80.458L149.334 192H64z\"></path></svg>"
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports) {
+
+	module.exports = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><path d=\"M396.795 396.8H320V448h128V320h-51.205zM396.8 115.205V192H448V64H320v51.205zM115.205 115.2H192V64H64v128h51.205zM115.2 396.795V320H64v128h128v-51.205z\"></path></svg>"
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports) {
+
+	module.exports = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\"><path fill=\"#010101\" d=\"M13.5 3.344l-.844-.844L9.5 5.656V3h-1v4.5H13v-1h-2.656L13.5 3.344zM3 9.5h2.656L2.5 12.656l.844.844L6.5 10.344V13h1V8.5H3v1z\"></path></svg>"
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports) {
+
+	module.exports = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\"><path fill=\"#010101\" d=\"M5.375 7.062H2.637V4.26H.502v7.488h2.135V8.9h2.738v2.848h2.133V4.26H5.375v2.802zm5.97-2.81h-2.84v7.496h2.798c2.65 0 4.195-1.607 4.195-3.77v-.022c0-2.162-1.523-3.704-4.154-3.704zm2.06 3.758c0 1.21-.81 1.896-2.03 1.896h-.83V6.093h.83c1.22 0 2.03.696 2.03 1.896v.02z\"></path></svg>"
+
+/***/ })
+/******/ ])
+});
+;

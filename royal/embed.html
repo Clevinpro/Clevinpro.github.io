@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)http://demo.123streaming.ru/321/embed.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>
+<iframe width="540" height="310" align="middle" src="https://123streaming.ru/meetings/viewWebRtc/63a3c78c8d06c82fce6ac2498896cd68" frameborder="0" allowfullscreen="" style="display: block;"></iframe>
+
+<button onclick="onClickMute()">
+  Mute toggle
+</button>
+<script>
+ function onClickMute() {
+   var playerFrame = document.getElementsByTagName("iframe")[0].contentWindow;
+   playerFrame.postMessage('playerMute', '*');
+ }
+ window.onmessage = function(e){
+   if (e.data == 'playerPlay') {
+     document.getElementsByTagName("iframe")[0].style.display = 'block';
+   }
+ };
+</script>
+
+
+</body></html>
